@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>War Robots Calculator: Drone Upgrade Cost Calculator</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/warrobots-calculator/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/warrobots-calculator/apple-touch-icon.png">
+    <link rel="stylesheet" href="/warrobots-calculator/bootstrap-5.3.8-dist/css/bootstrap.min.css?v=1.12.5-beta">
+    <link rel="stylesheet" href="/warrobots-calculator/css/index.css?v=1.12.5-beta">
+    <link rel="stylesheet" href="./css/drone-upgrade-costs.css?v=1.12.5-beta">
+    <script src="/warrobots-calculator/data/ds-drone-upgrades.js?v=1.12.5-beta"></script>
+    <script type="module" src="./js/drone-upgrade-costs.js?v=1.12.5-beta"></script>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
+        <div class="container">
+            <!-- Brand (Left) -->
+            <a class="navbar-brand fw-bold d-flex align-items-center gap-2 me-auto" href="/warrobots-calculator">
+                <img src="/warrobots-calculator/favicon-32x32.png" alt="War Robots Calculator Icon" width="28"
+                    height="28" class="d-inline-block align-text-top">
+                <span class="fs-6 fs-sm-5">War Robots Calculator</span>
+            </a>
+            <!-- Quick Action Buttons (Always Visible) -->
+            <div class="d-flex align-items-center gap-2 me-2">
+                <!-- GitHub Link -->
+                <a href="https://github.com/kokhong1995/warrobots-calculator" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-outline-light btn-sm d-flex align-items-center p-1 p-sm-2" title="GitHub Repository">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                    </svg>
+                    <span class="d-none d-md-inline ms-1">GitHub</span>
+                </a>
+                <!-- Discord Button -->
+                <a href="https://discord.gg/ehZtNgXDHq" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-primary btn-sm d-flex align-items-center p-1 p-sm-2"
+                    style="background-color: #5865F2; border: none;" title="Join Discord">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M13.545 2.907a13.227 13.227 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.19 12.19 0 0 0-3.658 0 8.258 8.258 0 0 0-.412-.833.051.051 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032c.001.014.01.028.021.037a13.276 13.276 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019c.308-.42.582-.863.818-1.329a.05.05 0 0 0-.01-.059.051.051 0 0 0-.018-.011 8.875 8.875 0 0 1-1.248-.595.05.05 0 0 1-.02-.066.051.051 0 0 1 .015-.019c.084-.063.168-.129.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.052.052 0 0 1 .053.007c.08.066.164.132.248.195a.051.051 0 0 1-.004.085 8.254 8.254 0 0 1-1.249.594.05.05 0 0 0-.03.03.052.052 0 0 0 .02.059c.237.466.51.91.82 1.329a.05.05 0 0 0 .056.019 13.235 13.235 0 0 0 4.001-2.02.049.049 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.034.034 0 0 0-.02-.019Zm-8.198 7.307c-.789 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612Zm5.316 0c-.788 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612Z" />
+                    </svg>
+                    <span class="d-none d-sm-inline ms-1">Discord</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div id="mainContainer" class="container my-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow-sm border-0 bg-light p-3 mb-4">
+                    <div class="mb-2">
+                        <a href="/warrobots-calculator"
+                            class="btn btn-link btn-sm text-decoration-none text-secondary link-dark p-0 d-inline-flex align-items-center mb-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-arrow-left me-1" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                            </svg>
+                            Back
+                        </a>
+                    </div>
+                    <div class="d-flex gap-1">
+                        <span class="badge badge-drone mb-2">Drone</span>
+                    </div>
+                    <h4 class="fw-bold mb-1">Drone Upgrade Costs</h4>
+                    <p class="text-muted mb-4">
+                        Calculate the exact Microchips and Upgrade Tokens needed for Drone upgrades.
+                    </p>
+                    <div class="accordion" id="calculatorGuide">
+                        <div class="accordion-item border-0 shadow-sm">
+                            <h2 class="accordion-header">
+                                <button
+                                    class="accordion-button bg-primary text-white collapsed fw-semibold py-2 header-height-match"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#guideCollapse">
+                                    📖 How to Use
+                                </button>
+                            </h2>
+                            <div id="guideCollapse" class="accordion-collapse collapse"
+                                data-bs-parent="#calculatorGuide">
+                                <div class="accordion-body text-secondary small">
+                                    <ol class="ps-3 mb-0">
+                                        <li class="mb-2">
+                                            <strong>Configure Modifiers:</strong>
+                                            Set your values in <a href="#modifiers">Modifiers</a> (upgrade discount %).
+                                        </li>
+                                        <li class="mb-2">
+                                            <strong>Select Upgrades:</strong>
+                                            Input your planned <a href="#containerDroneUpgrades"
+                                                class="text-decoration-underline">Drone Upgrades</a>. Use quick actions
+                                            for faster entry.
+                                        </li>
+                                        <li>
+                                            <strong>Review Results:</strong>
+                                            Check the <a href="#totalSummary">Total Summary</a>
+                                            to view your calculated totals.
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row g-4">
+            <!-- Left Column: Inputs -->
+            <div class="col-lg-8">
+                <!-- Modifiers -->
+                <div class="card mb-4">
+                    <div id="modifiers" class="card-header fw-bold">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-auto">
+                                <span class="fw-bold">Modifiers</span>
+                            </div>
+                            <div class="col-auto">
+                                <button type="button" id="buttonResetModifiers"
+                                    class="btn btn-sm btn-outline-danger">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="container-fluid px-0">
+                            <div class="row g-2 align-items-center">
+                                <div class="col-md-4">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <label for="inputUpgradeDiscountPercentage"
+                                            class="form-label text-secondary small fw-medium mb-0">
+                                            Upgrade Discount %
+                                        </label>
+                                        &nbsp;
+                                        <button type="button"
+                                            class="btn btn-link text-secondary p-0 border-0 lh-1 small text-decoration-none"
+                                            data-bs-toggle="popover" data-bs-placement="right" data-bs-trigger="focus"
+                                            data-bs-html="true" data-bs-title="Upgrade Discount %"
+                                            data-bs-content="<p class='mb-0'>The discount percentage applied to upgrade costs (e.g., enter 40 for 40%).</p>"
+                                            aria-label="Upgrade Discount %">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                <path
+                                                    d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <input type="number" class="form-control sync-data"
+                                        id="inputUpgradeDiscountPercentage" min="0" value="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Drone Upgrades -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-auto">
+                                <div class="d-flex align-items-center">
+                                    <span class="fw-bold">Drone Upgrades</span>
+                                    &nbsp;
+                                    <button type="button"
+                                        class="btn btn-link text-secondary p-0 border-0 lh-1 small text-decoration-none"
+                                        data-bs-toggle="popover" data-bs-placement="right" data-bs-trigger="focus"
+                                        data-bs-html="true" data-bs-title="Drone Upgrades"
+                                        data-bs-content="<p class='mb-2'>Calculate upgrade costs from Level 2 to 12.</p><p class='fw-semibold mb-1'>Quick Actions:</p><ul class='ps-3 mb-0'><li><strong>T1 Max:</strong> Increase upgrade quantities from Level 2 to 3 by 1.</li><li><strong>T2 Max:</strong> Increase upgrade quantities from Level 2 to 6 by 1.</li><li><strong>T3 Max:</strong> Increase upgrade quantities from Level 2 to 9 by 1.</li><li><strong>T4 Max:</strong> Increase all upgrade quantities by 1.</li><li><strong>Reset:</strong> Reset all upgrade quantities to 0.</li></ul>"
+                                        aria-label="Drone Upgrades">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                            <path
+                                                d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="row gx-2">
+                                    <div class="col-auto mt-2 mt-md-0">
+                                        <button type="button" class="btn btn-sm btn-outline-t1"
+                                            id="buttonPresetDroneUpgrades_0">T1 Max</button>
+                                    </div>
+                                    <div class="col-auto mt-2 mt-md-0">
+                                        <button type="button" class="btn btn-sm btn-outline-t2"
+                                            id="buttonPresetDroneUpgrades_1">T2 Max</button>
+                                    </div>
+                                    <div class="col-auto mt-2 mt-md-0">
+                                        <button type="button" class="btn btn-sm btn-outline-t3"
+                                            id="buttonPresetDroneUpgrades_2">T3 Max</button>
+                                    </div>
+                                    <div class="col-auto mt-2 mt-md-0">
+                                        <button type="button" class="btn btn-sm btn-outline-t4"
+                                            id="buttonPresetDroneUpgrades_3">T4 Max</button>
+                                    </div>
+                                    <div class="col-auto mt-2 mt-md-0">
+                                        <button type="button" class="btn btn-sm btn-outline-danger"
+                                            id="buttonResetDroneUpgrades">Reset</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="container-fluid px-0">
+                            <div id="containerDroneUpgrades" class="row g-2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Column: Live Sticky Totals -->
+            <div class="col-lg-4">
+                <div class="sticky-top" style="top: 5rem; z-index: 1000;">
+                    <div id="totalSummary" class="card border-primary rounded-3 overflow-hidden mb-4">
+                        <div class="d-flex bg-primary text-white header-height-match align-items-center">
+                            <span class="card-header border-0">Total Summary</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Quantity</span> <span id="totalQuantity" class="fw-bold">0</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Microchips</span> <span id="totalMicrochips" class="fw-bold"
+                                    title="0 Microchips">0</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>Upgrade Tokens</span> <span id="totalUpgradeTokens" class="fw-bold"
+                                    title="0 Upgrade Tokens">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer mt-auto py-3 bg-white border-top">
+        <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-sm-end gap-2">
+            <div class="d-flex flex-column text-secondary small">
+                <div class="d-flex align-items-center gap-2 flex-wrap">
+                    <span>
+                        Released under the <a href="https://github.com/kokhong1995/warrobots-calculator" target="_blank"
+                            rel="noopener noreferrer" class="text-secondary text-decoration-underline">MIT License</a>
+                    </span>
+                    <span>|</span>
+                    <span>Built & maintained by <strong>KH9904</strong></span>
+                    <span>|</span>
+                    <span> Supported by our <a href="https://discord.gg/ehZtNgXDHq">Discord&nbsp;Community</a></span>
+                    <span>|</span>
+                    <span>Data references include <strong>cosmikro</strong></span>
+                </div>
+                <div class="text-muted text-opacity-75 mt-1" style="font-size: 0.8em;">
+                    Unofficial community tool. All calculations, costs, and values are subject to War Robots game
+                    mechanics and event rules.
+                </div>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <span
+                    class="badge text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-pill">v1.12.5-beta</span>
+                <small class="text-muted">Updated Sep 15, 2026</small>
+            </div>
+        </div>
+    </footer>
+    <script src="/warrobots-calculator/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js?v=1.12.5-beta"></script>
+</body>
+
+</html>

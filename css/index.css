@@ -1,0 +1,143 @@
+:root {
+  --t1-bg-color: #93b2c0;
+  --t2-bg-color: #2cb7fe;
+  --t3-bg-color: #e732ff;
+  --t4-bg-color: #ffa602;
+  --ultimate-bg-color: #ffa602;
+
+  --t1-color: #121826;
+  --t2-color: #121826;
+  --t3-color: #121826;
+  --t4-color: #121826;
+  --ultimate-color: #121826;
+
+  --t1-outline-color: #4f7385;
+  --t2-outline-color: #007bbd;
+  --t3-outline-color: #a100b8;
+  --t4-outline-color: #b86b00;
+  --ultimate-outline-color: #b86b00;
+
+  --padding-size: 15px;
+}
+
+.card {
+  border: 1px solid #e2e8f0 !important;
+}
+
+.badge-leaderboard {
+  background-color: #AB47BC !important;
+}
+
+.badge-progression {
+  background-color: #1976D2 !important;
+}
+
+.badge-drone {
+  background-color: #14b8a6 !important;
+  color: #FFFFFF !important;
+}
+
+.badge-ultimate {
+  background-color: #000000 !important;
+  color: #D4AF37 !important;
+}
+
+.badge-robot {
+  background-color: #16a34a !important;
+  color: #FFFFFF !important;
+}
+
+.badge-titan {
+  background-color: #f59e0b !important;
+  color: #000000 !important;
+}
+
+.badge-weapon {
+  background-color: #D32F2F !important;
+  color: #FFFFFF !important;
+}
+
+.btn-outline-t1 {
+  --bs-btn-color: var(--t1-outline-color);
+  --bs-btn-border-color: var(--t1-outline-color);
+  --bs-btn-hover-color: var(--t1-color);
+  --bs-btn-hover-bg: var(--t1-bg-color);
+  --bs-btn-hover-border-color: var(--t1-bg-color);
+  --bs-btn-focus-shadow-rgb: 79, 115, 133;
+  --bs-btn-active-color: var(--t1-color);
+  --bs-btn-active-bg: var(--t1-bg-color);
+  --bs-btn-active-border-color: var(--t1-bg-color);
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: var(--t1-outline-color);
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: var(--t1-outline-color);
+  --bs-gradient: none;
+}
+
+.btn-outline-t2 {
+  --bs-btn-color: var(--t2-outline-color);
+  --bs-btn-border-color: var(--t2-outline-color);
+  --bs-btn-hover-color: var(--t2-color);
+  --bs-btn-hover-bg: var(--t2-bg-color);
+  --bs-btn-hover-border-color: var(--t2-bg-color);
+  --bs-btn-focus-shadow-rgb: 0, 123, 189;
+  --bs-btn-active-color: var(--t2-color);
+  --bs-btn-active-bg: var(--t2-bg-color);
+  --bs-btn-active-border-color: var(--t2-bg-color);
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: var(--t2-outline-color);
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: var(--t2-outline-color);
+  --bs-gradient: none;
+}
+
+.btn-outline-t3 {
+  --bs-btn-color: var(--t3-outline-color);
+  --bs-btn-border-color: var(--t3-outline-color);
+  --bs-btn-hover-color: var(--t3-color);
+  --bs-btn-hover-bg: var(--t3-bg-color);
+  --bs-btn-hover-border-color: var(--t3-bg-color);
+  --bs-btn-focus-shadow-rgb: 161, 0, 184;
+  --bs-btn-active-color: var(--t3-color);
+  --bs-btn-active-bg: var(--t3-bg-color);
+  --bs-btn-active-border-color: var(--t3-bg-color);
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: var(--t3-outline-color);
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: var(--t3-outline-color);
+  --bs-gradient: none;
+}
+
+.btn-outline-t4 {
+  --bs-btn-color: var(--t4-outline-color);
+  --bs-btn-border-color: var(--t4-outline-color);
+  --bs-btn-hover-color: var(--t4-color);
+  --bs-btn-hover-bg: var(--t4-bg-color);
+  --bs-btn-hover-border-color: var(--t4-bg-color);
+  --bs-btn-focus-shadow-rgb: 184, 107, 0;
+  --bs-btn-active-color: var(--t4-color);
+  --bs-btn-active-bg: var(--t4-bg-color);
+  --bs-btn-active-border-color: var(--t4-bg-color);
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: var(--t4-outline-color);
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: var(--t4-outline-color);
+  --bs-gradient: none;
+}
+
+.btn-outline-ultimate {
+  --bs-btn-color: var(--ultimate-outline-color);
+  --bs-btn-border-color: var(--ultimate-outline-color);
+  --bs-btn-hover-color: var(--ultimate-color);
+  --bs-btn-hover-bg: var(--ultimate-bg-color);
+  --bs-btn-hover-border-color: var(--ultimate-bg-color);
+  --bs-btn-focus-shadow-rgb: 184, 107, 0;
+  --bs-btn-active-color: var(--ultimate-color);
+  --bs-btn-active-bg: var(--ultimate-bg-color);
+  --bs-btn-active-border-color: var(--ultimate-bg-color);
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: var(--ultimate-outline-color);
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: var(--ultimate-outline-color);
+  --bs-gradient: none;
+}
