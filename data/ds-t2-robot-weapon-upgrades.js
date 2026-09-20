@@ -1,4 +1,4 @@
-const DS_T2_ROBOT_UPGRADES = [
+const DS_T2_ROBOT_WEAPON_UPGRADES = [
     {
         mark: 1,
         level: 1,
@@ -90,7 +90,7 @@ const DS_T2_ROBOT_UPGRADES = [
     {
         mark: 1,
         level: 12,
-        silverAmount: 7000000, // 7 million.
+        silverAmount: 6000000, // 6 million.
         goldAmount: 513,
         upgradeDurationSeconds: 216000, // 2 days 12 hours.
         upgradeTokens: 0
@@ -205,6 +205,6 @@ const DS_T2_ROBOT_UPGRADES = [
         silverAmount: 0,
         goldAmount: 0,
         upgradeDurationSeconds: 0,
-        upgradeTokens: 3
+        upgradeTokens: 2
     }
 ];
