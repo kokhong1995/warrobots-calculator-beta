@@ -18,7 +18,7 @@ const DS_T3_ROBOT_UPGRADES = [
         upgradeDurationSeconds: 7200, // 2 hours.
         upgradeTokens: 0,
         points: {
-            // fightToTheDeath: 25
+            fightToTheDeath: 25
         }
     },
     {
@@ -29,7 +29,7 @@ const DS_T3_ROBOT_UPGRADES = [
         upgradeDurationSeconds: 18000, // 5 hours.
         upgradeTokens: 0,
         points: {
-            // fightToTheDeath: 25
+            fightToTheDeath: 25
         }
     },
     {
@@ -40,7 +40,7 @@ const DS_T3_ROBOT_UPGRADES = [
         upgradeDurationSeconds: 50400, // 14 hours.
         upgradeTokens: 0,
         points: {
-            // fightToTheDeath: 25
+            fightToTheDeath: 25
         }
     },
     {
@@ -51,7 +51,7 @@ const DS_T3_ROBOT_UPGRADES = [
         upgradeDurationSeconds: 100800, // 28 hours.
         upgradeTokens: 0,
         points: {
-            // fightToTheDeath: 50
+            fightToTheDeath: 50
         }
     },
     {
@@ -62,7 +62,7 @@ const DS_T3_ROBOT_UPGRADES = [
         upgradeDurationSeconds: 172800, // 2 days.
         upgradeTokens: 0,
         points: {
-            // fightToTheDeath: 50
+            fightToTheDeath: 50
         }
     },
     {
@@ -73,7 +73,7 @@ const DS_T3_ROBOT_UPGRADES = [
         upgradeDurationSeconds: 237600, // 2 days 18 hours.
         upgradeTokens: 0,
         points: {
-            // fightToTheDeath: 50
+            fightToTheDeath: 50
         }
     },
     {
@@ -84,7 +84,7 @@ const DS_T3_ROBOT_UPGRADES = [
         upgradeDurationSeconds: 324000, // 3 days 18 hours.
         upgradeTokens: 0,
         points: {
-            // fightToTheDeath: 90
+            fightToTheDeath: 75
         }
     },
     {
@@ -95,7 +95,7 @@ const DS_T3_ROBOT_UPGRADES = [
         upgradeDurationSeconds: 381600, // 4 days 10 hours.
         upgradeTokens: 0,
         points: {
-            // fightToTheDeath: 90
+            fightToTheDeath: 75
         }
     },
     {
@@ -106,7 +106,7 @@ const DS_T3_ROBOT_UPGRADES = [
         upgradeDurationSeconds: 417600, // 4 days 20 hours.
         upgradeTokens: 0,
         points: {
-            // fightToTheDeath: 125
+            fightToTheDeath: 100
         }
     },
     {
@@ -117,7 +117,7 @@ const DS_T3_ROBOT_UPGRADES = [
         upgradeDurationSeconds: 446400, // 5 days 4 hours.
         upgradeTokens: 0,
         points: {
-            // fightToTheDeath: 125
+            fightToTheDeath: 100
         }
     },
     {
@@ -128,7 +128,7 @@ const DS_T3_ROBOT_UPGRADES = [
         upgradeDurationSeconds: 468000, // 5 days 10 hours.
         upgradeTokens: 0,
         points: {
-            // fightToTheDeath: 125
+            fightToTheDeath: 100
         }
     },
     {
@@ -139,7 +139,7 @@ const DS_T3_ROBOT_UPGRADES = [
         upgradeDurationSeconds: 0,
         upgradeTokens: 0,
         points: {
-            // fightToTheDeath: 250
+            fightToTheDeath: 250
         }
     },
     {
@@ -161,7 +161,7 @@ const DS_T3_ROBOT_UPGRADES = [
         upgradeDurationSeconds: 43200, // 12 hours.
         upgradeTokens: 0,
         points: {
-            // fightToTheDeath: 125
+            fightToTheDeath: 100
         }
     },
     {
@@ -172,7 +172,7 @@ const DS_T3_ROBOT_UPGRADES = [
         upgradeDurationSeconds: 86400, // 1 day.
         upgradeTokens: 0,
         points: {
-            // fightToTheDeath: 125
+            fightToTheDeath: 100
         }
     },
     {
@@ -183,7 +183,7 @@ const DS_T3_ROBOT_UPGRADES = [
         upgradeDurationSeconds: 129600, // 1 day 12 hours.
         upgradeTokens: 0,
         points: {
-            // fightToTheDeath: 125
+            fightToTheDeath: 100
         }
     },
     {
@@ -194,7 +194,7 @@ const DS_T3_ROBOT_UPGRADES = [
         upgradeDurationSeconds: 129600, // 1 day 12 hours.
         upgradeTokens: 0,
         points: {
-            // fightToTheDeath: 150
+            fightToTheDeath: 125
         }
     },
     {
@@ -205,7 +205,7 @@ const DS_T3_ROBOT_UPGRADES = [
         upgradeDurationSeconds: 129600, // 1 day 12 hours.
         upgradeTokens: 0,
         points: {
-            // fightToTheDeath: 150
+            fightToTheDeath: 125
         }
     },
     {
@@ -216,7 +216,7 @@ const DS_T3_ROBOT_UPGRADES = [
         upgradeDurationSeconds: 129600, // 1 day 12 hours.
         upgradeTokens: 0,
         points: {
-            // fightToTheDeath: 150
+            fightToTheDeath: 125
         }
     },
     {
@@ -227,7 +227,7 @@ const DS_T3_ROBOT_UPGRADES = [
         upgradeDurationSeconds: 129600, // 1 day 12 hours.
         upgradeTokens: 0,
         points: {
-            // fightToTheDeath: 150
+            fightToTheDeath: 125
         }
     },
     {
@@ -238,7 +238,7 @@ const DS_T3_ROBOT_UPGRADES = [
         upgradeDurationSeconds: 129600, // 1 day 12 hours.
         upgradeTokens: 0,
         points: {
-            // fightToTheDeath: 150
+            fightToTheDeath: 125
         }
     },
     {
@@ -249,7 +249,7 @@ const DS_T3_ROBOT_UPGRADES = [
         upgradeDurationSeconds: 129600, // 1 day 12 hours.
         upgradeTokens: 0,
         points: {
-            // fightToTheDeath: 150
+            fightToTheDeath: 125
         }
     },
     {
@@ -260,7 +260,7 @@ const DS_T3_ROBOT_UPGRADES = [
         upgradeDurationSeconds: 129600, // 1 day 12 hours.
         upgradeTokens: 0,
         points: {
-            // fightToTheDeath: 150
+            fightToTheDeath: 125
         }
     },
     {
@@ -271,7 +271,7 @@ const DS_T3_ROBOT_UPGRADES = [
         upgradeDurationSeconds: 129600, // 1 day 12 hours.
         upgradeTokens: 0,
         points: {
-            // fightToTheDeath: 150
+            fightToTheDeath: 125
         }
     },
     {
@@ -282,7 +282,7 @@ const DS_T3_ROBOT_UPGRADES = [
         upgradeDurationSeconds: 0,
         upgradeTokens: 3,
         points: {
-            // fightToTheDeath: 1000
+            fightToTheDeath: 1000
         }
     }
 ];

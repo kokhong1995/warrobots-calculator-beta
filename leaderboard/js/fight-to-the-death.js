@@ -1,6 +1,6 @@
-import { toInt, thousandSeperator, getStrLevel, getStrAmount, getStrDuration } from '/warrobots-calculator-beta/js/data-helper.js?v=1.12.8-beta';
-import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.12.8-beta';
-import { applyUpgradeDiscountPercentage, calculateTotalTitanDeployPoints } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.12.8-beta';
+import { toInt, thousandSeperator, getStrLevel, getStrAmount, getStrDuration } from '/warrobots-calculator-beta/js/data-helper.js?v=1.12.9-beta';
+import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.12.9-beta';
+import { applyUpgradeDiscountPercentage, calculateTotalTitanDeployPoints } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.12.9-beta';
 
 function updateInputValue(eventType, inputId) {
     updateNumberInput(eventType, inputId, syncData);
@@ -190,23 +190,41 @@ function init() {
         if (e.target.matches('#buttonResetModifiers')) {
             resetModifiers();
         }
-        if (e.target.matches('#buttonResetT4RobotUpgrades')) {
+        if (e.target.matches('#buttonResetT3RobotUpgrades')) {
             resetUpgrades(0);
         }
-        if (e.target.matches('#buttonResetT4WeaponUpgrades')) {
+        if (e.target.matches('#buttonResetT4RobotUpgrades')) {
             resetUpgrades(1);
         }
-        if (e.target.matches('#buttonPresetT4RobotUpgrades_0')) {
+        if (e.target.matches('#buttonResetT3WeaponUpgrades')) {
+            resetUpgrades(2);
+        }
+        if (e.target.matches('#buttonResetT4WeaponUpgrades')) {
+            resetUpgrades(3);
+        }
+        if (e.target.matches('#buttonPresetT3RobotUpgrades_0')) {
             presetUpgrades(0, 0);
         }
-        if (e.target.matches('#buttonPresetT4RobotUpgrades_1')) {
+        if (e.target.matches('#buttonPresetT3RobotUpgrades_1')) {
             presetUpgrades(0, 1);
         }
-        if (e.target.matches('#buttonPresetT4WeaponUpgrades_0')) {
+        if (e.target.matches('#buttonPresetT4RobotUpgrades_0')) {
             presetUpgrades(1, 0);
         }
-        if (e.target.matches('#buttonPresetT4WeaponUpgrades_1')) {
+        if (e.target.matches('#buttonPresetT4RobotUpgrades_1')) {
             presetUpgrades(1, 1);
+        }
+        if (e.target.matches('#buttonPresetT3WeaponUpgrades_0')) {
+            presetUpgrades(2, 0);
+        }
+        if (e.target.matches('#buttonPresetT3WeaponUpgrades_1')) {
+            presetUpgrades(2, 1);
+        }
+        if (e.target.matches('#buttonPresetT4WeaponUpgrades_0')) {
+            presetUpgrades(3, 0);
+        }
+        if (e.target.matches('#buttonPresetT4WeaponUpgrades_1')) {
+            presetUpgrades(3, 1);
         }
         if (e.target.matches('.btn-decrement')) {
             updateInputValue('-', e.target.dataset.wcTarget);
@@ -230,9 +248,10 @@ function init() {
     const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
 }
 
-const TYPES = ['T4Robot', 'T4Weapon'];
+const TYPES = ['T3Robot', 'T4Robot', 'T3Weapon', 'T4Weapon'];
 const DS_FIGHT_TO_THE_DEATH = [
-    DS_T4_ROBOT_UPGRADES, DS_T4_ROBOT_WEAPON_UPGRADES
+    DS_T3_ROBOT_UPGRADES, DS_T4_ROBOT_UPGRADES,
+    DS_T3_ROBOT_WEAPON_UPGRADES, DS_T4_ROBOT_WEAPON_UPGRADES
 ];
 
 init();
