@@ -1,50 +1,41 @@
 import { toInt, thousandSeperator, getStrAmount } from '/warrobots-calculator-beta/js/data-helper.js?v=1.13.0-beta';
 import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.13.0-beta';
-import { applyUpgradeDiscountPercentage } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.13.0-beta';
 
 function updateInputValue(eventType, inputId) {
     updateNumberInput(eventType, inputId, syncData);
 }
 
 function syncData() {
-    const inputUpgradeDiscountPercentage = document.getElementById('inputUpgradeDiscountPercentage');
     const spanTotalQuantity = document.getElementById('totalQuantity');
-    const spanTotalPlatinumAmount = document.getElementById('totalPlatinumAmount');
-    let inputQuantity, spanPlatinumAmount;
-    let upgradeDiscountPercentage = 0;
-    let quantity = 0, platinumAmount = 0;
-    let totalQuantity = 0, totalPlatinumAmount = 0;
+    const spanTotalComponents = document.getElementById('totalComponents');
+    let inputQuantity, spanComponents;
+    let quantity = 0, components = 0;
+    let totalQuantity = 0, totalComponents = 0;
     let i, j;
 
-    upgradeDiscountPercentage = Math.abs(toInt(inputUpgradeDiscountPercentage.value));
-
-    for (i = 0; i < DS_T4_TITAN_UPGRADE_COSTS.length; i++) {
-        for (j = 0; j < DS_T4_TITAN_UPGRADE_COSTS[i].length; j++) {
-            if (DS_T4_TITAN_UPGRADE_COSTS[i][j].level == 1) {
+    for (i = 0; i < DS_T4_MOTHERSHIP_UPGRADE_COSTS.length; i++) {
+        for (j = 0; j < DS_T4_MOTHERSHIP_UPGRADE_COSTS[i].length; j++) {
+            if (DS_T4_MOTHERSHIP_UPGRADE_COSTS[i][j].level == 1) {
                 continue;
             }
 
             inputQuantity = document.getElementById(`inputQuantity${TYPES[i]}_${j}`);
-            spanPlatinumAmount = document.getElementById(`spanPlatinumAmount${TYPES[i]}_${j}`);
+            spanComponents = document.getElementById(`spanComponents${TYPES[i]}_${j}`);
 
             quantity = toInt(inputQuantity.value);
-            platinumAmount = applyUpgradeDiscountPercentage(upgradeDiscountPercentage, DS_T4_TITAN_UPGRADE_COSTS[i][j].platinumAmount) * quantity;
+            components = DS_T4_MOTHERSHIP_UPGRADE_COSTS[i][j].components * quantity;
 
-            spanPlatinumAmount.textContent = getStrAmount(platinumAmount);
-            spanPlatinumAmount.parentElement.title = thousandSeperator(platinumAmount, ' ') + ' Platinum';
+            spanComponents.textContent = getStrAmount(components);
+            spanComponents.parentElement.title = thousandSeperator(components, ' ') + ' Components';
 
             totalQuantity += quantity;
-            totalPlatinumAmount += platinumAmount;
+            totalComponents += components;
         }
     }
 
     spanTotalQuantity.textContent = totalQuantity;
-    spanTotalPlatinumAmount.textContent = getStrAmount(totalPlatinumAmount);
-    spanTotalPlatinumAmount.title = thousandSeperator(totalPlatinumAmount, ' ') + ' Platinum';
-}
-
-function resetModifiers() {
-    resetInputs(['#inputUpgradeDiscountPercentage'], 0, syncData);
+    spanTotalComponents.textContent = getStrAmount(totalComponents);
+    spanTotalComponents.title = thousandSeperator(totalComponents, ' ') + ' Components';
 }
 
 function resetUpgrades(index) {
@@ -56,8 +47,8 @@ function presetUpgrades(index) {
     let quantity = 0;
     let i;
 
-    for (i = 0; i < DS_T4_TITAN_UPGRADE_COSTS[index].length; i++) {
-        if (DS_T4_TITAN_UPGRADE_COSTS[index][i].level == 1) {
+    for (i = 0; i < DS_T4_MOTHERSHIP_UPGRADE_COSTS[index].length; i++) {
+        if (DS_T4_MOTHERSHIP_UPGRADE_COSTS[index][i].level == 1) {
             continue;
         }
 
@@ -79,15 +70,15 @@ function init() {
         containerInnerHTMLs.push('');
     }
 
-    for (i = 0; i < DS_T4_TITAN_UPGRADE_COSTS.length; i++) {
-        for (j = 0; j < DS_T4_TITAN_UPGRADE_COSTS[i].length; j++) {
-            if (DS_T4_TITAN_UPGRADE_COSTS[i][j].level == 1) {
+    for (i = 0; i < DS_T4_MOTHERSHIP_UPGRADE_COSTS.length; i++) {
+        for (j = 0; j < DS_T4_MOTHERSHIP_UPGRADE_COSTS[i].length; j++) {
+            if (DS_T4_MOTHERSHIP_UPGRADE_COSTS[i][j].level == 1) {
                 continue;
             }
 
             containerInnerHTMLs[i] += '<div class="col-md-6">' +
                 '<div class="item">' + '<div class="row align-items-center">' +
-                `<div class="col"><div class="item-title">Level ${DS_T4_TITAN_UPGRADE_COSTS[i][j].level}</div>` +
+                `<div class="col"><div class="item-title">Level ${DS_T4_MOTHERSHIP_UPGRADE_COSTS[i][j].level}</div>` +
                 '</div>' +
                 '<div class="col">' +
                 '<div class="input-group">' +
@@ -98,7 +89,7 @@ function init() {
                 '</div>' +
                 '<div class="col-12">' +
                 '<div class="d-flex flex-wrap gap-1 mt-2">' +
-                `<span class="badge bg-light text-dark border" title="0 Platinum">Platinum: <span id="spanPlatinumAmount${TYPES[i]}_${j}" class="platinum-amount">0</span></span>` +
+                `<span class="badge bg-light text-dark border" title="0 Components">Components: <span id="spanComponents${TYPES[i]}_${j}" class="components">0</span></span>` +
                 '</div>' +
                 '</div>' +
                 '</div>' +
@@ -113,25 +104,22 @@ function init() {
 
     // Set click event listener.
     document.getElementById('mainContainer').addEventListener('click', (e) => {
-        if (e.target.matches('#buttonResetModifiers')) {
-            resetModifiers();
-        }
-        if (e.target.matches('#buttonResetT4HullSubsystemUpgrades')) {
+        if (e.target.matches('#buttonResetT4Stat1Upgrades')) {
             resetUpgrades(0);
         }
-        if (e.target.matches('#buttonResetT4CoreSubsystemUpgrades')) {
+        if (e.target.matches('#buttonResetT4Stat2Upgrades')) {
             resetUpgrades(1);
         }
-        if (e.target.matches('#buttonResetT4EngineSubsystemUpgrades')) {
+        if (e.target.matches('#buttonResetT4Stat3Upgrades')) {
             resetUpgrades(2);
         }
-        if (e.target.matches('#buttonPresetT4HullSubsystemUpgrades')) {
+        if (e.target.matches('#buttonPresetT4Stat1Upgrades')) {
             presetUpgrades(0);
         }
-        if (e.target.matches('#buttonPresetT4CoreSubsystemUpgrades')) {
+        if (e.target.matches('#buttonPresetT4Stat2Upgrades')) {
             presetUpgrades(1);
         }
-        if (e.target.matches('#buttonPresetT4EngineSubsystemUpgrades')) {
+        if (e.target.matches('#buttonPresetT4Stat3Upgrades')) {
             presetUpgrades(2);
         }
         if (e.target.matches('.btn-decrement')) {
@@ -156,10 +144,9 @@ function init() {
     const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
 }
 
-const TYPES = ['T4HullSubsystem', 'T4CoreSubsystem', 'T4EngineSubsystem'];
-const DS_T4_TITAN_UPGRADE_COSTS = [
-    DS_T4_TITAN_HULL_UPGRADES, DS_T4_TITAN_CORE_UPGRADES,
-    DS_T4_TITAN_ENGINE_UPGRADES
+const TYPES = ['T4Stat1', 'T4Stat2', 'T4Stat3'];
+const DS_T4_MOTHERSHIP_UPGRADE_COSTS = [
+    DS_T4_STAT1_UPGRADES, DS_T4_STAT2_UPGRADES, DS_T4_STAT3_UPGRADES
 ];
 
 init();
