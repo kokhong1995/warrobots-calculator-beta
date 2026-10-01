@@ -1,6 +1,6 @@
-import { toInt, toFloat, thousandSeperator, getStrAmount, calculateTotalSuperchestUnlocked, calculateKeysForNextSuperchest, calculateNextSuperchestProgressPercent } from '/warrobots-calculator-beta/js/data-helper.js?v=1.13.1-beta';
-import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.13.1-beta';
-import { applyFillingRate } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.13.1-beta';
+import { toInt, toFloat, thousandSeperator, getStrAmount, calculateTotalSuperchestUnlocked, calculateKeysForNextSuperchest, calculateNextSuperchestProgressPercent } from '/warrobots-calculator-beta/js/data-helper.js?v=1.13.2-beta';
+import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.13.2-beta';
+import { applyFillingRate } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.13.2-beta';
 
 function updateInputValue(eventType, inputId) {
     updateNumberInput(eventType, inputId, syncData);
@@ -23,11 +23,11 @@ function updateQuantityBadges(quantityBreakdownData) {
     container.innerHTML = innerHTML;
 }
 
-function updateSuperchestProgressBar(totalKeys) {
+function updateSuperchestProgressBar(superchestRequiredKeys, totalKeys) {
     const progressBar = document.getElementById('superchestProgressBar');
     const spanSuperchestRemainingKeys = document.getElementById('spanSuperchestRemainingKeys');
-    let keysNeeded = calculateKeysForNextSuperchest(totalKeys);
-    let nextProgressBarPercent = calculateNextSuperchestProgressPercent(totalKeys);
+    let keysNeeded = calculateKeysForNextSuperchest(superchestRequiredKeys, totalKeys);
+    let nextProgressBarPercent = calculateNextSuperchestProgressPercent(superchestRequiredKeys, totalKeys);
 
     spanSuperchestRemainingKeys.textContent = getStrAmount(keysNeeded);
     progressBar.style.width = nextProgressBarPercent + '%';
@@ -47,12 +47,14 @@ function syncData() {
     let totalQuantity = 0, totalKeys = 0, totalKeySpentForSuperchest = 0, totalSuperchests = 0;
     let keySpent = 0;
     let i, j;
+    let superchestRequiredKeys = 0;
 
     fillingRate = Math.abs(toFloat(inputFillingRate.value));
 
     for (i = 0; i < DS_BLACK_MARKET.length; i++) {
         for (j = 0; j < DS_BLACK_MARKET[i].length; j++) {
             if (DS_BLACK_MARKET[i][j].name == 'Superchest') {
+                superchestRequiredKeys = DS_BLACK_MARKET[i][j].keys;
                 continue;
             }
 
@@ -75,7 +77,7 @@ function syncData() {
     }
     keySpent = toInt(inputKeySpent.value);
     totalKeySpentForSuperchest += applyFillingRate(fillingRate, totalKeys) + keySpent;
-    totalSuperchests = calculateTotalSuperchestUnlocked(totalKeySpentForSuperchest);
+    totalSuperchests = calculateTotalSuperchestUnlocked(superchestRequiredKeys, totalKeySpentForSuperchest);
 
     spanTotalQuantity.textContent = totalQuantity;
     updateQuantityBadges(quantityBreakdownData);
@@ -83,7 +85,7 @@ function syncData() {
     spanTotalKeys.title = thousandSeperator(totalKeys, ' ') + ' Keys';
     spanTotalSuperchests.textContent = getStrAmount(totalSuperchests);
     spanTotalSuperchests.title = thousandSeperator(totalSuperchests, ' ') + ' Superchests';
-    updateSuperchestProgressBar(totalKeySpentForSuperchest);
+    updateSuperchestProgressBar(superchestRequiredKeys, totalKeySpentForSuperchest);
 }
 
 function resetModifiers() {
