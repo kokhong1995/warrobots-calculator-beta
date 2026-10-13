@@ -1,10 +1,19 @@
-const applyUpgradeDiscountPercentage = (upgradeDiscountPercentage, value) => {
+const applyUpgradeDiscountPercentage = (upgradeDiscountPercentage, value, roundMethod = 0) => {
     if (upgradeDiscountPercentage == null || value == null) {
         return 0;
     }
 
     let discount = value * upgradeDiscountPercentage / 100;
-    let netValue = Math.floor(value - discount);
+    let netValue = 0;
+
+    switch (roundMethod) {
+        case 1:
+            netValue = Math.round(value - discount);
+            break;
+        default:
+            netValue = Math.floor(value - discount);
+            break;
+    }
 
     return netValue > 0 ? netValue : 0;
 };

@@ -24,14 +24,6 @@
   border: 1px solid #e2e8f0 !important;
 }
 
-/* .badge-leaderboard {
-  background-color: #AB47BC !important;
-}
-
-.badge-progression {
-  background-color: #1976D2 !important;
-} */
-
 .badge-drone {
   background-color: #14b8a6 !important;
   color: #FFFFFF !important;
@@ -59,6 +51,11 @@
 
 .badge-mothership {
   background-color: #7c3aed !important;
+  color: #FFFFFF !important;
+}
+
+.badge-pilot {
+  background-color: #1976D2 !important;
   color: #FFFFFF !important;
 }
 

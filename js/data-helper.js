@@ -70,10 +70,48 @@ const calculateNextSuperchestProgressPercent = (superchestRequiredKeys, totalKey
     return (CURRENT_PROGRESS / superchestRequiredKeys) * 100;
 };
 
+const getPilotRankByLevel = (level) => {
+    if (level < 1 || level > 100) {
+        return '';
+    }
+
+    if (level < 11) {
+        return 'Private';
+    }
+    else if (level < 21) {
+        return 'Corporal';
+    }
+    else if (level < 31) {
+        return 'Sergeant';
+    }
+    else if (level < 41) {
+        return 'Lieutenant';
+    }
+    else if (level < 51) {
+        return 'Captain';
+    }
+    else if (level < 61) {
+        return 'Major';
+    }
+    else if (level < 71) {
+        return 'Colonel';
+    }
+    else if (level < 81) {
+        return 'Brigadier';
+    }
+    else if (level < 91) {
+        return 'General';
+    }
+    else {
+        return 'Marshal';
+    }
+};
+
 export {
     toInt, toFloat, thousandSeperator,
     getStrLevel, getStrAmount, getStrDuration,
     calculateTotalSuperchestUnlocked,
     calculateKeysForNextSuperchest,
-    calculateNextSuperchestProgressPercent
+    calculateNextSuperchestProgressPercent,
+    getPilotRankByLevel
 };
