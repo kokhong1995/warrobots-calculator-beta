@@ -7,12 +7,15 @@
     <title>War Robots Calculator: Titanic Efforts Leaderboard Calculator</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/warrobots-calculator-beta/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/warrobots-calculator-beta/apple-touch-icon.png">
-    <link rel="stylesheet" href="/warrobots-calculator-beta/bootstrap-5.3.8-dist/css/bootstrap.min.css?v=1.14.1-beta">
-    <link rel="stylesheet" href="/warrobots-calculator-beta/css/index.css?v=1.14.1-beta">
-    <link rel="stylesheet" href="./css/titanic-efforts.css?v=1.14.1-beta">
-    <script src="/warrobots-calculator-beta/data/ds-t4-titan-upgrades.js?v=1.14.1-beta"></script>
-    <script src="/warrobots-calculator-beta/data/ds-t4-titan-weapon-upgrades.js?v=1.14.1-beta"></script>
-    <script type="module" src="./js/titanic-efforts.js?v=1.14.1-beta"></script>
+    <link rel="stylesheet" href="/warrobots-calculator-beta/bootstrap-5.3.8-dist/css/bootstrap.min.css?v=1.14.2-beta">
+    <link rel="stylesheet" href="/warrobots-calculator-beta/css/index.css?v=1.14.2-beta">
+    <link rel="stylesheet" href="./css/titanic-efforts.css?v=1.14.2-beta">
+    <script src="/warrobots-calculator-beta/data/ds-t4-titan-upgrades.js?v=1.14.2-beta"></script>
+    <script src="/warrobots-calculator-beta/data/ds-t4-titan-weapon-upgrades.js?v=1.14.2-beta"></script>
+    <script src="/warrobots-calculator-beta/data/ds-t3-titan-weapon-upgrades.js?v=1.14.2-beta"></script>
+    <script src="/warrobots-calculator-beta/data/ds-t2-titan-weapon-upgrades.js?v=1.14.2-beta"></script>
+    <script src="/warrobots-calculator-beta/data/ds-t1-titan-weapon-upgrades.js?v=1.14.2-beta"></script>
+    <script type="module" src="./js/titanic-efforts.js?v=1.14.2-beta"></script>
 </head>
 
 <body>
@@ -28,8 +31,9 @@
             <!-- Quick Action Buttons (Always Visible) -->
             <div class="d-flex align-items-center gap-2 me-2">
                 <!-- GitHub Link -->
-                <a href="https://github.com/kokhong1995/warrobots-calculator-beta" target="_blank" rel="noopener noreferrer"
-                    class="btn btn-outline-light btn-sm d-flex align-items-center p-1 p-sm-2" title="GitHub Repository">
+                <a href="https://github.com/kokhong1995/warrobots-calculator-beta" target="_blank"
+                    rel="noopener noreferrer" class="btn btn-outline-light btn-sm d-flex align-items-center p-1 p-sm-2"
+                    title="GitHub Repository">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         viewBox="0 0 16 16">
                         <path
@@ -49,8 +53,8 @@
                     <span class="d-none d-sm-inline ms-1">Discord</span>
                 </a>
                 <!-- YouTube Button -->
-                <a href="https://www.youtube.com/@kh_9904?sub_confirmation=1" target="_blank"
-                    rel="noopener noreferrer" class="btn btn-danger btn-sm d-flex align-items-center p-1 p-sm-2"
+                <a href="https://www.youtube.com/@kh_9904?sub_confirmation=1" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-danger btn-sm d-flex align-items-center p-1 p-sm-2"
                     style="background-color: #FF0000; border: none;" title="Subscribe on YouTube">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         viewBox="0 0 16 16">
@@ -101,17 +105,17 @@
                                         </li>
                                         <li class="mb-2">
                                             <strong>Select Upgrades:</strong>
-                                            Input your planned Tier 4
-                                            <a href="#containerT4HullSubsystemUpgrades"
-                                                class="text-decoration-underline">Hull</a>,
-                                            <a href="#containerT4CoreSubsystemUpgrades"
-                                                class="text-decoration-underline">Core</a>,
-                                            <a href="#containerT4EngineSubsystemUpgrades"
-                                                class="text-decoration-underline">Engine Subsystem</a>,
+                                            Input your planned upgrades for
+                                            <a href="#containerT4SubsystemUpgrades"
+                                                class="text-decoration-underline">Tier 4 Subsystem Upgrades</a>
                                             or
-                                            <a href="#containerT4WeaponUpgrades"
-                                                class="text-decoration-underline">Weapon</a> Upgrades.
-                                            Use quick actions for faster entry.
+                                            (<a href="#containerT4WeaponUpgrades" class="text-decoration-underline">Tier
+                                                4</a>,
+                                            <a href="#containerT3WeaponUpgrades" class="text-decoration-underline">Tier
+                                                3</a>,
+                                            <a href="#containerT2WeaponUpgrades" class="text-decoration-underline">Tier
+                                                2</a>)
+                                            Weapon Upgrades. Use quick actions for faster entry.
                                         </li>
                                         <li>
                                             <strong>Review Results:</strong>
@@ -224,20 +228,20 @@
                         </div>
                     </div>
                 </div>
-                <!-- Tier 4 Hull Subsystem Upgrades -->
+                <!-- Tier 4 Subsystem Upgrades -->
                 <div class="card mb-4">
                     <div class="card-header">
                         <div class="row align-items-center justify-content-between">
                             <div class="col-auto">
                                 <div class="d-flex align-items-center">
-                                    <span class="fw-bold">Tier 4 Hull Subsystem Upgrades</span>
+                                    <span class="fw-bold">Tier 4 Subsystem Upgrades</span>
                                     &nbsp;
                                     <button type="button"
                                         class="btn btn-link text-secondary p-0 border-0 lh-1 small text-decoration-none"
                                         data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="focus"
-                                        data-bs-html="true" data-bs-title="Tier 4 Hull Subsystem Upgrades"
-                                        data-bs-content="<p class='mb-2'>Calculate upgrade costs from Level 2 to 50.</p><p class='fw-semibold mb-1'>Quick Actions:</p><ul class='ps-3 mb-0'><li><strong>Max Level:</strong> Increase all upgrade quantities by 1.</li><li><strong>Reset:</strong> Reset all upgrade quantities to 0.</li></ul>"
-                                        aria-label="Tier 4 Hull Subsystem Upgrades">
+                                        data-bs-html="true" data-bs-title="Tier 4 Subsystem Upgrades"
+                                        data-bs-content="<p class='mb-2'>Calculate upgrade costs from Level 2 to 50.</p><p class='fw-semibold mb-1'>Quick Actions:</p><ul class='ps-3 mb-0'><li><strong>Max [Subsystem]:</strong> Increase all upgrade quantities by 1 to the selected subsystem (Hull, Core or Engine).</li><li><strong>Reset:</strong> Reset all upgrade quantities to 0.</li></ul>"
+                                        aria-label="Tier 4 Subsystem Upgrades">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" viewBox="0 0 16 16">
                                             <path
@@ -252,99 +256,19 @@
                                 <div class="row gx-2">
                                     <div class="col-auto mt-2 mt-md-0">
                                         <button type="button" class="btn btn-sm btn-outline-t4"
-                                            id="buttonPresetT4HullSubsystemUpgrades">Max Level</button>
+                                            id="buttonPresetT4SubsystemUpgrades_0">Max Hull</button>
                                     </div>
-                                    <div class="col-auto mt-2 mt-md-0">
-                                        <button type="button" class="btn btn-sm btn-outline-danger"
-                                            id="buttonResetT4HullSubsystemUpgrades">Reset</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="container-fluid px-0">
-                            <div id="containerT4HullSubsystemUpgrades" class="row g-2"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Tier 4 Core Subsystem Upgrades -->
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <div class="row align-items-center justify-content-between">
-                            <div class="col-auto">
-                                <div class="d-flex align-items-center">
-                                    <span class="fw-bold">Tier 4 Core Subsystem Upgrades</span>
-                                    &nbsp;
-                                    <button type="button"
-                                        class="btn btn-link text-secondary p-0 border-0 lh-1 small text-decoration-none"
-                                        data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="focus"
-                                        data-bs-html="true" data-bs-title="Tier 4 Core Subsystem Upgrades"
-                                        data-bs-content="<p class='mb-2'>Calculate upgrade costs from Level 2 to 50.</p><p class='fw-semibold mb-1'>Quick Actions:</p><ul class='ps-3 mb-0'><li><strong>Max Level:</strong> Increase all upgrade quantities by 1.</li><li><strong>Reset:</strong> Reset all upgrade quantities to 0.</li></ul>"
-                                        aria-label="Tier 4 Core Subsystem Upgrades">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" viewBox="0 0 16 16">
-                                            <path
-                                                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                            <path
-                                                d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-auto">
-                                <div class="row gx-2">
                                     <div class="col-auto mt-2 mt-md-0">
                                         <button type="button" class="btn btn-sm btn-outline-t4"
-                                            id="buttonPresetT4CoreSubsystemUpgrades">Max Level</button>
+                                            id="buttonPresetT4SubsystemUpgrades_1">Max Core</button>
                                     </div>
-                                    <div class="col-auto mt-2 mt-md-0">
-                                        <button type="button" class="btn btn-sm btn-outline-danger"
-                                            id="buttonResetT4CoreSubsystemUpgrades">Reset</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="container-fluid px-0">
-                            <div id="containerT4CoreSubsystemUpgrades" class="row g-2"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Tier 4 Engine Subsystem Upgrades -->
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <div class="row align-items-center justify-content-between">
-                            <div class="col-auto">
-                                <div class="d-flex align-items-center">
-                                    <span class="fw-bold">Tier 4 Engine Subsystem Upgrades</span>
-                                    &nbsp;
-                                    <button type="button"
-                                        class="btn btn-link text-secondary p-0 border-0 lh-1 small text-decoration-none"
-                                        data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="focus"
-                                        data-bs-html="true" data-bs-title="Tier 4 Engine Subsystem Upgrades"
-                                        data-bs-content="<p class='mb-2'>Calculate upgrade costs from Level 2 to 50.</p><p class='fw-semibold mb-1'>Quick Actions:</p><ul class='ps-3 mb-0'><li><strong>Max Level:</strong> Increase all upgrade quantities by 1.</li><li><strong>Reset:</strong> Reset all upgrade quantities to 0.</li></ul>"
-                                        aria-label="Tier 4 Engine Subsystem Upgrades">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" viewBox="0 0 16 16">
-                                            <path
-                                                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                            <path
-                                                d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-auto">
-                                <div class="row gx-2">
                                     <div class="col-auto mt-2 mt-md-0">
                                         <button type="button" class="btn btn-sm btn-outline-t4"
-                                            id="buttonPresetT4EngineSubsystemUpgrades">Max Level</button>
+                                            id="buttonPresetT4SubsystemUpgrades_2">Max Engine</button>
                                     </div>
                                     <div class="col-auto mt-2 mt-md-0">
                                         <button type="button" class="btn btn-sm btn-outline-danger"
-                                            id="buttonResetT4EngineSubsystemUpgrades">Reset</button>
+                                            id="buttonResetT4SubsystemUpgrades">Reset</button>
                                     </div>
                                 </div>
                             </div>
@@ -352,12 +276,12 @@
                     </div>
                     <div class="card-body">
                         <div class="container-fluid px-0">
-                            <div id="containerT4EngineSubsystemUpgrades" class="row g-2"></div>
+                            <div id="containerT4SubsystemUpgrades" class="row g-2"></div>
                         </div>
                     </div>
                 </div>
                 <!-- Tier 4 Weapon Upgrades -->
-                <div class="card">
+                <div class="card mb-4">
                     <div class="card-header">
                         <div class="row align-items-center justify-content-between">
                             <div class="col-auto">
@@ -368,7 +292,7 @@
                                         class="btn btn-link text-secondary p-0 border-0 lh-1 small text-decoration-none"
                                         data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="focus"
                                         data-bs-html="true" data-bs-title="Tier 4 Weapon Upgrades"
-                                        data-bs-content="<p class='mb-2'>Calculate upgrade costs from Level 2 to 25.</p><p class='fw-semibold mb-1'>Quick Actions:</p><ul class='ps-3 mb-0'><li><strong>Max Level:</strong> Increase all upgrade quantities by 1.</li><li><strong>Reset:</strong> Reset all upgrade quantities to 0.</li></ul>"
+                                        data-bs-content="<p class='mb-2'>Calculate upgrade costs from Level 2 to 25.</p><p class='fw-semibold mb-1'>Quick Actions:</p><ul class='ps-3 mb-0'><li><strong>Max Level:</strong> Increase all upgrade quantities by 1.</li><li><strong>Reset:</strong> Reset all upgrade quantities to 0.</li></ul><small class='text-muted d-block mt-2'>As of Sep 26, 2026</small>"
                                         aria-label="Tier 4 Weapon Upgrades">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" viewBox="0 0 16 16">
@@ -398,6 +322,96 @@
                     <div class="card-body">
                         <div class="container-fluid px-0">
                             <div id="containerT4WeaponUpgrades" class="row g-2"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tier 3 Weapon Upgrades -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-auto">
+                                <div class="d-flex align-items-center">
+                                    <span class="fw-bold">Tier 3 Weapon Upgrades</span>
+                                    &nbsp;
+                                    <button type="button"
+                                        class="btn btn-link text-secondary p-0 border-0 lh-1 small text-decoration-none"
+                                        data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="focus"
+                                        data-bs-html="true" data-bs-title="Tier 3 Weapon Upgrades"
+                                        data-bs-content="<p class='mb-2'>Calculate upgrade costs from Level 2 to 25.</p><p class='fw-semibold mb-1'>Quick Actions:</p><ul class='ps-3 mb-0'><li><strong>Max Level:</strong> Increase all upgrade quantities by 1.</li><li><strong>Reset:</strong> Reset all upgrade quantities to 0.</li></ul><small class='text-muted d-block mt-2'>As of Oct 10, 2026</small>"
+                                        aria-label="Tier 3 Weapon Upgrades">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                            <path
+                                                d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="row gx-2">
+                                    <div class="col-auto mt-2 mt-md-0">
+                                        <button type="button" class="btn btn-sm btn-outline-t3"
+                                            id="buttonPresetT3WeaponUpgrades">Max
+                                            Level</button>
+                                    </div>
+                                    <div class="col-auto mt-2 mt-md-0">
+                                        <button type="button" class="btn btn-sm btn-outline-danger"
+                                            id="buttonResetT3WeaponUpgrades">Reset</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="container-fluid px-0">
+                            <div id="containerT3WeaponUpgrades" class="row g-2"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tier 2 Weapon Upgrades -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-auto">
+                                <div class="d-flex align-items-center">
+                                    <span class="fw-bold">Tier 2 Weapon Upgrades</span>
+                                    &nbsp;
+                                    <button type="button"
+                                        class="btn btn-link text-secondary p-0 border-0 lh-1 small text-decoration-none"
+                                        data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="focus"
+                                        data-bs-html="true" data-bs-title="Tier 2 Weapon Upgrades"
+                                        data-bs-content="<p class='mb-2'>Calculate upgrade costs from Level 2 to 25.</p><p class='fw-semibold mb-1'>Quick Actions:</p><ul class='ps-3 mb-0'><li><strong>Max Level:</strong> Increase all upgrade quantities by 1.</li><li><strong>Reset:</strong> Reset all upgrade quantities to 0.</li></ul><small class='text-muted d-block mt-2'>As of Oct 11, 2026</small>"
+                                        aria-label="Tier 2 Weapon Upgrades">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                            <path
+                                                d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="row gx-2">
+                                    <div class="col-auto mt-2 mt-md-0">
+                                        <button type="button" class="btn btn-sm btn-outline-t2"
+                                            id="buttonPresetT2WeaponUpgrades">Max
+                                            Level</button>
+                                    </div>
+                                    <div class="col-auto mt-2 mt-md-0">
+                                        <button type="button" class="btn btn-sm btn-outline-danger"
+                                            id="buttonResetT2WeaponUpgrades">Reset</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="container-fluid px-0">
+                            <div id="containerT2WeaponUpgrades" class="row g-2"></div>
                         </div>
                     </div>
                 </div>
@@ -431,8 +445,9 @@
             <div class="d-flex flex-column text-secondary small">
                 <div class="d-flex align-items-center gap-2 flex-wrap">
                     <span>
-                        Released under the <a href="https://github.com/kokhong1995/warrobots-calculator-beta" target="_blank"
-                            rel="noopener noreferrer" class="text-secondary text-decoration-underline">GNU GPLv3 License</a>
+                        Released under the <a href="https://github.com/kokhong1995/warrobots-calculator-beta"
+                            target="_blank" rel="noopener noreferrer"
+                            class="text-secondary text-decoration-underline">GNU GPLv3 License</a>
                     </span>
                     <span>|</span>
                     <span>Built & maintained by <strong>KH9904</strong></span>
@@ -448,12 +463,12 @@
             </div>
             <div class="d-flex align-items-center gap-2">
                 <span
-                    class="badge text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-pill">v1.14.1-beta</span>
-                <small class="text-muted">Updated Oct 15, 2026</small>
+                    class="badge text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-pill">v1.14.2-beta</span>
+                <small class="text-muted">Updated Oct 18, 2026</small>
             </div>
         </div>
     </footer>
-    <script src="/warrobots-calculator-beta/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js?v=1.14.1-beta"></script>
+    <script src="/warrobots-calculator-beta/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js?v=1.14.2-beta"></script>
 </body>
 
 </html>

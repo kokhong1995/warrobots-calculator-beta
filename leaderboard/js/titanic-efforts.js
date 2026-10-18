@@ -1,6 +1,6 @@
-import { toInt, thousandSeperator, getStrAmount } from '/warrobots-calculator-beta/js/data-helper.js?v=1.14.1-beta';
-import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.14.1-beta';
-import { applyUpgradeDiscountPercentage, calculateTotalTitanDeployPoints } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.14.1-beta';
+import { toInt, thousandSeperator, getStrAmount } from '/warrobots-calculator-beta/js/data-helper.js?v=1.14.2-beta';
+import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.14.2-beta';
+import { applyUpgradeDiscountPercentage, calculateTotalTitanDeployPoints } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.14.2-beta';
 
 function updateInputValue(eventType, inputId) {
     updateNumberInput(eventType, inputId, syncData);
@@ -33,7 +33,7 @@ function syncData() {
             spanPoints = document.getElementById(`spanPoints${TYPES[i]}_${j}`);
 
             quantity = toInt(inputQuantity.value);
-            platinumAmount = applyUpgradeDiscountPercentage(upgradeDiscountPercentage, DS_TITANIC_EFFORTS[i][j].platinumAmount) * quantity;
+            platinumAmount = applyUpgradeDiscountPercentage(upgradeDiscountPercentage, DS_TITANIC_EFFORTS[i][j]['cost']['value']) * quantity;
             points = DS_TITANIC_EFFORTS[i][j].points.titanicEfforts * quantity;
 
             spanPlatinumAmount.textContent = getStrAmount(platinumAmount);
@@ -134,28 +134,30 @@ function init() {
         if (e.target.matches('#buttonResetModifiers')) {
             resetModifiers();
         }
-        if (e.target.matches('#buttonResetT4HullSubsystemUpgrades')) {
+        if (e.target.matches('#buttonResetT4SubsystemUpgrades')) {
             resetUpgrades(0);
         }
-        if (e.target.matches('#buttonResetT4CoreSubsystemUpgrades')) {
+        if (e.target.matches('#buttonResetT4WeaponUpgrades')) {
             resetUpgrades(1);
         }
-        if (e.target.matches('#buttonResetT4EngineSubsystemUpgrades')) {
+        if (e.target.matches('#buttonResetT3WeaponUpgrades')) {
             resetUpgrades(2);
         }
-        if (e.target.matches('#buttonResetT4WeaponUpgrades')) {
+        if (e.target.matches('#buttonResetT2WeaponUpgrades')) {
             resetUpgrades(3);
         }
-        if (e.target.matches('#buttonPresetT4HullSubsystemUpgrades')) {
+        if (e.target.matches('#buttonPresetT4SubsystemUpgrades_0') ||
+            e.target.matches('#buttonPresetT4SubsystemUpgrades_1') ||
+            e.target.matches('#buttonPresetT4SubsystemUpgrades_2')) {
             presetUpgrades(0);
         }
-        if (e.target.matches('#buttonPresetT4CoreSubsystemUpgrades')) {
+        if (e.target.matches('#buttonPresetT4WeaponUpgrades')) {
             presetUpgrades(1);
         }
-        if (e.target.matches('#buttonPresetT4EngineSubsystemUpgrades')) {
+        if (e.target.matches('#buttonPresetT3WeaponUpgrades')) {
             presetUpgrades(2);
         }
-        if (e.target.matches('#buttonPresetT4WeaponUpgrades')) {
+        if (e.target.matches('#buttonPresetT2WeaponUpgrades')) {
             presetUpgrades(3);
         }
         if (e.target.matches('.btn-decrement')) {
@@ -182,10 +184,10 @@ function init() {
     syncData();
 }
 
-const TYPES = ['T4HullSubsystem', 'T4CoreSubsystem', 'T4EngineSubsystem', 'T4Weapon'];
+const TYPES = ['T4Subsystem', 'T4Weapon', 'T3Weapon', 'T2Weapon'];
 const DS_TITANIC_EFFORTS = [
-    DS_T4_TITAN_HULL_UPGRADES, DS_T4_TITAN_CORE_UPGRADES,
-    DS_T4_TITAN_ENGINE_UPGRADES, DS_T4_TITAN_WEAPON_UPGRADES
+    DS_T4_TITAN_SUBSYSTEM_UPGRADES, DS_T4_TITAN_WEAPON_UPGRADES,
+    DS_T3_TITAN_WEAPON_UPGRADES, DS_T2_TITAN_WEAPON_UPGRADES
 ];
 
 init();

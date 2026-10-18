@@ -1,175 +1,250 @@
 const DS_T4_TITAN_WEAPON_UPGRADES = [
     {
         level: 1,
-        platinumAmount: 0,
+        cost: {
+            currency: 'Platinum',
+            value: 0
+        },
         points: {
             titanicEfforts: 0
         }
     },
     {
         level: 2,
-        platinumAmount: 26,
+        cost: {
+            currency: 'Platinum',
+            value: 26
+        },
         points: {
             titanicEfforts: 100
         }
     },
     {
         level: 3,
-        platinumAmount: 31,
+        cost: {
+            currency: 'Platinum',
+            value: 31
+        },
         points: {
             titanicEfforts: 100
         }
     },
     {
         level: 4,
-        platinumAmount: 34,
+        cost: {
+            currency: 'Platinum',
+            value: 34
+        },
         points: {
             titanicEfforts: 100
         }
     },
     {
         level: 5,
-        platinumAmount: 36,
+        cost: {
+            currency: 'Platinum',
+            value: 36
+        },
         points: {
             titanicEfforts: 100
         }
     },
     {
         level: 6,
-        platinumAmount: 39,
+        cost: {
+            currency: 'Platinum',
+            value: 39
+        },
         points: {
             titanicEfforts: 140
         }
     },
     {
         level: 7,
-        platinumAmount: 42,
+        cost: {
+            currency: 'Platinum',
+            value: 42
+        },
         points: {
             titanicEfforts: 140
         }
     },
     {
         level: 8,
-        platinumAmount: 44,
+        cost: {
+            currency: 'Platinum',
+            value: 44
+        },
         points: {
             titanicEfforts: 140
         }
     },
     {
         level: 9,
-        platinumAmount: 47,
+        cost: {
+            currency: 'Platinum',
+            value: 47
+        },
         points: {
             titanicEfforts: 140
         }
     },
     {
         level: 10,
-        platinumAmount: 49,
+        cost: {
+            currency: 'Platinum',
+            value: 49
+        },
         points: {
             titanicEfforts: 140
         }
     },
     {
         level: 11,
-        platinumAmount: 52,
+        cost: {
+            currency: 'Platinum',
+            value: 52
+        },
         points: {
             titanicEfforts: 180
         }
     },
     {
         level: 12,
-        platinumAmount: 55,
+        cost: {
+            currency: 'Platinum',
+            value: 55
+        },
         points: {
             titanicEfforts: 180
         }
     },
     {
         level: 13,
-        platinumAmount: 57,
+        cost: {
+            currency: 'Platinum',
+            value: 57
+        },
         points: {
             titanicEfforts: 180
         }
     },
     {
         level: 14,
-        platinumAmount: 60,
+        cost: {
+            currency: 'Platinum',
+            value: 60
+        },
         points: {
             titanicEfforts: 180
         }
     },
     {
         level: 15,
-        platinumAmount: 62,
+        cost: {
+            currency: 'Platinum',
+            value: 62
+        },
         points: {
             titanicEfforts: 180
         }
     },
     {
         level: 16,
-        platinumAmount: 65,
+        cost: {
+            currency: 'Platinum',
+            value: 65
+        },
         points: {
             titanicEfforts: 220
         }
     },
     {
         level: 17,
-        platinumAmount: 68,
+        cost: {
+            currency: 'Platinum',
+            value: 68
+        },
         points: {
             titanicEfforts: 220
         }
     },
     {
         level: 18,
-        platinumAmount: 70,
+        cost: {
+            currency: 'Platinum',
+            value: 70
+        },
         points: {
             titanicEfforts: 220
         }
     },
     {
         level: 19,
-        platinumAmount: 73,
+        cost: {
+            currency: 'Platinum',
+            value: 73
+        },
         points: {
             titanicEfforts: 220
         }
     },
     {
         level: 20,
-        platinumAmount: 75,
+        cost: {
+            currency: 'Platinum',
+            value: 75
+        },
         points: {
             titanicEfforts: 220
         }
     },
     {
         level: 21,
-        platinumAmount: 78,
+        cost: {
+            currency: 'Platinum',
+            value: 78
+        },
         points: {
             titanicEfforts: 260
         }
     },
     {
         level: 22,
-        platinumAmount: 81,
+        cost: {
+            currency: 'Platinum',
+            value: 81
+        },
         points: {
             titanicEfforts: 260
         }
     },
     {
         level: 23,
-        platinumAmount: 83,
+        cost: {
+            currency: 'Platinum',
+            value: 83
+        },
         points: {
             titanicEfforts: 260
         }
     },
     {
         level: 24,
-        platinumAmount: 86,
+        cost: {
+            currency: 'Platinum',
+            value: 86
+        },
         points: {
             titanicEfforts: 260
         }
     },
     {
         level: 25,
-        platinumAmount: 88,
+        cost: {
+            currency: 'Platinum',
+            value: 88
+        },
         points: {
             titanicEfforts: 260
         }
