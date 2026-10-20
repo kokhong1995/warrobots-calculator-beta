@@ -1,6 +1,6 @@
-import { toInt, thousandSeperator, getStrAmount } from '/warrobots-calculator-beta/js/data-helper.js?v=1.15.1-beta';
-import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.15.1-beta';
-import { applyUpgradeDiscountPercentage } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.15.1-beta';
+import { toInt, thousandSeperator, getStrAmount } from '/warrobots-calculator-beta/js/data-helper.js?v=1.15.2-beta';
+import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.15.2-beta';
+import { applyUpgradeDiscountPercentage } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.15.2-beta';
 
 function updateInputValue(eventType, inputId) {
     updateNumberInput(eventType, inputId, syncData);
@@ -20,7 +20,7 @@ function syncData() {
 
     for (i = 0; i < DS_TITAN_WEAPON_UPGRADE_COSTS.length; i++) {
         for (j = 0; j < DS_TITAN_WEAPON_UPGRADE_COSTS[i].length; j++) {
-            if (DS_TITAN_WEAPON_UPGRADE_COSTS[i][j].level == 1) {
+            if (DS_TITAN_WEAPON_UPGRADE_COSTS[i][j]['cost'] === false) {
                 continue;
             }
 
@@ -81,7 +81,7 @@ function init() {
 
     for (i = 0; i < DS_TITAN_WEAPON_UPGRADE_COSTS.length; i++) {
         for (j = 0; j < DS_TITAN_WEAPON_UPGRADE_COSTS[i].length; j++) {
-            if (DS_TITAN_WEAPON_UPGRADE_COSTS[i][j].level == 1) {
+            if (DS_TITAN_WEAPON_UPGRADE_COSTS[i][j]['cost'] === false) {
                 continue;
             }
 

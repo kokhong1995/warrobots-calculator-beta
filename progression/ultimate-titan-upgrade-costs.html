@@ -7,11 +7,11 @@
     <title>War Robots Calculator: Ultimate Titan Upgrade Cost Calculator</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/warrobots-calculator-beta/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/warrobots-calculator-beta/apple-touch-icon.png">
-    <link rel="stylesheet" href="/warrobots-calculator-beta/bootstrap-5.3.8-dist/css/bootstrap.min.css?v=1.15.1-beta">
-    <link rel="stylesheet" href="/warrobots-calculator-beta/css/index.css?v=1.15.1-beta">
-    <link rel="stylesheet" href="./css/ultimate-titan-upgrade-costs.css?v=1.15.1-beta">
-    <script src="/warrobots-calculator-beta/data/ds-ultimate-titan-upgrades.js?v=1.15.1-beta"></script>
-    <script type="module" src="./js/ultimate-titan-upgrade-costs.js?v=1.15.1-beta"></script>
+    <link rel="stylesheet" href="/warrobots-calculator-beta/bootstrap-5.3.8-dist/css/bootstrap.min.css?v=1.15.2-beta">
+    <link rel="stylesheet" href="/warrobots-calculator-beta/css/index.css?v=1.15.2-beta">
+    <link rel="stylesheet" href="./css/ultimate-titan-upgrade-costs.css?v=1.15.2-beta">
+    <script src="/warrobots-calculator-beta/data/ds-ultimate-titan-upgrades.js?v=1.15.2-beta"></script>
+    <script type="module" src="./js/ultimate-titan-upgrade-costs.js?v=1.15.2-beta"></script>
 </head>
 
 <body>
@@ -101,16 +101,9 @@
                                             Set your values in <a href="#modifiers">Modifiers</a> (upgrade discount %).
                                         </li>
                                         <li class="mb-2">
-                                            <strong>Select Upgrades:</strong> Input your planned
-                                            <a href="#containerHullSubsystemUpgrades"
-                                                class="text-decoration-underline">Hull</a>,
-                                            <a href="#containerCoreSubsystemUpgrades"
-                                                class="text-decoration-underline">Core</a>,
-                                            <a href="#containerEngineSubsystemUpgrades"
-                                                class="text-decoration-underline">Engine</a>,
-                                            or
-                                            <a href="#containerUltimateSubsystemUpgrades"
-                                                class="text-decoration-underline">Ultimate</a> Subsystem Upgrades.
+                                            <strong>Select Upgrades:</strong> Input your planned <a
+                                                href="#containerUltimateSubsystemUpgrades"
+                                                class="text-decoration-underline">Ultimate Subsystem Upgrades</a>.
                                             Use quick actions for faster entry.
                                         </li>
                                         <li>
@@ -174,138 +167,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Hull Subsystem Upgrades -->
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <div class="row align-items-center justify-content-between">
-                            <div class="col-auto">
-                                <div class="d-flex align-items-center">
-                                    <span class="fw-bold">Hull Subsystem Upgrades</span>
-                                    &nbsp;
-                                    <button type="button"
-                                        class="btn btn-link text-secondary p-0 border-0 lh-1 small text-decoration-none"
-                                        data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="focus"
-                                        data-bs-html="true" data-bs-title="Hull Subsystem Upgrades"
-                                        data-bs-content="<p class='mb-2'>Calculate upgrade costs from Level 2 to 50.</p><p class='fw-semibold mb-1'>Quick Actions:</p><ul class='ps-3 mb-0'><li><strong>Max Level:</strong> Increase all upgrade quantities by 1.</li><li><strong>Reset:</strong> Reset all upgrade quantities to 0.</li></ul>"
-                                        aria-label="Hull Subsystem Upgrades">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" viewBox="0 0 16 16">
-                                            <path
-                                                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                            <path
-                                                d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-auto">
-                                <div class="row gx-2">
-                                    <div class="col-auto mt-2 mt-md-0">
-                                        <button type="button" class="btn btn-sm btn-outline-t4"
-                                            id="buttonPresetHullSubsystemUpgrades">Max Level</button>
-                                    </div>
-                                    <div class="col-auto mt-2 mt-md-0">
-                                        <button type="button" class="btn btn-sm btn-outline-danger"
-                                            id="buttonResetHullSubsystemUpgrades">Reset</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="container-fluid px-0">
-                            <div id="containerHullSubsystemUpgrades" class="row g-2"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Core Subsystem Upgrades -->
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <div class="row align-items-center justify-content-between">
-                            <div class="col-auto">
-                                <div class="d-flex align-items-center">
-                                    <span class="fw-bold">Core Subsystem Upgrades</span>
-                                    &nbsp;
-                                    <button type="button"
-                                        class="btn btn-link text-secondary p-0 border-0 lh-1 small text-decoration-none"
-                                        data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="focus"
-                                        data-bs-html="true" data-bs-title="Core Subsystem Upgrades"
-                                        data-bs-content="<p class='mb-2'>Calculate upgrade costs from Level 2 to 50.</p><p class='fw-semibold mb-1'>Quick Actions:</p><ul class='ps-3 mb-0'><li><strong>Max Level:</strong> Increase all upgrade quantities by 1.</li><li><strong>Reset:</strong> Reset all upgrade quantities to 0.</li></ul>"
-                                        aria-label="Core Subsystem Upgrades">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" viewBox="0 0 16 16">
-                                            <path
-                                                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                            <path
-                                                d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-auto">
-                                <div class="row gx-2">
-                                    <div class="col-auto mt-2 mt-md-0">
-                                        <button type="button" class="btn btn-sm btn-outline-t4"
-                                            id="buttonPresetCoreSubsystemUpgrades">Max Level</button>
-                                    </div>
-                                    <div class="col-auto mt-2 mt-md-0">
-                                        <button type="button" class="btn btn-sm btn-outline-danger"
-                                            id="buttonResetCoreSubsystemUpgrades">Reset</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="container-fluid px-0">
-                            <div id="containerCoreSubsystemUpgrades" class="row g-2"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Engine Subsystem Upgrades -->
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <div class="row align-items-center justify-content-between">
-                            <div class="col-auto">
-                                <div class="d-flex align-items-center">
-                                    <span class="fw-bold">Engine Subsystem Upgrades</span>
-                                    &nbsp;
-                                    <button type="button"
-                                        class="btn btn-link text-secondary p-0 border-0 lh-1 small text-decoration-none"
-                                        data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="focus"
-                                        data-bs-html="true" data-bs-title="Engine Subsystem Upgrades"
-                                        data-bs-content="<p class='mb-2'>Calculate upgrade costs from Level 2 to 50.</p><p class='fw-semibold mb-1'>Quick Actions:</p><ul class='ps-3 mb-0'><li><strong>Max Level:</strong> Increase all upgrade quantities by 1.</li><li><strong>Reset:</strong> Reset all upgrade quantities to 0.</li></ul>"
-                                        aria-label="Engine Subsystem Upgrades">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" viewBox="0 0 16 16">
-                                            <path
-                                                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                            <path
-                                                d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-auto">
-                                <div class="row gx-2">
-                                    <div class="col-auto mt-2 mt-md-0">
-                                        <button type="button" class="btn btn-sm btn-outline-t4"
-                                            id="buttonPresetEngineSubsystemUpgrades">Max Level</button>
-                                    </div>
-                                    <div class="col-auto mt-2 mt-md-0">
-                                        <button type="button" class="btn btn-sm btn-outline-danger"
-                                            id="buttonResetEngineSubsystemUpgrades">Reset</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="container-fluid px-0">
-                            <div id="containerEngineSubsystemUpgrades" class="row g-2"></div>
-                        </div>
-                    </div>
-                </div>
                 <!-- Ultimate Subsystem Upgrades -->
                 <div class="card">
                     <div class="card-header">
@@ -318,7 +179,7 @@
                                         class="btn btn-link text-secondary p-0 border-0 lh-1 small text-decoration-none"
                                         data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="focus"
                                         data-bs-html="true" data-bs-title="Ultimate Subsystem Upgrades"
-                                        data-bs-content="<p class='mb-2'>Calculate upgrade costs from Level 2 to 50.</p><p class='fw-semibold mb-1'>Quick Actions:</p><ul class='ps-3 mb-0'><li><strong>Max Level:</strong> Increase all upgrade quantities by 1.</li><li><strong>Reset:</strong> Reset all upgrade quantities to 0.</li></ul>"
+                                        data-bs-content="<p class='mb-2'>Calculate upgrade costs from Level 2 to 50.</p><p class='fw-semibold mb-1'>Quick Actions:</p><ul class='ps-3 mb-0'><li><strong>Max [Subsystem]:</strong> Increase all upgrade quantities by 1 to the selected subsystem (Hull, Core, Engine or Ultimate).</li><li><strong>Reset:</strong> Reset all upgrade quantities to 0.</li></ul>"
                                         aria-label="Ultimate Subsystem Upgrades">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" viewBox="0 0 16 16">
@@ -334,7 +195,19 @@
                                 <div class="row gx-2">
                                     <div class="col-auto mt-2 mt-md-0">
                                         <button type="button" class="btn btn-sm btn-outline-t4"
-                                            id="buttonPresetUltimateSubsystemUpgrades">Max Level</button>
+                                            id="buttonPresetUltimateSubsystemUpgrades_0">Max Hull</button>
+                                    </div>
+                                    <div class="col-auto mt-2 mt-md-0">
+                                        <button type="button" class="btn btn-sm btn-outline-t4"
+                                            id="buttonPresetUltimateSubsystemUpgrades_1">Max Core</button>
+                                    </div>
+                                    <div class="col-auto mt-2 mt-md-0">
+                                        <button type="button" class="btn btn-sm btn-outline-t4"
+                                            id="buttonPresetUltimateSubsystemUpgrades_2">Max Engine</button>
+                                    </div>
+                                    <div class="col-auto mt-2 mt-md-0">
+                                        <button type="button" class="btn btn-sm btn-outline-t4"
+                                            id="buttonPresetUltimateSubsystemUpgrades_3">Max Ultimate</button>
                                     </div>
                                     <div class="col-auto mt-2 mt-md-0">
                                         <button type="button" class="btn btn-sm btn-outline-danger"
@@ -398,12 +271,12 @@
             </div>
             <div class="d-flex align-items-center gap-2">
                 <span
-                    class="badge text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-pill">v1.15.1-beta</span>
+                    class="badge text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-pill">v1.15.2-beta</span>
                 <small class="text-muted">Updated Oct 20, 2026</small>
             </div>
         </div>
     </footer>
-    <script src="/warrobots-calculator-beta/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js?v=1.15.1-beta"></script>
+    <script src="/warrobots-calculator-beta/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js?v=1.15.2-beta"></script>
 </body>
 
 </html>

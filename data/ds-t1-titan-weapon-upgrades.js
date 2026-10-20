@@ -1,10 +1,7 @@
 const DS_T1_TITAN_WEAPON_UPGRADES = [
     {
         level: 1,
-        cost: {
-            currency: 'Platinum',
-            value: 0
-        }
+        cost: false
     },
     {
         level: 2,

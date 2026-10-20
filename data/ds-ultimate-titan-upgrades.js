@@ -1,1011 +1,349 @@
-const DS_ULTIMATE_TITAN_HULL_UPGRADES = [
+const DS_ULTIMATE_TITAN_SUBSYSTEM_UPGRADES = [
     {
         level: 1,
-        platinumAmount: 0,
-        upgradeTokens: 0
+        cost: false
     },
     {
         level: 2,
-        platinumAmount: 54,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 54
+        }
     },
     {
         level: 3,
-        platinumAmount: 56,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 56
+        }
     },
     {
         level: 4,
-        platinumAmount: 58,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 58
+        }
     },
     {
         level: 5,
-        platinumAmount: 60,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 60
+        }
     },
     {
         level: 6,
-        platinumAmount: 62,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 62
+        }
     },
     {
         level: 7,
-        platinumAmount: 64,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 64
+        }
     },
     {
         level: 8,
-        platinumAmount: 66,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 66
+        }
     },
     {
         level: 9,
-        platinumAmount: 68,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 68
+        }
     },
     {
         level: 10,
-        platinumAmount: 70,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 70
+        }
     },
     {
         level: 11,
-        platinumAmount: 72,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 72
+        }
     },
     {
         level: 12,
-        platinumAmount: 74,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 74
+        }
     },
     {
         level: 13,
-        platinumAmount: 76,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 76
+        }
     },
     {
         level: 14,
-        platinumAmount: 78,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 78
+        }
     },
     {
         level: 15,
-        platinumAmount: 80,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 80
+        }
     },
     {
         level: 16,
-        platinumAmount: 82,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 82
+        }
     },
     {
         level: 17,
-        platinumAmount: 84,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 84
+        }
     },
     {
         level: 18,
-        platinumAmount: 86,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 86
+        }
     },
     {
         level: 19,
-        platinumAmount: 88,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 88
+        }
     },
     {
         level: 20,
-        platinumAmount: 90,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 90
+        }
     },
     {
         level: 21,
-        platinumAmount: 92,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 92
+        }
     },
     {
         level: 22,
-        platinumAmount: 94,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 94
+        }
     },
     {
         level: 23,
-        platinumAmount: 96,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 96
+        }
     },
     {
         level: 24,
-        platinumAmount: 98,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 98
+        }
     },
     {
         level: 25,
-        platinumAmount: 100,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 100
+        }
     },
     {
         level: 26,
-        platinumAmount: 0,
-        upgradeTokens: 2
+        cost: {
+            currency: 'UpgradeToken',
+            value: 2
+        }
     },
     {
         level: 27,
-        platinumAmount: 104,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 104
+        }
     },
     {
         level: 28,
-        platinumAmount: 106,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 106
+        }
     },
     {
         level: 29,
-        platinumAmount: 108,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 108
+        }
     },
     {
         level: 30,
-        platinumAmount: 110,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 110
+        }
     },
     {
         level: 31,
-        platinumAmount: 112,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 112
+        }
     },
     {
         level: 32,
-        platinumAmount: 114,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 114
+        }
     },
     {
         level: 33,
-        platinumAmount: 116,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 116
+        }
     },
     {
         level: 34,
-        platinumAmount: 118,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 118
+        }
     },
     {
         level: 35,
-        platinumAmount: 120,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 120
+        }
     },
     {
         level: 36,
-        platinumAmount: 122,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 122
+        }
     },
     {
         level: 37,
-        platinumAmount: 124,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 124
+        }
     },
     {
         level: 38,
-        platinumAmount: 126,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 126
+        }
     },
     {
         level: 39,
-        platinumAmount: 128,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 128
+        }
     },
     {
         level: 40,
-        platinumAmount: 130,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 130
+        }
     },
     {
         level: 41,
-        platinumAmount: 132,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 132
+        }
     },
     {
         level: 42,
-        platinumAmount: 134,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 134
+        }
     },
     {
         level: 43,
-        platinumAmount: 136,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 136
+        }
     },
     {
         level: 44,
-        platinumAmount: 138,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 138
+        }
     },
     {
         level: 45,
-        platinumAmount: 140,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 140
+        }
     },
     {
         level: 46,
-        platinumAmount: 142,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 142
+        }
     },
     {
         level: 47,
-        platinumAmount: 144,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 144
+        }
     },
     {
         level: 48,
-        platinumAmount: 146,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 146
+        }
     },
     {
         level: 49,
-        platinumAmount: 148,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 148
+        }
     },
     {
         level: 50,
-        platinumAmount: 150,
-        upgradeTokens: 0
-    }
-];
-
-const DS_ULTIMATE_TITAN_CORE_UPGRADES = [
-    {
-        level: 1,
-        platinumAmount: 0,
-        upgradeTokens: 0
-    },
-    {
-        level: 2,
-        platinumAmount: 54,
-        upgradeTokens: 0
-    },
-    {
-        level: 3,
-        platinumAmount: 56,
-        upgradeTokens: 0
-    },
-    {
-        level: 4,
-        platinumAmount: 58,
-        upgradeTokens: 0
-    },
-    {
-        level: 5,
-        platinumAmount: 60,
-        upgradeTokens: 0
-    },
-    {
-        level: 6,
-        platinumAmount: 62,
-        upgradeTokens: 0
-    },
-    {
-        level: 7,
-        platinumAmount: 64,
-        upgradeTokens: 0
-    },
-    {
-        level: 8,
-        platinumAmount: 66,
-        upgradeTokens: 0
-    },
-    {
-        level: 9,
-        platinumAmount: 68,
-        upgradeTokens: 0
-    },
-    {
-        level: 10,
-        platinumAmount: 70,
-        upgradeTokens: 0
-    },
-    {
-        level: 11,
-        platinumAmount: 72,
-        upgradeTokens: 0
-    },
-    {
-        level: 12,
-        platinumAmount: 74,
-        upgradeTokens: 0
-    },
-    {
-        level: 13,
-        platinumAmount: 76,
-        upgradeTokens: 0
-    },
-    {
-        level: 14,
-        platinumAmount: 78,
-        upgradeTokens: 0
-    },
-    {
-        level: 15,
-        platinumAmount: 80,
-        upgradeTokens: 0
-    },
-    {
-        level: 16,
-        platinumAmount: 82,
-        upgradeTokens: 0
-    },
-    {
-        level: 17,
-        platinumAmount: 84,
-        upgradeTokens: 0
-    },
-    {
-        level: 18,
-        platinumAmount: 86,
-        upgradeTokens: 0
-    },
-    {
-        level: 19,
-        platinumAmount: 88,
-        upgradeTokens: 0
-    },
-    {
-        level: 20,
-        platinumAmount: 90,
-        upgradeTokens: 0
-    },
-    {
-        level: 21,
-        platinumAmount: 92,
-        upgradeTokens: 0
-    },
-    {
-        level: 22,
-        platinumAmount: 94,
-        upgradeTokens: 0
-    },
-    {
-        level: 23,
-        platinumAmount: 96,
-        upgradeTokens: 0
-    },
-    {
-        level: 24,
-        platinumAmount: 98,
-        upgradeTokens: 0
-    },
-    {
-        level: 25,
-        platinumAmount: 100,
-        upgradeTokens: 0
-    },
-    {
-        level: 26,
-        platinumAmount: 0,
-        upgradeTokens: 2
-    },
-    {
-        level: 27,
-        platinumAmount: 104,
-        upgradeTokens: 0
-    },
-    {
-        level: 28,
-        platinumAmount: 106,
-        upgradeTokens: 0
-    },
-    {
-        level: 29,
-        platinumAmount: 108,
-        upgradeTokens: 0
-    },
-    {
-        level: 30,
-        platinumAmount: 110,
-        upgradeTokens: 0
-    },
-    {
-        level: 31,
-        platinumAmount: 112,
-        upgradeTokens: 0
-    },
-    {
-        level: 32,
-        platinumAmount: 114,
-        upgradeTokens: 0
-    },
-    {
-        level: 33,
-        platinumAmount: 116,
-        upgradeTokens: 0
-    },
-    {
-        level: 34,
-        platinumAmount: 118,
-        upgradeTokens: 0
-    },
-    {
-        level: 35,
-        platinumAmount: 120,
-        upgradeTokens: 0
-    },
-    {
-        level: 36,
-        platinumAmount: 122,
-        upgradeTokens: 0
-    },
-    {
-        level: 37,
-        platinumAmount: 124,
-        upgradeTokens: 0
-    },
-    {
-        level: 38,
-        platinumAmount: 126,
-        upgradeTokens: 0
-    },
-    {
-        level: 39,
-        platinumAmount: 128,
-        upgradeTokens: 0
-    },
-    {
-        level: 40,
-        platinumAmount: 130,
-        upgradeTokens: 0
-    },
-    {
-        level: 41,
-        platinumAmount: 132,
-        upgradeTokens: 0
-    },
-    {
-        level: 42,
-        platinumAmount: 134,
-        upgradeTokens: 0
-    },
-    {
-        level: 43,
-        platinumAmount: 136,
-        upgradeTokens: 0
-    },
-    {
-        level: 44,
-        platinumAmount: 138,
-        upgradeTokens: 0
-    },
-    {
-        level: 45,
-        platinumAmount: 140,
-        upgradeTokens: 0
-    },
-    {
-        level: 46,
-        platinumAmount: 142,
-        upgradeTokens: 0
-    },
-    {
-        level: 47,
-        platinumAmount: 144,
-        upgradeTokens: 0
-    },
-    {
-        level: 48,
-        platinumAmount: 146,
-        upgradeTokens: 0
-    },
-    {
-        level: 49,
-        platinumAmount: 148,
-        upgradeTokens: 0
-    },
-    {
-        level: 50,
-        platinumAmount: 150,
-        upgradeTokens: 0
-    }
-];
-
-const DS_ULTIMATE_TITAN_ENGINE_UPGRADES = [
-    {
-        level: 1,
-        platinumAmount: 0,
-        upgradeTokens: 0
-    },
-    {
-        level: 2,
-        platinumAmount: 54,
-        upgradeTokens: 0
-    },
-    {
-        level: 3,
-        platinumAmount: 56,
-        upgradeTokens: 0
-    },
-    {
-        level: 4,
-        platinumAmount: 58,
-        upgradeTokens: 0
-    },
-    {
-        level: 5,
-        platinumAmount: 60,
-        upgradeTokens: 0
-    },
-    {
-        level: 6,
-        platinumAmount: 62,
-        upgradeTokens: 0
-    },
-    {
-        level: 7,
-        platinumAmount: 64,
-        upgradeTokens: 0
-    },
-    {
-        level: 8,
-        platinumAmount: 66,
-        upgradeTokens: 0
-    },
-    {
-        level: 9,
-        platinumAmount: 68,
-        upgradeTokens: 0
-    },
-    {
-        level: 10,
-        platinumAmount: 70,
-        upgradeTokens: 0
-    },
-    {
-        level: 11,
-        platinumAmount: 72,
-        upgradeTokens: 0
-    },
-    {
-        level: 12,
-        platinumAmount: 74,
-        upgradeTokens: 0
-    },
-    {
-        level: 13,
-        platinumAmount: 76,
-        upgradeTokens: 0
-    },
-    {
-        level: 14,
-        platinumAmount: 78,
-        upgradeTokens: 0
-    },
-    {
-        level: 15,
-        platinumAmount: 80,
-        upgradeTokens: 0
-    },
-    {
-        level: 16,
-        platinumAmount: 82,
-        upgradeTokens: 0
-    },
-    {
-        level: 17,
-        platinumAmount: 84,
-        upgradeTokens: 0
-    },
-    {
-        level: 18,
-        platinumAmount: 86,
-        upgradeTokens: 0
-    },
-    {
-        level: 19,
-        platinumAmount: 88,
-        upgradeTokens: 0
-    },
-    {
-        level: 20,
-        platinumAmount: 90,
-        upgradeTokens: 0
-    },
-    {
-        level: 21,
-        platinumAmount: 92,
-        upgradeTokens: 0
-    },
-    {
-        level: 22,
-        platinumAmount: 94,
-        upgradeTokens: 0
-    },
-    {
-        level: 23,
-        platinumAmount: 96,
-        upgradeTokens: 0
-    },
-    {
-        level: 24,
-        platinumAmount: 98,
-        upgradeTokens: 0
-    },
-    {
-        level: 25,
-        platinumAmount: 100,
-        upgradeTokens: 0
-    },
-    {
-        level: 26,
-        platinumAmount: 0,
-        upgradeTokens: 2
-    },
-    {
-        level: 27,
-        platinumAmount: 104,
-        upgradeTokens: 0
-    },
-    {
-        level: 28,
-        platinumAmount: 106,
-        upgradeTokens: 0
-    },
-    {
-        level: 29,
-        platinumAmount: 108,
-        upgradeTokens: 0
-    },
-    {
-        level: 30,
-        platinumAmount: 110,
-        upgradeTokens: 0
-    },
-    {
-        level: 31,
-        platinumAmount: 112,
-        upgradeTokens: 0
-    },
-    {
-        level: 32,
-        platinumAmount: 114,
-        upgradeTokens: 0
-    },
-    {
-        level: 33,
-        platinumAmount: 116,
-        upgradeTokens: 0
-    },
-    {
-        level: 34,
-        platinumAmount: 118,
-        upgradeTokens: 0
-    },
-    {
-        level: 35,
-        platinumAmount: 120,
-        upgradeTokens: 0
-    },
-    {
-        level: 36,
-        platinumAmount: 122,
-        upgradeTokens: 0
-    },
-    {
-        level: 37,
-        platinumAmount: 124,
-        upgradeTokens: 0
-    },
-    {
-        level: 38,
-        platinumAmount: 126,
-        upgradeTokens: 0
-    },
-    {
-        level: 39,
-        platinumAmount: 128,
-        upgradeTokens: 0
-    },
-    {
-        level: 40,
-        platinumAmount: 130,
-        upgradeTokens: 0
-    },
-    {
-        level: 41,
-        platinumAmount: 132,
-        upgradeTokens: 0
-    },
-    {
-        level: 42,
-        platinumAmount: 134,
-        upgradeTokens: 0
-    },
-    {
-        level: 43,
-        platinumAmount: 136,
-        upgradeTokens: 0
-    },
-    {
-        level: 44,
-        platinumAmount: 138,
-        upgradeTokens: 0
-    },
-    {
-        level: 45,
-        platinumAmount: 140,
-        upgradeTokens: 0
-    },
-    {
-        level: 46,
-        platinumAmount: 142,
-        upgradeTokens: 0
-    },
-    {
-        level: 47,
-        platinumAmount: 144,
-        upgradeTokens: 0
-    },
-    {
-        level: 48,
-        platinumAmount: 146,
-        upgradeTokens: 0
-    },
-    {
-        level: 49,
-        platinumAmount: 148,
-        upgradeTokens: 0
-    },
-    {
-        level: 50,
-        platinumAmount: 150,
-        upgradeTokens: 0
-    }
-];
-
-const DS_ULTIMATE_TITAN_ULTIMATE_UPGRADES = [
-    {
-        level: 1,
-        platinumAmount: 0,
-        upgradeTokens: 0
-    },
-    {
-        level: 2,
-        platinumAmount: 54,
-        upgradeTokens: 0
-    },
-    {
-        level: 3,
-        platinumAmount: 56,
-        upgradeTokens: 0
-    },
-    {
-        level: 4,
-        platinumAmount: 58,
-        upgradeTokens: 0
-    },
-    {
-        level: 5,
-        platinumAmount: 60,
-        upgradeTokens: 0
-    },
-    {
-        level: 6,
-        platinumAmount: 62,
-        upgradeTokens: 0
-    },
-    {
-        level: 7,
-        platinumAmount: 64,
-        upgradeTokens: 0
-    },
-    {
-        level: 8,
-        platinumAmount: 66,
-        upgradeTokens: 0
-    },
-    {
-        level: 9,
-        platinumAmount: 68,
-        upgradeTokens: 0
-    },
-    {
-        level: 10,
-        platinumAmount: 70,
-        upgradeTokens: 0
-    },
-    {
-        level: 11,
-        platinumAmount: 72,
-        upgradeTokens: 0
-    },
-    {
-        level: 12,
-        platinumAmount: 74,
-        upgradeTokens: 0
-    },
-    {
-        level: 13,
-        platinumAmount: 76,
-        upgradeTokens: 0
-    },
-    {
-        level: 14,
-        platinumAmount: 78,
-        upgradeTokens: 0
-    },
-    {
-        level: 15,
-        platinumAmount: 80,
-        upgradeTokens: 0
-    },
-    {
-        level: 16,
-        platinumAmount: 82,
-        upgradeTokens: 0
-    },
-    {
-        level: 17,
-        platinumAmount: 84,
-        upgradeTokens: 0
-    },
-    {
-        level: 18,
-        platinumAmount: 86,
-        upgradeTokens: 0
-    },
-    {
-        level: 19,
-        platinumAmount: 88,
-        upgradeTokens: 0
-    },
-    {
-        level: 20,
-        platinumAmount: 90,
-        upgradeTokens: 0
-    },
-    {
-        level: 21,
-        platinumAmount: 92,
-        upgradeTokens: 0
-    },
-    {
-        level: 22,
-        platinumAmount: 94,
-        upgradeTokens: 0
-    },
-    {
-        level: 23,
-        platinumAmount: 96,
-        upgradeTokens: 0
-    },
-    {
-        level: 24,
-        platinumAmount: 98,
-        upgradeTokens: 0
-    },
-    {
-        level: 25,
-        platinumAmount: 100,
-        upgradeTokens: 0
-    },
-    {
-        level: 26,
-        platinumAmount: 0,
-        upgradeTokens: 2
-    },
-    {
-        level: 27,
-        platinumAmount: 104,
-        upgradeTokens: 0
-    },
-    {
-        level: 28,
-        platinumAmount: 106,
-        upgradeTokens: 0
-    },
-    {
-        level: 29,
-        platinumAmount: 108,
-        upgradeTokens: 0
-    },
-    {
-        level: 30,
-        platinumAmount: 110,
-        upgradeTokens: 0
-    },
-    {
-        level: 31,
-        platinumAmount: 112,
-        upgradeTokens: 0
-    },
-    {
-        level: 32,
-        platinumAmount: 114,
-        upgradeTokens: 0
-    },
-    {
-        level: 33,
-        platinumAmount: 116,
-        upgradeTokens: 0
-    },
-    {
-        level: 34,
-        platinumAmount: 118,
-        upgradeTokens: 0
-    },
-    {
-        level: 35,
-        platinumAmount: 120,
-        upgradeTokens: 0
-    },
-    {
-        level: 36,
-        platinumAmount: 122,
-        upgradeTokens: 0
-    },
-    {
-        level: 37,
-        platinumAmount: 124,
-        upgradeTokens: 0
-    },
-    {
-        level: 38,
-        platinumAmount: 126,
-        upgradeTokens: 0
-    },
-    {
-        level: 39,
-        platinumAmount: 128,
-        upgradeTokens: 0
-    },
-    {
-        level: 40,
-        platinumAmount: 130,
-        upgradeTokens: 0
-    },
-    {
-        level: 41,
-        platinumAmount: 132,
-        upgradeTokens: 0
-    },
-    {
-        level: 42,
-        platinumAmount: 134,
-        upgradeTokens: 0
-    },
-    {
-        level: 43,
-        platinumAmount: 136,
-        upgradeTokens: 0
-    },
-    {
-        level: 44,
-        platinumAmount: 138,
-        upgradeTokens: 0
-    },
-    {
-        level: 45,
-        platinumAmount: 140,
-        upgradeTokens: 0
-    },
-    {
-        level: 46,
-        platinumAmount: 142,
-        upgradeTokens: 0
-    },
-    {
-        level: 47,
-        platinumAmount: 144,
-        upgradeTokens: 0
-    },
-    {
-        level: 48,
-        platinumAmount: 146,
-        upgradeTokens: 0
-    },
-    {
-        level: 49,
-        platinumAmount: 148,
-        upgradeTokens: 0
-    },
-    {
-        level: 50,
-        platinumAmount: 150,
-        upgradeTokens: 0
+        cost: {
+            currency: 'Platinum',
+            value: 150
+        }
     }
 ];

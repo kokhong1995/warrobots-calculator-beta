@@ -1,6 +1,6 @@
-import { toInt, thousandSeperator, getStrAmount } from '/warrobots-calculator-beta/js/data-helper.js?v=1.15.1-beta';
-import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.15.1-beta';
-import { applyUpgradeDiscountPercentage, calculateTotalTitanDeployPoints } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.15.1-beta';
+import { toInt, thousandSeperator, getStrAmount } from '/warrobots-calculator-beta/js/data-helper.js?v=1.15.2-beta';
+import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.15.2-beta';
+import { applyUpgradeDiscountPercentage, calculateTotalTitanDeployPoints } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.15.2-beta';
 
 function updateInputValue(eventType, inputId) {
     updateNumberInput(eventType, inputId, syncData);
@@ -24,7 +24,7 @@ function syncData() {
 
     for (i = 0; i < DS_TITANIC_EFFORTS.length; i++) {
         for (j = 0; j < DS_TITANIC_EFFORTS[i].length; j++) {
-            if (DS_TITANIC_EFFORTS[i][j].level == 1) {
+            if (DS_TITANIC_EFFORTS[i][j]['cost'] === false) {
                 continue;
             }
 
@@ -98,7 +98,7 @@ function init() {
 
     for (i = 0; i < DS_TITANIC_EFFORTS.length; i++) {
         for (j = 0; j < DS_TITANIC_EFFORTS[i].length; j++) {
-            if (DS_TITANIC_EFFORTS[i][j].level == 1) {
+            if (DS_TITANIC_EFFORTS[i][j]['cost'] === false) {
                 continue;
             }
 

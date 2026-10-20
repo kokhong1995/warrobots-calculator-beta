@@ -1,13 +1,8 @@
 const DS_T3_TITAN_WEAPON_UPGRADES = [
     {
         level: 1,
-        cost: {
-            currency: 'Platinum',
-            value: 0
-        },
-        points: {
-            titanicEfforts: 0
-        }
+        cost: false,
+        points: false
     },
     {
         level: 2,

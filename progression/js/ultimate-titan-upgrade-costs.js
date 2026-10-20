@@ -1,6 +1,6 @@
-import { toInt, thousandSeperator, getStrAmount } from '/warrobots-calculator-beta/js/data-helper.js?v=1.15.1-beta';
-import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.15.1-beta';
-import { applyUpgradeDiscountPercentage } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.15.1-beta';
+import { toInt, thousandSeperator, getStrAmount } from '/warrobots-calculator-beta/js/data-helper.js?v=1.15.2-beta';
+import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.15.2-beta';
+import { applyUpgradeDiscountPercentage } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.15.2-beta';
 
 function updateInputValue(eventType, inputId) {
     updateNumberInput(eventType, inputId, syncData);
@@ -21,7 +21,7 @@ function syncData() {
 
     for (i = 0; i < DS_ULTIMATE_TITAN_UPGRADE_COSTS.length; i++) {
         for (j = 0; j < DS_ULTIMATE_TITAN_UPGRADE_COSTS[i].length; j++) {
-            if (DS_ULTIMATE_TITAN_UPGRADE_COSTS[i][j].level == 1) {
+            if (DS_ULTIMATE_TITAN_UPGRADE_COSTS[i][j]['cost'] === false) {
                 continue;
             }
 
@@ -30,17 +30,20 @@ function syncData() {
             spanUpgradeTokens = document.getElementById(`spanUpgradeTokens${TYPES[i]}_${j}`);
 
             quantity = toInt(inputQuantity.value);
-            platinumAmount = applyUpgradeDiscountPercentage(upgradeDiscountPercentage, DS_ULTIMATE_TITAN_UPGRADE_COSTS[i][j].platinumAmount) * quantity;
-            upgradeTokens = DS_ULTIMATE_TITAN_UPGRADE_COSTS[i][j].upgradeTokens * quantity;
-
-            spanPlatinumAmount.textContent = getStrAmount(platinumAmount);
-            spanPlatinumAmount.parentElement.title = thousandSeperator(platinumAmount, ' ') + ' Platinum';
-            spanUpgradeTokens.textContent = getStrAmount(upgradeTokens);
-            spanUpgradeTokens.parentElement.title = thousandSeperator(upgradeTokens, ' ') + ' Upgrade Tokens';
+            if (DS_ULTIMATE_TITAN_UPGRADE_COSTS[i][j]['cost']['currency'] == 'Platinum') {
+                platinumAmount = applyUpgradeDiscountPercentage(upgradeDiscountPercentage, DS_ULTIMATE_TITAN_UPGRADE_COSTS[i][j]['cost']['value']) * quantity;
+                spanPlatinumAmount.textContent = getStrAmount(platinumAmount);
+                spanPlatinumAmount.parentElement.title = thousandSeperator(platinumAmount, ' ') + ' Platinum';
+                totalPlatinumAmount += platinumAmount;
+            }
+            if (DS_ULTIMATE_TITAN_UPGRADE_COSTS[i][j]['cost']['currency'] == 'UpgradeToken') {
+                upgradeTokens = DS_ULTIMATE_TITAN_UPGRADE_COSTS[i][j]['cost']['value'] * quantity;
+                spanUpgradeTokens.textContent = getStrAmount(upgradeTokens);
+                spanUpgradeTokens.parentElement.title = thousandSeperator(upgradeTokens, ' ') + ' Upgrade Tokens';
+                totalUpgradeTokens += upgradeTokens;
+            }
 
             totalQuantity += quantity;
-            totalPlatinumAmount += platinumAmount;
-            totalUpgradeTokens += upgradeTokens;
         }
     }
 
@@ -89,7 +92,7 @@ function init() {
 
     for (i = 0; i < DS_ULTIMATE_TITAN_UPGRADE_COSTS.length; i++) {
         for (j = 0; j < DS_ULTIMATE_TITAN_UPGRADE_COSTS[i].length; j++) {
-            if (DS_ULTIMATE_TITAN_UPGRADE_COSTS[i][j].level == 1) {
+            if (DS_ULTIMATE_TITAN_UPGRADE_COSTS[i][j]['cost'] === false) {
                 continue;
             }
 
@@ -125,29 +128,14 @@ function init() {
         if (e.target.matches('#buttonResetModifiers')) {
             resetModifiers();
         }
-        if (e.target.matches('#buttonResetHullSubsystemUpgrades')) {
+        if (e.target.matches('#buttonResetUltimateSubsystemUpgrades')) {
             resetUpgrades(0);
         }
-        if (e.target.matches('#buttonResetCoreSubsystemUpgrades')) {
-            resetUpgrades(1);
-        }
-        if (e.target.matches('#buttonResetEngineSubsystemUpgrades')) {
-            resetUpgrades(2);
-        }
-        if (e.target.matches('#buttonResetUltimateSubsystemUpgrades')) {
-            resetUpgrades(3);
-        }
-        if (e.target.matches('#buttonPresetHullSubsystemUpgrades')) {
+        if (e.target.matches('#buttonPresetUltimateSubsystemUpgrades_0') ||
+            e.target.matches('#buttonPresetUltimateSubsystemUpgrades_1') ||
+            e.target.matches('#buttonPresetUltimateSubsystemUpgrades_2') ||
+            e.target.matches('#buttonPresetUltimateSubsystemUpgrades_3')) {
             presetUpgrades(0);
-        }
-        if (e.target.matches('#buttonPresetCoreSubsystemUpgrades')) {
-            presetUpgrades(1);
-        }
-        if (e.target.matches('#buttonPresetEngineSubsystemUpgrades')) {
-            presetUpgrades(2);
-        }
-        if (e.target.matches('#buttonPresetUltimateSubsystemUpgrades')) {
-            presetUpgrades(3);
         }
         if (e.target.matches('.btn-decrement')) {
             updateInputValue('-', e.target.dataset.wcTarget);
@@ -173,10 +161,7 @@ function init() {
     syncData();
 }
 
-const TYPES = ['HullSubsystem', 'CoreSubsystem', 'EngineSubsystem', 'UltimateSubsystem'];
-const DS_ULTIMATE_TITAN_UPGRADE_COSTS = [
-    DS_ULTIMATE_TITAN_HULL_UPGRADES, DS_ULTIMATE_TITAN_CORE_UPGRADES,
-    DS_ULTIMATE_TITAN_ENGINE_UPGRADES, DS_ULTIMATE_TITAN_ULTIMATE_UPGRADES
-];
+const TYPES = ['UltimateSubsystem'];
+const DS_ULTIMATE_TITAN_UPGRADE_COSTS = [DS_ULTIMATE_TITAN_SUBSYSTEM_UPGRADES];
 
 init();
