@@ -1,6 +1,6 @@
-import { toInt, thousandSeperator, getStrAmount } from '/warrobots-calculator-beta/js/data-helper.js?v=1.15.2-beta';
-import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.15.2-beta';
-import { applyUpgradeDiscountPercentage } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.15.2-beta';
+import { toInt, thousandSeperator, getStrAmount } from '/warrobots-calculator-beta/js/data-helper.js?v=1.15.3-beta';
+import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.15.3-beta';
+import { applyUpgradeDiscountPercentage } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.15.3-beta';
 
 function updateInputValue(eventType, inputId) {
     updateNumberInput(eventType, inputId, syncData);
@@ -128,13 +128,13 @@ function init() {
         if (e.target.matches('#buttonResetModifiers')) {
             resetModifiers();
         }
-        if (e.target.matches('#buttonResetUltimateSubsystemUpgrades')) {
+        if (e.target.matches('#buttonResetSubsystemUpgrades')) {
             resetUpgrades(0);
         }
-        if (e.target.matches('#buttonPresetUltimateSubsystemUpgrades_0') ||
-            e.target.matches('#buttonPresetUltimateSubsystemUpgrades_1') ||
-            e.target.matches('#buttonPresetUltimateSubsystemUpgrades_2') ||
-            e.target.matches('#buttonPresetUltimateSubsystemUpgrades_3')) {
+        if (e.target.matches('#buttonPresetSubsystemUpgrades_0') ||
+            e.target.matches('#buttonPresetSubsystemUpgrades_1') ||
+            e.target.matches('#buttonPresetSubsystemUpgrades_2') ||
+            e.target.matches('#buttonPresetSubsystemUpgrades_3')) {
             presetUpgrades(0);
         }
         if (e.target.matches('.btn-decrement')) {
@@ -161,7 +161,7 @@ function init() {
     syncData();
 }
 
-const TYPES = ['UltimateSubsystem'];
+const TYPES = ['Subsystem'];
 const DS_ULTIMATE_TITAN_UPGRADE_COSTS = [DS_ULTIMATE_TITAN_SUBSYSTEM_UPGRADES];
 
 init();

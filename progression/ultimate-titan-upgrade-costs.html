@@ -7,11 +7,11 @@
     <title>War Robots Calculator: Ultimate Titan Upgrade Cost Calculator</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/warrobots-calculator-beta/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/warrobots-calculator-beta/apple-touch-icon.png">
-    <link rel="stylesheet" href="/warrobots-calculator-beta/bootstrap-5.3.8-dist/css/bootstrap.min.css?v=1.15.2-beta">
-    <link rel="stylesheet" href="/warrobots-calculator-beta/css/index.css?v=1.15.2-beta">
-    <link rel="stylesheet" href="./css/ultimate-titan-upgrade-costs.css?v=1.15.2-beta">
-    <script src="/warrobots-calculator-beta/data/ds-ultimate-titan-upgrades.js?v=1.15.2-beta"></script>
-    <script type="module" src="./js/ultimate-titan-upgrade-costs.js?v=1.15.2-beta"></script>
+    <link rel="stylesheet" href="/warrobots-calculator-beta/bootstrap-5.3.8-dist/css/bootstrap.min.css?v=1.15.3-beta">
+    <link rel="stylesheet" href="/warrobots-calculator-beta/css/index.css?v=1.15.3-beta">
+    <link rel="stylesheet" href="./css/ultimate-titan-upgrade-costs.css?v=1.15.3-beta">
+    <script src="/warrobots-calculator-beta/data/ds-ultimate-titan-upgrades.js?v=1.15.3-beta"></script>
+    <script type="module" src="./js/ultimate-titan-upgrade-costs.js?v=1.15.3-beta"></script>
 </head>
 
 <body>
@@ -102,8 +102,8 @@
                                         </li>
                                         <li class="mb-2">
                                             <strong>Select Upgrades:</strong> Input your planned <a
-                                                href="#containerUltimateSubsystemUpgrades"
-                                                class="text-decoration-underline">Ultimate Subsystem Upgrades</a>.
+                                                href="#containerSubsystemUpgrades"
+                                                class="text-decoration-underline">Subsystem Upgrades</a>.
                                             Use quick actions for faster entry.
                                         </li>
                                         <li>
@@ -167,20 +167,20 @@
                         </div>
                     </div>
                 </div>
-                <!-- Ultimate Subsystem Upgrades -->
+                <!-- Subsystem Upgrades -->
                 <div class="card">
                     <div class="card-header">
                         <div class="row align-items-center justify-content-between">
                             <div class="col-auto">
                                 <div class="d-flex align-items-center">
-                                    <span class="fw-bold">Ultimate Subsystem Upgrades</span>
+                                    <span class="fw-bold">Subsystem Upgrades</span>
                                     &nbsp;
                                     <button type="button"
                                         class="btn btn-link text-secondary p-0 border-0 lh-1 small text-decoration-none"
                                         data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="focus"
-                                        data-bs-html="true" data-bs-title="Ultimate Subsystem Upgrades"
+                                        data-bs-html="true" data-bs-title="Subsystem Upgrades"
                                         data-bs-content="<p class='mb-2'>Calculate upgrade costs from Level 2 to 50.</p><p class='fw-semibold mb-1'>Quick Actions:</p><ul class='ps-3 mb-0'><li><strong>Max [Subsystem]:</strong> Increase all upgrade quantities by 1 to the selected subsystem (Hull, Core, Engine or Ultimate).</li><li><strong>Reset:</strong> Reset all upgrade quantities to 0.</li></ul>"
-                                        aria-label="Ultimate Subsystem Upgrades">
+                                        aria-label="Subsystem Upgrades">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" viewBox="0 0 16 16">
                                             <path
@@ -195,23 +195,23 @@
                                 <div class="row gx-2">
                                     <div class="col-auto mt-2 mt-md-0">
                                         <button type="button" class="btn btn-sm btn-outline-t4"
-                                            id="buttonPresetUltimateSubsystemUpgrades_0">Max Hull</button>
+                                            id="buttonPresetSubsystemUpgrades_0">Max Hull</button>
                                     </div>
                                     <div class="col-auto mt-2 mt-md-0">
                                         <button type="button" class="btn btn-sm btn-outline-t4"
-                                            id="buttonPresetUltimateSubsystemUpgrades_1">Max Core</button>
+                                            id="buttonPresetSubsystemUpgrades_1">Max Core</button>
                                     </div>
                                     <div class="col-auto mt-2 mt-md-0">
                                         <button type="button" class="btn btn-sm btn-outline-t4"
-                                            id="buttonPresetUltimateSubsystemUpgrades_2">Max Engine</button>
+                                            id="buttonPresetSubsystemUpgrades_2">Max Engine</button>
                                     </div>
                                     <div class="col-auto mt-2 mt-md-0">
                                         <button type="button" class="btn btn-sm btn-outline-t4"
-                                            id="buttonPresetUltimateSubsystemUpgrades_3">Max Ultimate</button>
+                                            id="buttonPresetSubsystemUpgrades_3">Max Ultimate</button>
                                     </div>
                                     <div class="col-auto mt-2 mt-md-0">
                                         <button type="button" class="btn btn-sm btn-outline-danger"
-                                            id="buttonResetUltimateSubsystemUpgrades">Reset</button>
+                                            id="buttonResetSubsystemUpgrades">Reset</button>
                                     </div>
                                 </div>
                             </div>
@@ -219,7 +219,7 @@
                     </div>
                     <div class="card-body">
                         <div class="container-fluid px-0">
-                            <div id="containerUltimateSubsystemUpgrades" class="row g-2"></div>
+                            <div id="containerSubsystemUpgrades" class="row g-2"></div>
                         </div>
                     </div>
                 </div>
@@ -271,12 +271,12 @@
             </div>
             <div class="d-flex align-items-center gap-2">
                 <span
-                    class="badge text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-pill">v1.15.2-beta</span>
+                    class="badge text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-pill">v1.15.3-beta</span>
                 <small class="text-muted">Updated Oct 20, 2026</small>
             </div>
         </div>
     </footer>
-    <script src="/warrobots-calculator-beta/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js?v=1.15.2-beta"></script>
+    <script src="/warrobots-calculator-beta/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js?v=1.15.3-beta"></script>
 </body>
 
 </html>
