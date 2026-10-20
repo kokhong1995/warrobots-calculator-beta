@@ -1,6 +1,6 @@
-import { toInt, thousandSeperator, getStrAmount, getPilotRankByLevel } from '/warrobots-calculator-beta/js/data-helper.js?v=1.14.2-beta';
-import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.14.2-beta';
-import { applyUpgradeDiscountPercentage } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.14.2-beta';
+import { toInt, thousandSeperator, getStrAmount, getPilotRankByLevel } from '/warrobots-calculator-beta/js/data-helper.js?v=1.15.0-beta';
+import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.15.0-beta';
+import { applyUpgradeDiscountPercentage } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.15.0-beta';
 
 function updateInputValue(eventType, inputId) {
     updateNumberInput(eventType, inputId, syncData);
@@ -38,27 +38,27 @@ function syncData() {
                     inputQuantity = document.getElementById(`inputQuantity${TYPES[i]}_${j}_${k}`);
                     spanExperienceAmount = document.getElementById(`spanExperienceAmount${TYPES[i]}_${j}_${k}`);
                     spanGoldAmount = document.getElementById(`spanGoldAmount${TYPES[i]}_${j}_${k}`);
-                    quantity = toInt(inputQuantity.value);
-                    totalQuantity += quantity;
-
+                    
                     // Calculate and update relevant span elements.
+                    quantity = toInt(inputQuantity.value);
                     experienceAmount = DS_ROBOT_PILOT_UPGRADE_COSTS[i][j]['xp'] * quantity;
-                    spanExperienceAmount.textContent = getStrAmount(experienceAmount);
-                    spanExperienceAmount.parentElement.title = thousandSeperator(experienceAmount, ' ') + ' XP';
                     if (DS_ROBOT_PILOT_UPGRADE_COSTS[i][j]['cost']['currency'] == 'Gold') {
                         goldAmount = applyUpgradeDiscountPercentage(experienceBoostPercentage, DS_ROBOT_PILOT_UPGRADE_COSTS[i][j]['cost']['value'], 1) * quantity;
                         spanGoldAmount.textContent = getStrAmount(goldAmount);
                         spanGoldAmount.parentElement.title = thousandSeperator(goldAmount, ' ') + ' Gold';
                         totalGoldAmount += goldAmount;
                     }
+                    spanExperienceAmount.textContent = getStrAmount(experienceAmount);
+                    spanExperienceAmount.parentElement.title = thousandSeperator(experienceAmount, ' ') + ' XP';
+
+                    totalQuantity += quantity;
                 }
             }
             else {
-                spanGoldAmount = document.getElementById(`spanGoldAmount${TYPES[i]}_${j}`);
                 inputQuantity = document.getElementById(`inputQuantity${TYPES[i]}_${j}`);
-                quantity = toInt(inputQuantity.value);
-                totalQuantity += quantity;
+                spanGoldAmount = document.getElementById(`spanGoldAmount${TYPES[i]}_${j}`);
 
+                quantity = toInt(inputQuantity.value);
                 if (DS_ROBOT_PILOT_UPGRADE_COSTS[i][j]['cost']['currency'] == 'Memorium') {
                     if (INDEX_TO_SKIP.includes(i)) {
                         memoriumAmount = applyUpgradeDiscountPercentage(upgradeDiscountPercentage, DS_ROBOT_PILOT_UPGRADE_COSTS[i][j]['cost']['value'], 1) * quantity;
@@ -81,6 +81,8 @@ function syncData() {
                     spanUpgradeTokens.parentElement.title = thousandSeperator(upgradeTokens, ' ') + ' Upgrade Tokens';
                     totalUpgradeTokens += upgradeTokens;
                 }
+
+                totalQuantity += quantity;
             }
         }
     }
@@ -181,7 +183,7 @@ function init() {
                 for (k = DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].fromLevel; k <= DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].toLevel; k++) {
                     containerInnerHTMLs[i] += '<div class="col-md-6">' +
                         '<div class="item">' + '<div class="row align-items-center">' +
-                        `<div class="col"><div class="item-title">Rank: ${getPilotRankByLevel(k)}<br>Level ${k}</div>` +
+                        `<div class="col"><div class="item-title">Rank ${getPilotRankByLevel(k)}: Level ${k}</div>` +
                         '</div>' +
                         '<div class="col">' +
                         '<div class="input-group">' +
@@ -206,7 +208,7 @@ function init() {
             else if (i == 1) {
                 containerInnerHTMLs[i] += '<div class="col-md-6">' +
                     '<div class="item">' + '<div class="row align-items-center">' +
-                    `<div class="col"><div class="item-title">Rank: ${getPilotRankByLevel(DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].level)}<br>Level ${DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].level}</div>` +
+                    `<div class="col"><div class="item-title">Rank ${getPilotRankByLevel(DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].level)}: Level ${DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].level}</div>` +
                     '</div>' +
                     '<div class="col">' +
                     '<div class="input-group">' +
@@ -249,7 +251,7 @@ function init() {
             else {
                 containerInnerHTMLs[i] += '<div class="col-md-6">' +
                     '<div class="item">' + '<div class="row align-items-center">' +
-                    `<div class="col"><div class="item-title">Rank: ${getPilotRankByLevel(DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].fromLevel)}<br>Level ${DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].fromLevel} to ${DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].toLevel}</div>` +
+                    `<div class="col"><div class="item-title">Rank ${getPilotRankByLevel(DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].fromLevel)}:<br>Level ${DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].fromLevel} to ${DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].toLevel}</div>` +
                     '</div>' +
                     '<div class="col">' +
                     '<div class="input-group">' +
