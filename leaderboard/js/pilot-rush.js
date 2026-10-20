@@ -1,6 +1,6 @@
-import { toInt, thousandSeperator, getStrAmount, getPilotRankByLevel, getLeaderboardPoints } from '/warrobots-calculator-beta/js/data-helper.js?v=1.15.0-beta';
-import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.15.0-beta';
-import { applyUpgradeDiscountPercentage, calculateTotalTitanDeployPoints } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.15.0-beta';
+import { toInt, thousandSeperator, getStrAmount, getPilotRankByLevel, getLeaderboardPoints } from '/warrobots-calculator-beta/js/data-helper.js?v=1.15.1-beta';
+import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.15.1-beta';
+import { applyUpgradeDiscountPercentage, calculateTotalTitanDeployPoints } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.15.1-beta';
 
 function updateInputValue(eventType, inputId) {
     updateNumberInput(eventType, inputId, syncData);
@@ -269,15 +269,6 @@ function init() {
         if (e.target.matches('#buttonResetPilotRankPromotionCosts')) {
             resetUpgrades(1);
         }
-        if (e.target.matches('#buttonResetPilotRandomSkillRollCosts')) {
-            resetUpgrades(2);
-        }
-        if (e.target.matches('#buttonResetPilotSelectSkillCosts')) {
-            resetUpgrades(3);
-        }
-        if (e.target.matches('#buttonResetPilotSkillTierUpgradeCosts')) {
-            resetUpgrades(4);
-        }
         if (e.target.matches('#buttonPresetPilotExperienceBoostCosts_0')) {
             presetUpgrades(0, 0);
         }
@@ -304,15 +295,6 @@ function init() {
         }
         if (e.target.matches('#buttonPresetPilotRankPromotionCosts')) {
             presetUpgrades(1, 0);
-        }
-        if (e.target.matches('#buttonPresetPilotRandomSkillRollCosts')) {
-            presetUpgrades(2, 0);
-        }
-        if (e.target.matches('#buttonPresetPilotSelectSkillCosts')) {
-            presetUpgrades(3, 0);
-        }
-        if (e.target.matches('#buttonPresetPilotSkillTierUpgradeCosts')) {
-            presetUpgrades(4, 0);
         }
         if (e.target.matches('.btn-decrement')) {
             updateInputValue('-', e.target.dataset.wcTarget);
