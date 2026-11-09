@@ -1,6 +1,6 @@
-import { toInt, thousandSeperator, getStrAmount } from '/warrobots-calculator-beta/js/data-helper.js?v=1.15.4-beta';
-import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.15.4-beta';
-import { applyUpgradeDiscountPercentage } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.15.4-beta';
+import { toInt, thousandSeperator, getStrAmount } from '/warrobots-calculator-beta/js/data-helper.js?v=1.15.5-beta';
+import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.15.5-beta';
+import { applyUpgradeDiscountPercentage } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.15.5-beta';
 
 function updateInputValue(eventType, inputId) {
     updateNumberInput(eventType, inputId, syncData);
@@ -21,26 +21,29 @@ function syncData() {
 
     for (i = 0; i < DS_ULTIMATE_TITAN_WEAPON_UPGRADE_COSTS.length; i++) {
         for (j = 0; j < DS_ULTIMATE_TITAN_WEAPON_UPGRADE_COSTS[i].length; j++) {
-            if (DS_ULTIMATE_TITAN_WEAPON_UPGRADE_COSTS[i][j].level == 1) {
+            if (DS_ULTIMATE_TITAN_WEAPON_UPGRADE_COSTS[i][j].upgradeCost == false) {
                 continue;
             }
 
             inputQuantity = document.getElementById(`inputQuantity${TYPES[i]}_${j}`);
-            spanPlatinumAmount = document.getElementById(`spanPlatinumAmount${TYPES[i]}_${j}`);
-            spanUpgradeTokens = document.getElementById(`spanUpgradeTokens${TYPES[i]}_${j}`);
-
             quantity = toInt(inputQuantity.value);
-            platinumAmount = applyUpgradeDiscountPercentage(upgradeDiscountPercentage, DS_ULTIMATE_TITAN_WEAPON_UPGRADE_COSTS[i][j].platinumAmount) * quantity;
-            upgradeTokens = DS_ULTIMATE_TITAN_WEAPON_UPGRADE_COSTS[i][j].upgradeTokens * quantity;
-
-            spanPlatinumAmount.textContent = getStrAmount(platinumAmount);
-            spanPlatinumAmount.parentElement.title = thousandSeperator(platinumAmount, ' ') + ' Platinum';
-            spanUpgradeTokens.textContent = getStrAmount(upgradeTokens);
-            spanUpgradeTokens.parentElement.title = thousandSeperator(upgradeTokens, ' ') + ' Upgrade Tokens';
-
             totalQuantity += quantity;
-            totalPlatinumAmount += platinumAmount;
-            totalUpgradeTokens += upgradeTokens;
+
+            // Upgrade Cost.
+            if (DS_ULTIMATE_TITAN_WEAPON_UPGRADE_COSTS[i][j]['upgradeCost']['currency'] == 'Platinum') {
+                platinumAmount = applyUpgradeDiscountPercentage(upgradeDiscountPercentage, DS_ULTIMATE_TITAN_WEAPON_UPGRADE_COSTS[i][j]['upgradeCost']['value']) * quantity;
+                spanPlatinumAmount = document.getElementById(`spanPlatinumAmount${TYPES[i]}_${j}`);
+                spanPlatinumAmount.textContent = getStrAmount(platinumAmount);
+                spanPlatinumAmount.parentElement.title = thousandSeperator(platinumAmount, ' ') + ' Platinum';
+                totalPlatinumAmount += platinumAmount;
+            }
+            if (DS_ULTIMATE_TITAN_WEAPON_UPGRADE_COSTS[i][j]['upgradeCost']['currency'] == 'UpgradeToken') {
+                upgradeTokens = DS_ULTIMATE_TITAN_WEAPON_UPGRADE_COSTS[i][j]['upgradeCost']['value'] * quantity;
+                spanUpgradeTokens = document.getElementById(`spanUpgradeTokens${TYPES[i]}_${j}`);
+                spanUpgradeTokens.textContent = getStrAmount(upgradeTokens);
+                spanUpgradeTokens.parentElement.title = thousandSeperator(upgradeTokens, ' ') + ' Upgrade Tokens';
+                totalUpgradeTokens += upgradeTokens;
+            }
         }
     }
 
@@ -65,7 +68,7 @@ function presetUpgrades(index) {
     let i;
 
     for (i = 0; i < DS_ULTIMATE_TITAN_WEAPON_UPGRADE_COSTS[index].length; i++) {
-        if (DS_ULTIMATE_TITAN_WEAPON_UPGRADE_COSTS[index][i].level == 1) {
+        if (DS_ULTIMATE_TITAN_WEAPON_UPGRADE_COSTS[index][i].upgradeCost == false) {
             continue;
         }
 
@@ -89,7 +92,7 @@ function init() {
 
     for (i = 0; i < DS_ULTIMATE_TITAN_WEAPON_UPGRADE_COSTS.length; i++) {
         for (j = 0; j < DS_ULTIMATE_TITAN_WEAPON_UPGRADE_COSTS[i].length; j++) {
-            if (DS_ULTIMATE_TITAN_WEAPON_UPGRADE_COSTS[i][j].level == 1) {
+            if (DS_ULTIMATE_TITAN_WEAPON_UPGRADE_COSTS[i][j].upgradeCost == false) {
                 continue;
             }
 

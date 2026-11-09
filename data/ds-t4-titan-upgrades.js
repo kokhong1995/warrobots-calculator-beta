@@ -1,12 +1,12 @@
 const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     {
         level: 1,
-        cost: false,
+        upgradeCost: false,
         points: false
     },
     {
         level: 2,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 20
         },
@@ -16,7 +16,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 3,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 24
         },
@@ -26,7 +26,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 4,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 26
         },
@@ -36,7 +36,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 5,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 28
         },
@@ -46,7 +46,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 6,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 30
         },
@@ -56,7 +56,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 7,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 32
         },
@@ -66,7 +66,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 8,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 34
         },
@@ -76,7 +76,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 9,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 36
         },
@@ -86,7 +86,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 10,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 38
         },
@@ -96,7 +96,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 11,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 40
         },
@@ -106,7 +106,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 12,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 42
         },
@@ -116,7 +116,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 13,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 44
         },
@@ -126,7 +126,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 14,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 46
         },
@@ -136,7 +136,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 15,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 48
         },
@@ -146,7 +146,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 16,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 50
         },
@@ -156,7 +156,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 17,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 52
         },
@@ -166,7 +166,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 18,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 54
         },
@@ -176,7 +176,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 19,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 56
         },
@@ -186,7 +186,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 20,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 58
         },
@@ -196,7 +196,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 21,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 60
         },
@@ -206,7 +206,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 22,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 62
         },
@@ -216,7 +216,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 23,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 64
         },
@@ -226,7 +226,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 24,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 66
         },
@@ -236,7 +236,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 25,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 68
         },
@@ -246,7 +246,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 26,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 70
         },
@@ -256,7 +256,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 27,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 72
         },
@@ -266,7 +266,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 28,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 74
         },
@@ -276,7 +276,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 29,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 76
         },
@@ -286,7 +286,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 30,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 78
         },
@@ -296,7 +296,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 31,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 80
         },
@@ -306,7 +306,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 32,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 82
         },
@@ -316,7 +316,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 33,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 84
         },
@@ -326,7 +326,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 34,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 86
         },
@@ -336,7 +336,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 35,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 88
         },
@@ -346,7 +346,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 36,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 90
         },
@@ -356,7 +356,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 37,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 92
         },
@@ -366,7 +366,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 38,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 94
         },
@@ -376,7 +376,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 39,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 96
         },
@@ -386,7 +386,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 40,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 98
         },
@@ -396,7 +396,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 41,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 100
         },
@@ -406,7 +406,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 42,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 102
         },
@@ -416,7 +416,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 43,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 104
         },
@@ -426,7 +426,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 44,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 106
         },
@@ -436,7 +436,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 45,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 108
         },
@@ -446,7 +446,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 46,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 110
         },
@@ -456,7 +456,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 47,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 112
         },
@@ -466,7 +466,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 48,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 114
         },
@@ -476,7 +476,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 49,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 116
         },
@@ -486,7 +486,7 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     },
     {
         level: 50,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 118
         },

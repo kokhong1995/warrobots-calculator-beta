@@ -1,6 +1,6 @@
-import { toInt, thousandSeperator, getStrAmount } from '/warrobots-calculator-beta/js/data-helper.js?v=1.15.4-beta';
-import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.15.4-beta';
-import { applyUpgradeDiscountPercentage, calculateTotalTitanDeployPoints } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.15.4-beta';
+import { toInt, thousandSeperator, getStrAmount } from '/warrobots-calculator-beta/js/data-helper.js?v=1.15.5-beta';
+import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.15.5-beta';
+import { applyUpgradeDiscountPercentage, calculateTotalTitanDeployPoints } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.15.5-beta';
 
 function updateInputValue(eventType, inputId) {
     updateNumberInput(eventType, inputId, syncData);
@@ -24,25 +24,27 @@ function syncData() {
 
     for (i = 0; i < DS_TITANIC_EFFORTS.length; i++) {
         for (j = 0; j < DS_TITANIC_EFFORTS[i].length; j++) {
-            if (DS_TITANIC_EFFORTS[i][j]['cost'] === false) {
+            if (DS_TITANIC_EFFORTS[i][j].upgradeCost == false) {
                 continue;
             }
 
             inputQuantity = document.getElementById(`inputQuantity${TYPES[i]}_${j}`);
-            spanPlatinumAmount = document.getElementById(`spanPlatinumAmount${TYPES[i]}_${j}`);
-            spanPoints = document.getElementById(`spanPoints${TYPES[i]}_${j}`);
-
             quantity = toInt(inputQuantity.value);
-            platinumAmount = applyUpgradeDiscountPercentage(upgradeDiscountPercentage, DS_TITANIC_EFFORTS[i][j]['cost']['value']) * quantity;
-            points = DS_TITANIC_EFFORTS[i][j].points.titanicEfforts * quantity;
+            totalQuantity += quantity;
 
-            spanPlatinumAmount.textContent = getStrAmount(platinumAmount);
-            spanPlatinumAmount.parentElement.title = thousandSeperator(platinumAmount, ' ') + ' Platinum';
+            // Upgrade Cost.
+            if (DS_TITANIC_EFFORTS[i][j]['upgradeCost']['currency'] == 'Platinum') {
+                spanPlatinumAmount = document.getElementById(`spanPlatinumAmount${TYPES[i]}_${j}`);
+                platinumAmount = applyUpgradeDiscountPercentage(upgradeDiscountPercentage, DS_TITANIC_EFFORTS[i][j]['upgradeCost']['value']) * quantity;
+                spanPlatinumAmount.textContent = getStrAmount(platinumAmount);
+                spanPlatinumAmount.parentElement.title = thousandSeperator(platinumAmount, ' ') + ' Platinum';
+                totalPlatinumAmount += platinumAmount;
+            }
+
+            spanPoints = document.getElementById(`spanPoints${TYPES[i]}_${j}`);
+            points = DS_TITANIC_EFFORTS[i][j].points.titanicEfforts * quantity;
             spanPoints.textContent = getStrAmount(points);
             spanPoints.parentElement.title = thousandSeperator(points, ' ') + ' Points';
-
-            totalQuantity += quantity;
-            totalPlatinumAmount += platinumAmount;
             totalPoints += points;
         }
     }
@@ -74,7 +76,7 @@ function presetUpgrades(index) {
     let i;
 
     for (i = 0; i < DS_TITANIC_EFFORTS[index].length; i++) {
-        if (DS_TITANIC_EFFORTS[index][i].level == 1) {
+        if (DS_TITANIC_EFFORTS[index][i].upgradeCost == false) {
             continue;
         }
 
@@ -98,7 +100,7 @@ function init() {
 
     for (i = 0; i < DS_TITANIC_EFFORTS.length; i++) {
         for (j = 0; j < DS_TITANIC_EFFORTS[i].length; j++) {
-            if (DS_TITANIC_EFFORTS[i][j]['cost'] === false) {
+            if (DS_TITANIC_EFFORTS[i][j].upgradeCost == false) {
                 continue;
             }
 

@@ -1,12 +1,12 @@
 const DS_T2_TITAN_WEAPON_UPGRADES = [
     {
         level: 1,
-        cost: false,
+        upgradeCost: false,
         points: false
     },
     {
         level: 2,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 16
         },
@@ -16,7 +16,7 @@ const DS_T2_TITAN_WEAPON_UPGRADES = [
     },
     {
         level: 3,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 19
         },
@@ -26,7 +26,7 @@ const DS_T2_TITAN_WEAPON_UPGRADES = [
     },
     {
         level: 4,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 21
         },
@@ -36,7 +36,7 @@ const DS_T2_TITAN_WEAPON_UPGRADES = [
     },
     {
         level: 5,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 22
         },
@@ -46,7 +46,7 @@ const DS_T2_TITAN_WEAPON_UPGRADES = [
     },
     {
         level: 6,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 24
         },
@@ -56,7 +56,7 @@ const DS_T2_TITAN_WEAPON_UPGRADES = [
     },
     {
         level: 7,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 26
         },
@@ -66,7 +66,7 @@ const DS_T2_TITAN_WEAPON_UPGRADES = [
     },
     {
         level: 8,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 27
         },
@@ -76,7 +76,7 @@ const DS_T2_TITAN_WEAPON_UPGRADES = [
     },
     {
         level: 9,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 29
         },
@@ -86,7 +86,7 @@ const DS_T2_TITAN_WEAPON_UPGRADES = [
     },
     {
         level: 10,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 30
         },
@@ -96,7 +96,7 @@ const DS_T2_TITAN_WEAPON_UPGRADES = [
     },
     {
         level: 11,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 32
         },
@@ -106,7 +106,7 @@ const DS_T2_TITAN_WEAPON_UPGRADES = [
     },
     {
         level: 12,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 34
         },
@@ -116,7 +116,7 @@ const DS_T2_TITAN_WEAPON_UPGRADES = [
     },
     {
         level: 13,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 35
         },
@@ -126,7 +126,7 @@ const DS_T2_TITAN_WEAPON_UPGRADES = [
     },
     {
         level: 14,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 37
         },
@@ -136,7 +136,7 @@ const DS_T2_TITAN_WEAPON_UPGRADES = [
     },
     {
         level: 15,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 38
         },
@@ -146,7 +146,7 @@ const DS_T2_TITAN_WEAPON_UPGRADES = [
     },
     {
         level: 16,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 40
         },
@@ -156,7 +156,7 @@ const DS_T2_TITAN_WEAPON_UPGRADES = [
     },
     {
         level: 17,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 42
         },
@@ -166,7 +166,7 @@ const DS_T2_TITAN_WEAPON_UPGRADES = [
     },
     {
         level: 18,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 43
         },
@@ -176,7 +176,7 @@ const DS_T2_TITAN_WEAPON_UPGRADES = [
     },
     {
         level: 19,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 45
         },
@@ -186,7 +186,7 @@ const DS_T2_TITAN_WEAPON_UPGRADES = [
     },
     {
         level: 20,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 46
         },
@@ -196,7 +196,7 @@ const DS_T2_TITAN_WEAPON_UPGRADES = [
     },
     {
         level: 21,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 48
         },
@@ -206,7 +206,7 @@ const DS_T2_TITAN_WEAPON_UPGRADES = [
     },
     {
         level: 22,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 50
         },
@@ -216,7 +216,7 @@ const DS_T2_TITAN_WEAPON_UPGRADES = [
     },
     {
         level: 23,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 51
         },
@@ -226,7 +226,7 @@ const DS_T2_TITAN_WEAPON_UPGRADES = [
     },
     {
         level: 24,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 53
         },
@@ -236,7 +236,7 @@ const DS_T2_TITAN_WEAPON_UPGRADES = [
     },
     {
         level: 25,
-        cost: {
+        upgradeCost: {
             currency: 'Platinum',
             value: 54
         },
