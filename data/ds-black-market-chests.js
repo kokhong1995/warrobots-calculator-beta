@@ -1,7 +1,7 @@
 const DS_BLACK_MARKET_CHESTS = [
     {
         name: 'Superchest',
-        keys: 15000,
+        keys: 100000,
         eventSpecific: false
     },
     {

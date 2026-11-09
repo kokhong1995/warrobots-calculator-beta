@@ -7,14 +7,14 @@
     <title>War Robots Calculator: Robot Weapon Upgrade Cost Calculator</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/warrobots-calculator-beta/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/warrobots-calculator-beta/apple-touch-icon.png">
-    <link rel="stylesheet" href="/warrobots-calculator-beta/bootstrap-5.3.8-dist/css/bootstrap.min.css?v=1.15.3-beta">
-    <link rel="stylesheet" href="/warrobots-calculator-beta/css/index.css?v=1.15.3-beta">
-    <link rel="stylesheet" href="./css/robot-weapon-upgrade-costs.css?v=1.15.3-beta">
-    <script src="/warrobots-calculator-beta/data/ds-t1-robot-weapon-upgrades.js?v=1.15.3-beta"></script>
-    <script src="/warrobots-calculator-beta/data/ds-t2-robot-weapon-upgrades.js?v=1.15.3-beta"></script>
-    <script src="/warrobots-calculator-beta/data/ds-t3-robot-weapon-upgrades.js?v=1.15.3-beta"></script>
-    <script src="/warrobots-calculator-beta/data/ds-t4-robot-weapon-upgrades.js?v=1.15.3-beta"></script>
-    <script type="module" src="./js/robot-weapon-upgrade-costs.js?v=1.15.3-beta"></script>
+    <link rel="stylesheet" href="/warrobots-calculator-beta/bootstrap-5.3.8-dist/css/bootstrap.min.css?v=1.15.4-beta">
+    <link rel="stylesheet" href="/warrobots-calculator-beta/css/index.css?v=1.15.4-beta">
+    <link rel="stylesheet" href="./css/robot-weapon-upgrade-costs.css?v=1.15.4-beta">
+    <script src="/warrobots-calculator-beta/data/ds-t1-robot-weapon-upgrades.js?v=1.15.4-beta"></script>
+    <script src="/warrobots-calculator-beta/data/ds-t2-robot-weapon-upgrades.js?v=1.15.4-beta"></script>
+    <script src="/warrobots-calculator-beta/data/ds-t3-robot-weapon-upgrades.js?v=1.15.4-beta"></script>
+    <script src="/warrobots-calculator-beta/data/ds-t4-robot-weapon-upgrades.js?v=1.15.4-beta"></script>
+    <script type="module" src="./js/robot-weapon-upgrade-costs.js?v=1.15.4-beta"></script>
 </head>
 
 <body>
@@ -106,14 +106,14 @@
                                         </li>
                                         <li class="mb-2">
                                             <strong>Select Upgrades:</strong> Input your planned
-                                            <a href="#containerT1WeaponUpgrades" class="text-decoration-underline">Tier
-                                                1</a>,
-                                            <a href="#containerT2WeaponUpgrades" class="text-decoration-underline">Tier
-                                                2</a>,
-                                            <a href="#containerT3WeaponUpgrades" class="text-decoration-underline">Tier
-                                                3</a>, or
                                             <a href="#containerT4WeaponUpgrades" class="text-decoration-underline">Tier
-                                                4</a> Weapon Upgrades. Use quick actions for faster entry.
+                                                4</a>,
+                                            <a href="#containerT3WeaponUpgrades" class="text-decoration-underline">Tier
+                                                3</a>,
+                                            <a href="#containerT2WeaponUpgrades" class="text-decoration-underline">Tier
+                                                2</a>, or
+                                            <a href="#containerT1WeaponUpgrades" class="text-decoration-underline">Tier
+                                                1</a> Weapon Upgrades. Use quick actions for faster entry.
                                         </li>
                                         <li>
                                             <strong>Review Results:</strong>
@@ -176,20 +176,20 @@
                         </div>
                     </div>
                 </div>
-                <!-- Tier 1 Weapon Upgrades -->
+                <!-- Tier 4 Weapon Upgrades -->
                 <div class="card mb-4">
                     <div class="card-header">
                         <div class="row align-items-center justify-content-between">
                             <div class="col-auto">
                                 <div class="d-flex align-items-center">
-                                    <span class="fw-bold">Tier 1 Weapon Upgrades</span>
+                                    <span class="fw-bold">Tier 4 Weapon Upgrades</span>
                                     &nbsp;
                                     <button type="button"
                                         class="btn btn-link text-secondary p-0 border-0 lh-1 small text-decoration-none"
                                         data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="focus"
-                                        data-bs-html="true" data-bs-title="Tier 1 Weapon Upgrades"
-                                        data-bs-content="<p class='mb-2'>Calculate upgrade costs from MK1: Level 2 to MK3.</p><p class='fw-semibold mb-1'>Quick Actions:</p><ul class='ps-3 mb-0'><li><strong>MK1 to MK2:</strong> Increase upgrade quantities from MK1: Level 2 to MK2 by 1.</li><li><strong>MK2 to MK3:</strong> Increase upgrade quantities from MK2: Level 2 to MK3 by 1.</li><li><strong>Reset:</strong> Reset all upgrade quantities to 0.</li></ul>"
-                                        aria-label="Tier 1 Weapon Upgrades">
+                                        data-bs-html="true" data-bs-title="Tier 4 Weapon Upgrades"
+                                        data-bs-content="<p class='mb-2'>Calculate upgrade costs from MK1: Level 2 to MK3.</p><p class='fw-semibold mb-1'>Quick Actions:</p><ul class='ps-3 mb-0'><li><strong>MK1 to MK2:</strong> Increase upgrade quantities from MK1: Level 2 to MK2 by 1.</li><li><strong>MK2 to MK3:</strong> Increase upgrade quantities from MK2: Level 2 to MK3 by 1.</li><li><strong>Reset:</strong> Reset all upgrade quantities to 0.</li></ul><small class='text-muted d-block mt-2'>As of Oct 4, 2026</small>"
+                                        aria-label="Tier 4 Weapon Upgrades">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" viewBox="0 0 16 16">
                                             <path
@@ -203,16 +203,16 @@
                             <div class="col-auto">
                                 <div class="row gx-2">
                                     <div class="col-auto mt-2 mt-md-0">
-                                        <button type="button" class="btn btn-sm btn-outline-t1"
-                                            id="buttonPresetT1WeaponUpgrades_0">MK1 to MK2</button>
+                                        <button type="button" class="btn btn-sm btn-outline-t4"
+                                            id="buttonPresetT4WeaponUpgrades_0">MK1 to MK2</button>
                                     </div>
                                     <div class="col-auto mt-2 mt-md-0">
-                                        <button type="button" class="btn btn-sm btn-outline-t1"
-                                            id="buttonPresetT1WeaponUpgrades_1">MK2 to MK3</button>
+                                        <button type="button" class="btn btn-sm btn-outline-t4"
+                                            id="buttonPresetT4WeaponUpgrades_1">MK2 to MK3</button>
                                     </div>
                                     <div class="col-auto mt-2 mt-md-0">
                                         <button type="button" class="btn btn-sm btn-outline-danger"
-                                            id="buttonResetT1WeaponUpgrades">Reset</button>
+                                            id="buttonResetT4WeaponUpgrades">Reset</button>
                                     </div>
                                 </div>
                             </div>
@@ -220,55 +220,7 @@
                     </div>
                     <div class="card-body">
                         <div class="container-fluid px-0">
-                            <div id="containerT1WeaponUpgrades" class="row g-2"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Tier 2 Weapon Upgrades -->
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <div class="row align-items-center justify-content-between">
-                            <div class="col-auto">
-                                <div class="d-flex align-items-center">
-                                    <span class="fw-bold">Tier 2 Weapon Upgrades</span>
-                                    &nbsp;
-                                    <button type="button"
-                                        class="btn btn-link text-secondary p-0 border-0 lh-1 small text-decoration-none"
-                                        data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="focus"
-                                        data-bs-html="true" data-bs-title="Tier 2 Weapon Upgrades"
-                                        data-bs-content="<p class='mb-2'>Calculate upgrade costs from MK1: Level 2 to MK3.</p><p class='fw-semibold mb-1'>Quick Actions:</p><ul class='ps-3 mb-0'><li><strong>MK1 to MK2:</strong> Increase upgrade quantities from MK1: Level 2 to MK2 by 1.</li><li><strong>MK2 to MK3:</strong> Increase upgrade quantities from MK2: Level 2 to MK3 by 1.</li><li><strong>Reset:</strong> Reset all upgrade quantities to 0.</li></ul>"
-                                        aria-label="Tier 2 Weapon Upgrades">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" viewBox="0 0 16 16">
-                                            <path
-                                                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                            <path
-                                                d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-auto">
-                                <div class="row gx-2">
-                                    <div class="col-auto mt-2 mt-md-0">
-                                        <button type="button" class="btn btn-sm btn-outline-t2"
-                                            id="buttonPresetT2WeaponUpgrades_0">MK1 to MK2</button>
-                                    </div>
-                                    <div class="col-auto mt-2 mt-md-0">
-                                        <button type="button" class="btn btn-sm btn-outline-t2"
-                                            id="buttonPresetT2WeaponUpgrades_1">MK2 to MK3</button>
-                                    </div>
-                                    <div class="col-auto mt-2 mt-md-0">
-                                        <button type="button" class="btn btn-sm btn-outline-danger"
-                                            id="buttonResetT2WeaponUpgrades">Reset</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="container-fluid px-0">
-                            <div id="containerT2WeaponUpgrades" class="row g-2"></div>
+                            <div id="containerT4WeaponUpgrades" class="row g-2"></div>
                         </div>
                     </div>
                 </div>
@@ -284,7 +236,7 @@
                                         class="btn btn-link text-secondary p-0 border-0 lh-1 small text-decoration-none"
                                         data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="focus"
                                         data-bs-html="true" data-bs-title="Tier 3 Weapon Upgrades"
-                                        data-bs-content="<p class='mb-2'>Calculate upgrade costs from MK1: Level 2 to MK3.</p><p class='fw-semibold mb-1'>Quick Actions:</p><ul class='ps-3 mb-0'><li><strong>MK1 to MK2:</strong> Increase upgrade quantities from MK1: Level 2 to MK2 by 1.</li><li><strong>MK2 to MK3:</strong> Increase upgrade quantities from MK2: Level 2 to MK3 by 1.</li><li><strong>Reset:</strong> Reset all upgrade quantities to 0.</li></ul>"
+                                        data-bs-content="<p class='mb-2'>Calculate upgrade costs from MK1: Level 2 to MK3.</p><p class='fw-semibold mb-1'>Quick Actions:</p><ul class='ps-3 mb-0'><li><strong>MK1 to MK2:</strong> Increase upgrade quantities from MK1: Level 2 to MK2 by 1.</li><li><strong>MK2 to MK3:</strong> Increase upgrade quantities from MK2: Level 2 to MK3 by 1.</li><li><strong>Reset:</strong> Reset all upgrade quantities to 0.</li></ul><small class='text-muted d-block mt-2'>As of Sep 20, 2026</small>"
                                         aria-label="Tier 3 Weapon Upgrades">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" viewBox="0 0 16 16">
@@ -320,20 +272,20 @@
                         </div>
                     </div>
                 </div>
-                <!-- Tier 4 Weapon Upgrades -->
-                <div class="card">
+                <!-- Tier 2 Weapon Upgrades -->
+                <div class="card mb-4">
                     <div class="card-header">
                         <div class="row align-items-center justify-content-between">
                             <div class="col-auto">
                                 <div class="d-flex align-items-center">
-                                    <span class="fw-bold">Tier 4 Weapon Upgrades</span>
+                                    <span class="fw-bold">Tier 2 Weapon Upgrades</span>
                                     &nbsp;
                                     <button type="button"
                                         class="btn btn-link text-secondary p-0 border-0 lh-1 small text-decoration-none"
                                         data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="focus"
-                                        data-bs-html="true" data-bs-title="Tier 4 Weapon Upgrades"
-                                        data-bs-content="<p class='mb-2'>Calculate upgrade costs from MK1: Level 2 to MK3.</p><p class='fw-semibold mb-1'>Quick Actions:</p><ul class='ps-3 mb-0'><li><strong>MK1 to MK2:</strong> Increase upgrade quantities from MK1: Level 2 to MK2 by 1.</li><li><strong>MK2 to MK3:</strong> Increase upgrade quantities from MK2: Level 2 to MK3 by 1.</li><li><strong>Reset:</strong> Reset all upgrade quantities to 0.</li></ul>"
-                                        aria-label="Tier 4 Weapon Upgrades">
+                                        data-bs-html="true" data-bs-title="Tier 2 Weapon Upgrades"
+                                        data-bs-content="<p class='mb-2'>Calculate upgrade costs from MK1: Level 2 to MK3.</p><p class='fw-semibold mb-1'>Quick Actions:</p><ul class='ps-3 mb-0'><li><strong>MK1 to MK2:</strong> Increase upgrade quantities from MK1: Level 2 to MK2 by 1.</li><li><strong>MK2 to MK3:</strong> Increase upgrade quantities from MK2: Level 2 to MK3 by 1.</li><li><strong>Reset:</strong> Reset all upgrade quantities to 0.</li></ul><small class='text-muted d-block mt-2'>As of Sep 13, 2026</small>"
+                                        aria-label="Tier 2 Weapon Upgrades">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" viewBox="0 0 16 16">
                                             <path
@@ -347,16 +299,16 @@
                             <div class="col-auto">
                                 <div class="row gx-2">
                                     <div class="col-auto mt-2 mt-md-0">
-                                        <button type="button" class="btn btn-sm btn-outline-t4"
-                                            id="buttonPresetT4WeaponUpgrades_0">MK1 to MK2</button>
+                                        <button type="button" class="btn btn-sm btn-outline-t2"
+                                            id="buttonPresetT2WeaponUpgrades_0">MK1 to MK2</button>
                                     </div>
                                     <div class="col-auto mt-2 mt-md-0">
-                                        <button type="button" class="btn btn-sm btn-outline-t4"
-                                            id="buttonPresetT4WeaponUpgrades_1">MK2 to MK3</button>
+                                        <button type="button" class="btn btn-sm btn-outline-t2"
+                                            id="buttonPresetT2WeaponUpgrades_1">MK2 to MK3</button>
                                     </div>
                                     <div class="col-auto mt-2 mt-md-0">
                                         <button type="button" class="btn btn-sm btn-outline-danger"
-                                            id="buttonResetT4WeaponUpgrades">Reset</button>
+                                            id="buttonResetT2WeaponUpgrades">Reset</button>
                                     </div>
                                 </div>
                             </div>
@@ -364,7 +316,55 @@
                     </div>
                     <div class="card-body">
                         <div class="container-fluid px-0">
-                            <div id="containerT4WeaponUpgrades" class="row g-2"></div>
+                            <div id="containerT2WeaponUpgrades" class="row g-2"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tier 1 Weapon Upgrades -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-auto">
+                                <div class="d-flex align-items-center">
+                                    <span class="fw-bold">Tier 1 Weapon Upgrades</span>
+                                    &nbsp;
+                                    <button type="button"
+                                        class="btn btn-link text-secondary p-0 border-0 lh-1 small text-decoration-none"
+                                        data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="focus"
+                                        data-bs-html="true" data-bs-title="Tier 1 Weapon Upgrades"
+                                        data-bs-content="<p class='mb-2'>Calculate upgrade costs from MK1: Level 2 to MK3.</p><p class='fw-semibold mb-1'>Quick Actions:</p><ul class='ps-3 mb-0'><li><strong>MK1 to MK2:</strong> Increase upgrade quantities from MK1: Level 2 to MK2 by 1.</li><li><strong>MK2 to MK3:</strong> Increase upgrade quantities from MK2: Level 2 to MK3 by 1.</li><li><strong>Reset:</strong> Reset all upgrade quantities to 0.</li></ul><small class='text-muted d-block mt-2'>As of Sep 6, 2026</small>"
+                                        aria-label="Tier 1 Weapon Upgrades">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                            <path
+                                                d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="row gx-2">
+                                    <div class="col-auto mt-2 mt-md-0">
+                                        <button type="button" class="btn btn-sm btn-outline-t1"
+                                            id="buttonPresetT1WeaponUpgrades_0">MK1 to MK2</button>
+                                    </div>
+                                    <div class="col-auto mt-2 mt-md-0">
+                                        <button type="button" class="btn btn-sm btn-outline-t1"
+                                            id="buttonPresetT1WeaponUpgrades_1">MK2 to MK3</button>
+                                    </div>
+                                    <div class="col-auto mt-2 mt-md-0">
+                                        <button type="button" class="btn btn-sm btn-outline-danger"
+                                            id="buttonResetT1WeaponUpgrades">Reset</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="container-fluid px-0">
+                            <div id="containerT1WeaponUpgrades" class="row g-2"></div>
                         </div>
                     </div>
                 </div>
@@ -424,12 +424,12 @@
             </div>
             <div class="d-flex align-items-center gap-2">
                 <span
-                    class="badge text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-pill">v1.15.3-beta</span>
-                <small class="text-muted">Updated Oct 20, 2026</small>
+                    class="badge text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-pill">v1.15.4-beta</span>
+                <small class="text-muted">Updated Nov 9, 2026</small>
             </div>
         </div>
     </footer>
-    <script src="/warrobots-calculator-beta/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js?v=1.15.3-beta"></script>
+    <script src="/warrobots-calculator-beta/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js?v=1.15.4-beta"></script>
 </body>
 
 </html>

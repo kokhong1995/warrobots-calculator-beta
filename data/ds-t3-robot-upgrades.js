@@ -2,287 +2,365 @@ const DS_T3_ROBOT_UPGRADES = [
     {
         mark: 1,
         level: 1,
-        silverAmount: 0,
-        goldAmount: 0,
-        upgradeDurationSeconds: 0,
-        upgradeTokens: 0,
-        points: {
-            fightToTheDeath: 0
-        }
+        upgradeCost: false,
+        upgradeDurationSeconds: false,
+        instantUpgradeCost: false
     },
     {
         mark: 1,
         level: 2,
-        silverAmount: 100000, // 100 thousand.
-        goldAmount: 40,
+        upgradeCost: {
+            currency: 'Silver',
+            value: 100000 // 100 thousand.
+        },
         upgradeDurationSeconds: 7200, // 2 hours.
-        upgradeTokens: 0,
-        points: {
-            fightToTheDeath: 25
-        }
+        instantUpgradeCost: [
+            {
+                currency: 'Gold',
+                value: 40
+            }
+        ]
     },
     {
         mark: 1,
         level: 3,
-        silverAmount: 200000, // 200 thousand.
-        goldAmount: 82,
+        upgradeCost: {
+            currency: 'Silver',
+            value: 200000 // 200 thousand.
+        },
         upgradeDurationSeconds: 18000, // 5 hours.
-        upgradeTokens: 0,
-        points: {
-            fightToTheDeath: 25
-        }
+        instantUpgradeCost: [
+            {
+                currency: 'Gold',
+                value: 82
+            }
+        ]
     },
     {
         mark: 1,
         level: 4,
-        silverAmount: 400000, // 400 thousand.
-        goldAmount: 209,
+        upgradeCost: {
+            currency: 'Silver',
+            value: 400000 // 400 thousand.
+        },
         upgradeDurationSeconds: 50400, // 14 hours.
-        upgradeTokens: 0,
-        points: {
-            fightToTheDeath: 25
-        }
+        instantUpgradeCost: [
+            {
+                currency: 'Gold',
+                value: 209
+            }
+        ]
     },
     {
         mark: 1,
         level: 5,
-        silverAmount: 2000000, // 2 million.
-        goldAmount: 369,
+        upgradeCost: {
+            currency: 'Silver',
+            value: 2000000 // 2 million.
+        },
         upgradeDurationSeconds: 100800, // 28 hours.
-        upgradeTokens: 0,
-        points: {
-            fightToTheDeath: 50
-        }
+        instantUpgradeCost: [
+            {
+                currency: 'Gold',
+                value: 369
+            }
+        ]
     },
     {
         mark: 1,
         level: 6,
-        silverAmount: 3000000, // 3 million.
-        goldAmount: 459,
+        upgradeCost: {
+            currency: 'Silver',
+            value: 3000000 // 3 million.
+        },
         upgradeDurationSeconds: 172800, // 2 days.
-        upgradeTokens: 0,
-        points: {
-            fightToTheDeath: 50
-        }
+        instantUpgradeCost: [
+            {
+                currency: 'Gold',
+                value: 459
+            }
+        ]
     },
     {
         mark: 1,
         level: 7,
-        silverAmount: 4000000, // 4 million.
-        goldAmount: 540,
+        upgradeCost: {
+            currency: 'Silver',
+            value: 4000000 // 4 million.
+        },
         upgradeDurationSeconds: 237600, // 2 days 18 hours.
-        upgradeTokens: 0,
-        points: {
-            fightToTheDeath: 50
-        }
+        instantUpgradeCost: [
+            {
+                currency: 'Gold',
+                value: 540
+            }
+        ]
     },
     {
         mark: 1,
         level: 8,
-        silverAmount: 6000000, // 6 million.
-        goldAmount: 648,
+        upgradeCost: {
+            currency: 'Silver',
+            value: 6000000 // 6 million.
+        },
         upgradeDurationSeconds: 324000, // 3 days 18 hours.
-        upgradeTokens: 0,
-        points: {
-            fightToTheDeath: 75
-        }
+        instantUpgradeCost: [
+            {
+                currency: 'Gold',
+                value: 648
+            }
+        ]
     },
     {
         mark: 1,
         level: 9,
-        silverAmount: 8000000, // 8 million.
-        goldAmount: 721,
+        upgradeCost: {
+            currency: 'Silver',
+            value: 8000000 // 8 million.
+        },
         upgradeDurationSeconds: 381600, // 4 days 10 hours.
-        upgradeTokens: 0,
-        points: {
-            fightToTheDeath: 75
-        }
+        instantUpgradeCost: [
+            {
+                currency: 'Gold',
+                value: 721
+            }
+        ]
     },
     {
         mark: 1,
         level: 10,
-        silverAmount: 10000000, // 10 million.
-        goldAmount: 766,
+        upgradeCost: {
+            currency: 'Silver',
+            value: 10000000 // 10 million.
+        },
         upgradeDurationSeconds: 417600, // 4 days 20 hours.
-        upgradeTokens: 0,
-        points: {
-            fightToTheDeath: 100
-        }
+        instantUpgradeCost: [
+            {
+                currency: 'Gold',
+                value: 766
+            }
+        ]
     },
     {
         mark: 1,
         level: 11,
-        silverAmount: 12000000, // 12 million.
-        goldAmount: 802,
+        upgradeCost: {
+            currency: 'Silver',
+            value: 12000000 // 12 million.
+        },
         upgradeDurationSeconds: 446400, // 5 days 4 hours.
-        upgradeTokens: 0,
-        points: {
-            fightToTheDeath: 100
-        }
+        instantUpgradeCost: [
+            {
+                currency: 'Gold',
+                value: 802
+            }
+        ]
     },
     {
         mark: 1,
         level: 12,
-        silverAmount: 16000000, // 16 million.
-        goldAmount: 829,
+        upgradeCost: {
+            currency: 'Silver',
+            value: 16000000 // 16 million.
+        },
         upgradeDurationSeconds: 468000, // 5 days 10 hours.
-        upgradeTokens: 0,
-        points: {
-            fightToTheDeath: 100
-        }
+        instantUpgradeCost: [
+            {
+                currency: 'Gold',
+                value: 829
+            }
+        ]
     },
     {
         mark: 2,
         level: 0,
-        silverAmount: 0,
-        goldAmount: 500,
+        upgradeCost: {
+            currency: 'Gold',
+            value: 500
+        },
         upgradeDurationSeconds: 0,
-        upgradeTokens: 0,
-        points: {
-            fightToTheDeath: 250
-        }
+        instantUpgradeCost: false
     },
     {
         mark: 2,
         level: 1,
-        silverAmount: 0,
-        goldAmount: 0,
-        upgradeDurationSeconds: 0,
-        upgradeTokens: 0,
-        points: {
-            fightToTheDeath: 0
-        }
+        upgradeCost: false,
+        upgradeDurationSeconds: false,
+        instantUpgradeCost: false
     },
     {
         mark: 2,
         level: 2,
-        silverAmount: 18000000, // 18 million.
-        goldAmount: 181,
+        upgradeCost: {
+            currency: 'Silver',
+            value: 18000000 // 18 million.
+        },
         upgradeDurationSeconds: 43200, // 12 hours.
-        upgradeTokens: 0,
-        points: {
-            fightToTheDeath: 100
-        }
+        instantUpgradeCost: [
+            {
+                currency: 'Gold',
+                value: 181
+            }
+        ]
     },
     {
         mark: 2,
         level: 3,
-        silverAmount: 19500000, // 19.5 million.
-        goldAmount: 350,
+        upgradeCost: {
+            currency: 'Silver',
+            value: 19500000 // 19.5 million.
+        },
         upgradeDurationSeconds: 86400, // 1 day.
-        upgradeTokens: 0,
-        points: {
-            fightToTheDeath: 100
-        }
+        instantUpgradeCost: [
+            {
+                currency: 'Gold',
+                value: 350
+            }
+        ]
     },
     {
         mark: 2,
         level: 4,
-        silverAmount: 21000000, // 21 million.
-        goldAmount: 405,
+        upgradeCost: {
+            currency: 'Silver',
+            value: 21000000 // 21 million.
+        },
         upgradeDurationSeconds: 129600, // 1 day 12 hours.
-        upgradeTokens: 0,
-        points: {
-            fightToTheDeath: 100
-        }
+        instantUpgradeCost: [
+            {
+                currency: 'Gold',
+                value: 405
+            }
+        ]
     },
     {
         mark: 2,
         level: 5,
-        silverAmount: 22500000, // 22.5 million.
-        goldAmount: 405,
+        upgradeCost: {
+            currency: 'Silver',
+            value: 22500000 // 22.5 million.
+        },
         upgradeDurationSeconds: 129600, // 1 day 12 hours.
-        upgradeTokens: 0,
-        points: {
-            fightToTheDeath: 125
-        }
+        instantUpgradeCost: [
+            {
+                currency: 'Gold',
+                value: 405
+            }
+        ]
     },
     {
         mark: 2,
         level: 6,
-        silverAmount: 24000000, // 24 million.
-        goldAmount: 405,
+        upgradeCost: {
+            currency: 'Silver',
+            value: 24000000 // 24 million.
+        },
         upgradeDurationSeconds: 129600, // 1 day 12 hours.
-        upgradeTokens: 0,
-        points: {
-            fightToTheDeath: 125
-        }
+        instantUpgradeCost: [
+            {
+                currency: 'Gold',
+                value: 405
+            }
+        ]
     },
     {
         mark: 2,
         level: 7,
-        silverAmount: 25500000, // 25.5 million.
-        goldAmount: 405,
+        upgradeCost: {
+            currency: 'Silver',
+            value: 25500000 // 25.5 million.
+        },
         upgradeDurationSeconds: 129600, // 1 day 12 hours.
-        upgradeTokens: 0,
-        points: {
-            fightToTheDeath: 125
-        }
+        instantUpgradeCost: [
+            {
+                currency: 'Gold',
+                value: 405
+            }
+        ]
     },
     {
         mark: 2,
         level: 8,
-        silverAmount: 27000000, // 27 million.
-        goldAmount: 405,
+        upgradeCost: {
+            currency: 'Silver',
+            value: 27000000 // 27 million.
+        },
         upgradeDurationSeconds: 129600, // 1 day 12 hours.
-        upgradeTokens: 0,
-        points: {
-            fightToTheDeath: 125
-        }
+        instantUpgradeCost: [
+            {
+                currency: 'Gold',
+                value: 405
+            }
+        ]
     },
     {
         mark: 2,
         level: 9,
-        silverAmount: 28500000, // 28.5 million.
-        goldAmount: 405,
+        upgradeCost: {
+            currency: 'Silver',
+            value: 28500000 // 28.5 million.
+        },
         upgradeDurationSeconds: 129600, // 1 day 12 hours.
-        upgradeTokens: 0,
-        points: {
-            fightToTheDeath: 125
-        }
+        instantUpgradeCost: [
+            {
+                currency: 'Gold',
+                value: 405
+            }
+        ]
     },
     {
         mark: 2,
         level: 10,
-        silverAmount: 30000000, // 30 million.
-        goldAmount: 405,
+        upgradeCost: {
+            currency: 'Silver',
+            value: 30000000 // 30 million.
+        },
         upgradeDurationSeconds: 129600, // 1 day 12 hours.
-        upgradeTokens: 0,
-        points: {
-            fightToTheDeath: 125
-        }
+        instantUpgradeCost: [
+            {
+                currency: 'Gold',
+                value: 405
+            }
+        ]
     },
     {
         mark: 2,
         level: 11,
-        silverAmount: 31500000, // 31.5 million.
-        goldAmount: 405,
+        upgradeCost: {
+            currency: 'Silver',
+            value: 31500000 // 31.5 million.
+        },
         upgradeDurationSeconds: 129600, // 1 day 12 hours.
-        upgradeTokens: 0,
-        points: {
-            fightToTheDeath: 125
-        }
+        instantUpgradeCost: [
+            {
+                currency: 'Gold',
+                value: 405
+            }
+        ]
     },
     {
         mark: 2,
         level: 12,
-        silverAmount: 33000000, // 33 million.
-        goldAmount: 405,
+        upgradeCost: {
+            currency: 'Silver',
+            value: 33000000, // 33 million.
+        },
         upgradeDurationSeconds: 129600, // 1 day 12 hours.
-        upgradeTokens: 0,
-        points: {
-            fightToTheDeath: 125
-        }
+        instantUpgradeCost: [
+            {
+                currency: 'Gold',
+                value: 405
+            }
+        ]
     },
     {
         mark: 3,
         level: 0,
-        silverAmount: 0,
-        goldAmount: 0,
+        upgradeCost: {
+            currency: 'UpgradeToken',
+            value: 3
+        },
         upgradeDurationSeconds: 0,
-        upgradeTokens: 3,
-        points: {
-            fightToTheDeath: 1000
-        }
+        instantUpgradeCost: false
     }
 ];

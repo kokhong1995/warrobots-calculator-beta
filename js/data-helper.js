@@ -163,9 +163,110 @@ function getPilotRushPointByData(leaderboardData, data) {
     }
 }
 
+function getFightToTheDeathPointByData(leaderboardData, data) {
+    if (data.mark < 1 || data.mark > 3 || data.level < 0 || data.level > 12) {
+        return 0;
+    }
+    // MK1.
+    else if (data.mark == 1) {
+        switch (data.level) {
+            case 2: case 3: case 4:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    t4Robot: 25,
+                    t4Weapon: 25,
+                    t3Robot: 25,
+                    t3Weapon: 25
+                });
+                break;
+            case 5: case 6: case 7:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    t4Robot: 50,
+                    t4Weapon: 50,
+                    t3Robot: 50,
+                    t3Weapon: 50
+                });
+                break;
+            case 8: case 9:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    t4Robot: 90,
+                    t4Weapon: 90,
+                    t3Robot: 75,
+                    t3Weapon: 75
+                });
+                break;
+            case 10: case 11: case 12:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    t4Robot: 125,
+                    t4Weapon: 125,
+                    t3Robot: 100,
+                    t3Weapon: 100
+                });
+                break;
+            default:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    t4Robot: 0,
+                    t4Weapon: 0,
+                    t3Robot: 0,
+                    t3Weapon: 0
+                });
+                break;
+        }
+    }
+    // MK2.
+    else if (data.mark == 2) {
+        switch (data.level) {
+            case 0:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    t4Robot: 250,
+                    t4Weapon: 250,
+                    t3Robot: 250,
+                    t3Weapon: 250
+                });
+                break;
+            case 2: case 3: case 4:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    t4Robot: 125,
+                    t4Weapon: 125,
+                    t3Robot: 100,
+                    t3Weapon: 100
+                });
+                break;
+            case 5: case 6: case 7: case 8:
+            case 9: case 10: case 11: case 12:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    t4Robot: 150,
+                    t4Weapon: 150,
+                    t3Robot: 125,
+                    t3Weapon: 125
+                });
+                break;
+            default:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    t4Robot: 0,
+                    t4Weapon: 0,
+                    t3Robot: 0,
+                    t3Weapon: 0
+                });
+                break;
+        }
+    }
+    // MK3.
+    else if (data.level == 0) {
+        return getLeaderboardPointByType(leaderboardData.type, {
+            t4Robot: 1000,
+            t4Weapon: 1000,
+            t3Robot: 1000,
+            t3Weapon: 1000
+        });
+    }
+}
+
 const getLeaderboardPoints = (leaderboardData, data) => {
     if (leaderboardData.name == 'PilotRush') {
         return getPilotRushPointByData(leaderboardData, data);
+    }
+    else if (leaderboardData.name == 'FightToTheDeath') {
+        return getFightToTheDeathPointByData(leaderboardData, data);
     }
     else {
         return 0;

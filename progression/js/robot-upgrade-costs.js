@@ -1,6 +1,6 @@
-import { toInt, thousandSeperator, getStrLevel, getStrAmount, getStrDuration } from '/warrobots-calculator-beta/js/data-helper.js?v=1.15.3-beta';
-import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.15.3-beta';
-import { applyUpgradeDiscountPercentage } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.15.3-beta';
+import { toInt, thousandSeperator, getStrLevel, getStrAmount, getStrDuration } from '/warrobots-calculator-beta/js/data-helper.js?v=1.15.4-beta';
+import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.15.4-beta';
+import { applyUpgradeDiscountPercentage } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.15.4-beta';
 
 function updateInputValue(eventType, inputId) {
     updateNumberInput(eventType, inputId, syncData);
@@ -17,47 +17,62 @@ function syncData() {
     let upgradeDiscountPercentage = 0;
     let quantity = 0, silverAmount = 0, goldAmount = 0, upgradeDuration = 0, upgradeTokens = 0;
     let totalQuantity = 0, totalSilverAmount = 0, totalGoldAmount = 0, totalUpgradeDuration = 0, totalUpgradeTokens = 0;
-    let i, j;
+    let i, j, k;
 
     upgradeDiscountPercentage = Math.abs(toInt(inputUpgradeDiscountPercentage.value));
 
     for (i = 0; i < DS_ROBOT_UPGRADE_COSTS.length; i++) {
         for (j = 0; j < DS_ROBOT_UPGRADE_COSTS[i].length; j++) {
-            if (DS_ROBOT_UPGRADE_COSTS[i][j].level == 1) {
+            if (DS_ROBOT_UPGRADE_COSTS[i][j].upgradeCost == false) {
                 continue;
             }
 
             inputQuantity = document.getElementById(`inputQuantity${TYPES[i]}_${j}`);
-            spanSilverAmount = document.getElementById(`spanSilverAmount${TYPES[i]}_${j}`);
-            spanGoldAmount = document.getElementById(`spanGoldAmount${TYPES[i]}_${j}`);
-            spanUpgradeDuration = document.getElementById(`spanUpgradeDuration${TYPES[i]}_${j}`);
-            spanUpgradeTokens = document.getElementById(`spanUpgradeTokens${TYPES[i]}_${j}`);
-
             quantity = toInt(inputQuantity.value);
-            silverAmount = applyUpgradeDiscountPercentage(upgradeDiscountPercentage, DS_ROBOT_UPGRADE_COSTS[i][j].silverAmount) * quantity;
-            // Gold amount for enhancing to MK2 is discountable. 
-            if (DS_ROBOT_UPGRADE_COSTS[i][j].mark == 2 && DS_ROBOT_UPGRADE_COSTS[i][j].level == 0) {
-                goldAmount = applyUpgradeDiscountPercentage(upgradeDiscountPercentage, DS_ROBOT_UPGRADE_COSTS[i][j].goldAmount) * quantity;
-            }
-            else {
-                goldAmount = DS_ROBOT_UPGRADE_COSTS[i][j].goldAmount * quantity;
-            }
-            upgradeDuration = DS_ROBOT_UPGRADE_COSTS[i][j].upgradeDurationSeconds * quantity;
-            upgradeTokens = DS_ROBOT_UPGRADE_COSTS[i][j].upgradeTokens * quantity;
-
-            spanSilverAmount.textContent = getStrAmount(silverAmount);
-            spanSilverAmount.parentElement.title = thousandSeperator(silverAmount, ' ') + ' Silver';
-            spanGoldAmount.textContent = getStrAmount(goldAmount);
-            spanGoldAmount.parentElement.title = thousandSeperator(goldAmount, ' ') + ' Gold';
-            spanUpgradeDuration.textContent = getStrDuration(upgradeDuration);
-            spanUpgradeTokens.textContent = getStrAmount(upgradeTokens);
-            spanUpgradeTokens.parentElement.title = thousandSeperator(upgradeTokens, ' ') + ' Upgrade Tokens';
-
             totalQuantity += quantity;
-            totalSilverAmount += silverAmount;
-            totalGoldAmount += goldAmount;
-            totalUpgradeDuration += upgradeDuration;
-            totalUpgradeTokens += upgradeTokens;
+
+            // Upgrade Cost.
+            if (DS_ROBOT_UPGRADE_COSTS[i][j]['upgradeCost']['currency'] == 'Silver') {
+                spanSilverAmount = document.getElementById(`spanSilverAmount${TYPES[i]}_${j}`);
+                silverAmount = applyUpgradeDiscountPercentage(upgradeDiscountPercentage, DS_ROBOT_UPGRADE_COSTS[i][j]['upgradeCost']['value']) * quantity;
+                spanSilverAmount.textContent = getStrAmount(silverAmount);
+                spanSilverAmount.parentElement.title = thousandSeperator(silverAmount, ' ') + ' Silver';
+                totalSilverAmount += silverAmount;
+            }
+            else if (DS_ROBOT_UPGRADE_COSTS[i][j]['upgradeCost']['currency'] == 'Gold') {
+                spanGoldAmount = document.getElementById(`spanGoldAmount${TYPES[i]}_${j}`);
+                // Gold amount for enhancing to MK2 is discountable.
+                goldAmount = applyUpgradeDiscountPercentage(upgradeDiscountPercentage, DS_ROBOT_UPGRADE_COSTS[i][j]['upgradeCost']['value']) * quantity;
+                spanGoldAmount.textContent = getStrAmount(goldAmount);
+                spanGoldAmount.parentElement.title = thousandSeperator(goldAmount, ' ') + ' Gold';
+                totalGoldAmount += goldAmount;
+            }
+            else if (DS_ROBOT_UPGRADE_COSTS[i][j]['upgradeCost']['currency'] == 'UpgradeToken') {
+                spanUpgradeTokens = document.getElementById(`spanUpgradeTokens${TYPES[i]}_${j}`);
+                upgradeTokens = DS_ROBOT_UPGRADE_COSTS[i][j]['upgradeCost']['value'] * quantity;
+                spanUpgradeTokens.textContent = getStrAmount(upgradeTokens);
+                spanUpgradeTokens.parentElement.title = thousandSeperator(upgradeTokens, ' ') + ' Upgrade Tokens';
+                totalUpgradeTokens += upgradeTokens;
+            }
+            // Upgrade Duration.
+            if (DS_ROBOT_UPGRADE_COSTS[i][j].upgradeDurationSeconds != false) {
+                spanUpgradeDuration = document.getElementById(`spanUpgradeDuration${TYPES[i]}_${j}`);
+                upgradeDuration = DS_ROBOT_UPGRADE_COSTS[i][j].upgradeDurationSeconds * quantity;
+                spanUpgradeDuration.textContent = getStrDuration(upgradeDuration);
+                totalUpgradeDuration += upgradeDuration;
+            }
+            // Instant Upgrade.
+            if (Array.isArray(DS_ROBOT_UPGRADE_COSTS[i][j]['instantUpgradeCost'])) {
+                for (k = 0; k < DS_ROBOT_UPGRADE_COSTS[i][j]['instantUpgradeCost'].length; k++) {
+                    if (DS_ROBOT_UPGRADE_COSTS[i][j]['instantUpgradeCost'][k]['currency'] == 'Gold') {
+                        spanGoldAmount = document.getElementById(`spanGoldAmount${TYPES[i]}_${j}`);
+                        goldAmount = DS_ROBOT_UPGRADE_COSTS[i][j]['instantUpgradeCost'][k]['value'] * quantity;
+                        spanGoldAmount.textContent = getStrAmount(goldAmount);
+                        spanGoldAmount.parentElement.title = thousandSeperator(goldAmount, ' ') + ' Gold';
+                        totalGoldAmount += goldAmount;
+                    }
+                }
+            }
         }
     }
 
@@ -85,7 +100,7 @@ function presetUpgrades(index, type) {
     let i;
 
     for (i = 0; i < DS_ROBOT_UPGRADE_COSTS[index].length; i++) {
-        if (DS_ROBOT_UPGRADE_COSTS[index][i].level == 1) {
+        if (DS_ROBOT_UPGRADE_COSTS[index][i].upgradeCost == false) {
             continue;
         }
 
@@ -134,7 +149,7 @@ function init() {
 
     for (i = 0; i < DS_ROBOT_UPGRADE_COSTS.length; i++) {
         for (j = 0; j < DS_ROBOT_UPGRADE_COSTS[i].length; j++) {
-            if (DS_ROBOT_UPGRADE_COSTS[i][j].level == 1) {
+            if (DS_ROBOT_UPGRADE_COSTS[i][j].upgradeCost == false) {
                 continue;
             }
 
@@ -172,40 +187,40 @@ function init() {
         if (e.target.matches('#buttonResetModifiers')) {
             resetModifiers();
         }
-        if (e.target.matches('#buttonResetT1RobotUpgrades')) {
+        if (e.target.matches('#buttonResetT4RobotUpgrades')) {
             resetUpgrades(0);
         }
-        if (e.target.matches('#buttonResetT2RobotUpgrades')) {
+        if (e.target.matches('#buttonResetT3RobotUpgrades')) {
             resetUpgrades(1);
         }
-        if (e.target.matches('#buttonResetT3RobotUpgrades')) {
+        if (e.target.matches('#buttonResetT2RobotUpgrades')) {
             resetUpgrades(2);
         }
-        if (e.target.matches('#buttonResetT4RobotUpgrades')) {
+        if (e.target.matches('#buttonResetT1RobotUpgrades')) {
             resetUpgrades(3);
         }
-        if (e.target.matches('#buttonPresetT1RobotUpgrades_0')) {
+        if (e.target.matches('#buttonPresetT4RobotUpgrades_0')) {
             presetUpgrades(0, 0);
         }
-        if (e.target.matches('#buttonPresetT1RobotUpgrades_1')) {
+        if (e.target.matches('#buttonPresetT4RobotUpgrades_1')) {
             presetUpgrades(0, 1);
         }
-        if (e.target.matches('#buttonPresetT2RobotUpgrades_0')) {
+        if (e.target.matches('#buttonPresetT3RobotUpgrades_0')) {
             presetUpgrades(1, 0);
         }
-        if (e.target.matches('#buttonPresetT2RobotUpgrades_1')) {
+        if (e.target.matches('#buttonPresetT3RobotUpgrades_1')) {
             presetUpgrades(1, 1);
         }
-        if (e.target.matches('#buttonPresetT3RobotUpgrades_0')) {
+        if (e.target.matches('#buttonPresetT2RobotUpgrades_0')) {
             presetUpgrades(2, 0);
         }
-        if (e.target.matches('#buttonPresetT3RobotUpgrades_1')) {
+        if (e.target.matches('#buttonPresetT2RobotUpgrades_1')) {
             presetUpgrades(2, 1);
         }
-        if (e.target.matches('#buttonPresetT4RobotUpgrades_0')) {
+        if (e.target.matches('#buttonPresetT1RobotUpgrades_0')) {
             presetUpgrades(3, 0);
         }
-        if (e.target.matches('#buttonPresetT4RobotUpgrades_1')) {
+        if (e.target.matches('#buttonPresetT1RobotUpgrades_1')) {
             presetUpgrades(3, 1);
         }
         if (e.target.matches('.btn-decrement')) {
@@ -232,10 +247,10 @@ function init() {
     syncData();
 }
 
-const TYPES = ['T1Robot', 'T2Robot', 'T3Robot', 'T4Robot'];
+const TYPES = ['T4Robot', 'T3Robot', 'T2Robot', 'T1Robot'];
 const DS_ROBOT_UPGRADE_COSTS = [
-    DS_T1_ROBOT_UPGRADES, DS_T2_ROBOT_UPGRADES,
-    DS_T3_ROBOT_UPGRADES, DS_T4_ROBOT_UPGRADES
+    DS_T4_ROBOT_UPGRADES, DS_T3_ROBOT_UPGRADES,
+    DS_T2_ROBOT_UPGRADES, DS_T1_ROBOT_UPGRADES
 ];
 
 init();
