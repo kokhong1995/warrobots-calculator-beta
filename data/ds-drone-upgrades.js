@@ -1,98 +1,83 @@
 const DS_DRONE_UPGRADES = [
     {
         level: 1,
-        microchips: 0,
-        upgradeTokens: 0,
-        points: {
-            stunningDrones: 0
-        }
+        upgradeCost: false
     },
     {
         level: 2,
-        microchips: 40,
-        upgradeTokens: 0,
-        points: {
-            stunningDrones: 120
+        upgradeCost: {
+            currency: 'Microchips',
+            value: 40
         }
     },
     {
         level: 3,
-        microchips: 60,
-        upgradeTokens: 0,
-        points: {
-            stunningDrones: 180
+        upgradeCost: {
+            currency: 'Microchips',
+            value: 60
         }
     },
     {
         level: 4,
-        microchips: 90,
-        upgradeTokens: 0,
-        points: {
-            stunningDrones: 270
+        upgradeCost: {
+            currency: 'Microchips',
+            value: 90
         }
     },
     {
         level: 5,
-        microchips: 100,
-        upgradeTokens: 0,
-        points: {
-            stunningDrones: 300
+        upgradeCost: {
+            currency: 'Microchips',
+            value: 100
         }
     },
     {
         level: 6,
-        microchips: 100,
-        upgradeTokens: 0,
-        points: {
-            stunningDrones: 300
+        upgradeCost: {
+            currency: 'Microchips',
+            value: 100
         }
     },
     {
         level: 7,
-        microchips: 100,
-        upgradeTokens: 0,
-        points: {
-            stunningDrones: 300
+        upgradeCost: {
+            currency: 'Microchips',
+            value: 100
         }
     },
     {
         level: 8,
-        microchips: 120,
-        upgradeTokens: 0,
-        points: {
-            stunningDrones: 360
+        upgradeCost: {
+            currency: 'Microchips',
+            value: 120
         }
     },
     {
         level: 9,
-        microchips: 120,
-        upgradeTokens: 0,
-        points: {
-            stunningDrones: 360
+        upgradeCost: {
+            currency: 'Microchips',
+            value: 120
         }
     },
     {
         level: 10,
-        microchips: 130,
-        upgradeTokens: 0,
-        points: {
-            stunningDrones: 390
+        upgradeCost: {
+            currency: 'Microchips',
+            value: 130
         }
     },
     {
         level: 11,
-        microchips: 140,
-        upgradeTokens: 0,
-        points: {
-            stunningDrones: 420
+        upgradeCost: {
+            currency: 'Microchips',
+            value: 140
         }
     },
     {
         level: 12,
-        microchips: 0,
-        upgradeTokens: 1,
-        points: {
-            stunningDrones: 600
+        upgradeCost: {
+            currency: 'UpgradeToken',
+            value: 1
         }
     }
 ];

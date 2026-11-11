@@ -365,15 +365,48 @@ function getTitanicEffortsPointByData(leaderboardData, data) {
     return 0;
 }
 
+function getStunningDronesPointByData(leaderboardData, data) {
+    if (data.level == 2) {
+        return 120;
+    }
+    else if (data.level == 3) {
+        return 180;
+    }
+    else if (data.level == 4) {
+        return 270;
+    }
+    else if (data.level >= 5 && data.level <= 7) {
+        return 300;
+    }
+    else if (data.level == 8 || data.level == 9) {
+        return 360;
+    }
+    else if (data.level == 10) {
+        return 390;
+    }
+    else if (data.level == 11) {
+        return 420;
+    }
+    else if (data.level == 12) {
+        return 600;
+    }
+    else {
+        return 0;
+    }
+}
+
 const getLeaderboardPoints = (leaderboardData, data) => {
     if (leaderboardData.name == 'FightToTheDeath') {
         return getFightToTheDeathPointByData(leaderboardData, data);
     }
+    else if (leaderboardData.name == 'PilotRush') {
+        return getPilotRushPointByData(leaderboardData, data);
+    }
     else if (leaderboardData.name == 'TitanicEfforts') {
         return getTitanicEffortsPointByData(leaderboardData, data);
     }
-    else if (leaderboardData.name == 'PilotRush') {
-        return getPilotRushPointByData(leaderboardData, data);
+    else if (leaderboardData.name == 'StunningDrones') {
+        return getStunningDronesPointByData(leaderboardData, data);
     }
     else {
         return 0;
