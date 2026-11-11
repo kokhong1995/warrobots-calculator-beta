@@ -45,8 +45,18 @@ const DS_BLACK_MARKET_CHESTS = [
         eventSpecific: true
     },
     {
+        name: 'Promo (1111)',
+        keys: 1111,
+        eventSpecific: true
+    },
+    {
         name: 'Promo (2000)',
         keys: 2000,
+        eventSpecific: true
+    },
+    {
+        name: 'Promo (5555)',
+        keys: 5555,
         eventSpecific: true
     }
 ];
