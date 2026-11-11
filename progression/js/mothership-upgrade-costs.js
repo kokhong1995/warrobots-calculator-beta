@@ -1,5 +1,5 @@
-import { toInt, thousandSeperator, getStrAmount } from '/warrobots-calculator-beta/js/data-helper.js?v=1.15.9-beta';
-import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.15.9-beta';
+import { toInt, thousandSeperator, getStrAmount } from '/warrobots-calculator-beta/js/data-helper.js?v=1.15.10-beta';
+import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.15.10-beta';
 
 function updateInputValue(eventType, inputId) {
     updateNumberInput(eventType, inputId, syncData);
@@ -15,21 +15,22 @@ function syncData() {
 
     for (i = 0; i < DS_T4_MOTHERSHIP_UPGRADE_COSTS.length; i++) {
         for (j = 0; j < DS_T4_MOTHERSHIP_UPGRADE_COSTS[i].length; j++) {
-            if (DS_T4_MOTHERSHIP_UPGRADE_COSTS[i][j]['cost'] === false) {
+            if (DS_T4_MOTHERSHIP_UPGRADE_COSTS[i][j].upgradeCost == false) {
                 continue;
             }
 
             inputQuantity = document.getElementById(`inputQuantity${TYPES[i]}_${j}`);
-            spanComponents = document.getElementById(`spanComponents${TYPES[i]}_${j}`);
-
             quantity = toInt(inputQuantity.value);
-            components = DS_T4_MOTHERSHIP_UPGRADE_COSTS[i][j]['cost']['value'] * quantity;
-
-            spanComponents.textContent = getStrAmount(components);
-            spanComponents.parentElement.title = thousandSeperator(components, ' ') + ' Components';
-
             totalQuantity += quantity;
-            totalComponents += components;
+
+            // Upgrade Cost.
+            if (DS_T4_MOTHERSHIP_UPGRADE_COSTS[i][j]['upgradeCost']['currency'] == 'Components') {
+                spanComponents = document.getElementById(`spanComponents${TYPES[i]}_${j}`);
+                components = DS_T4_MOTHERSHIP_UPGRADE_COSTS[i][j]['upgradeCost']['value'] * quantity;
+                spanComponents.textContent = getStrAmount(components);
+                spanComponents.parentElement.title = thousandSeperator(components, ' ') + ' Components';
+                totalComponents += components;
+            }
         }
     }
 
@@ -48,7 +49,7 @@ function presetUpgrades(index) {
     let i;
 
     for (i = 0; i < DS_T4_MOTHERSHIP_UPGRADE_COSTS[index].length; i++) {
-        if (DS_T4_MOTHERSHIP_UPGRADE_COSTS[index][i].level == 1) {
+        if (DS_T4_MOTHERSHIP_UPGRADE_COSTS[index][i].upgradeCost == false) {
             continue;
         }
 
@@ -72,7 +73,7 @@ function init() {
 
     for (i = 0; i < DS_T4_MOTHERSHIP_UPGRADE_COSTS.length; i++) {
         for (j = 0; j < DS_T4_MOTHERSHIP_UPGRADE_COSTS[i].length; j++) {
-            if (DS_T4_MOTHERSHIP_UPGRADE_COSTS[i][j]['cost'] === false) {
+            if (DS_T4_MOTHERSHIP_UPGRADE_COSTS[i][j].upgradeCost == false) {
                 continue;
             }
 
@@ -107,7 +108,7 @@ function init() {
         if (e.target.matches('#buttonResetT4StatUpgrades')) {
             resetUpgrades(0);
         }
-        if (e.target.matches('#buttonPresetT4StatUpgrades_0') || 
+        if (e.target.matches('#buttonPresetT4StatUpgrades_0') ||
             e.target.matches('#buttonPresetT4StatUpgrades_1') ||
             e.target.matches('#buttonPresetT4StatUpgrades_2')) {
             presetUpgrades(0);
