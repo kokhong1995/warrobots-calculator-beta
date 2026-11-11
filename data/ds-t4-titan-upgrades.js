@@ -1,17 +1,13 @@
 const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
     {
         level: 1,
-        upgradeCost: false,
-        points: false
+        upgradeCost: false
     },
     {
         level: 2,
         upgradeCost: {
             currency: 'Platinum',
             value: 20
-        },
-        points: {
-            titanicEfforts: 90
         }
     },
     {
@@ -19,9 +15,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 24
-        },
-        points: {
-            titanicEfforts: 90
         }
     },
     {
@@ -29,9 +22,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 26
-        },
-        points: {
-            titanicEfforts: 90
         }
     },
     {
@@ -39,9 +29,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 28
-        },
-        points: {
-            titanicEfforts: 90
         }
     },
     {
@@ -49,9 +36,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 30
-        },
-        points: {
-            titanicEfforts: 90
         }
     },
     {
@@ -59,9 +43,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 32
-        },
-        points: {
-            titanicEfforts: 90
         }
     },
     {
@@ -69,9 +50,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 34
-        },
-        points: {
-            titanicEfforts: 90
         }
     },
     {
@@ -79,9 +57,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 36
-        },
-        points: {
-            titanicEfforts: 90
         }
     },
     {
@@ -89,9 +64,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 38
-        },
-        points: {
-            titanicEfforts: 90
         }
     },
     {
@@ -99,9 +71,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 40
-        },
-        points: {
-            titanicEfforts: 150
         }
     },
     {
@@ -109,9 +78,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 42
-        },
-        points: {
-            titanicEfforts: 150
         }
     },
     {
@@ -119,9 +85,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 44
-        },
-        points: {
-            titanicEfforts: 150
         }
     },
     {
@@ -129,9 +92,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 46
-        },
-        points: {
-            titanicEfforts: 150
         }
     },
     {
@@ -139,9 +99,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 48
-        },
-        points: {
-            titanicEfforts: 150
         }
     },
     {
@@ -149,9 +106,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 50
-        },
-        points: {
-            titanicEfforts: 150
         }
     },
     {
@@ -159,9 +113,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 52
-        },
-        points: {
-            titanicEfforts: 150
         }
     },
     {
@@ -169,9 +120,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 54
-        },
-        points: {
-            titanicEfforts: 150
         }
     },
     {
@@ -179,9 +127,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 56
-        },
-        points: {
-            titanicEfforts: 150
         }
     },
     {
@@ -189,9 +134,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 58
-        },
-        points: {
-            titanicEfforts: 150
         }
     },
     {
@@ -199,9 +141,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 60
-        },
-        points: {
-            titanicEfforts: 210
         }
     },
     {
@@ -209,9 +148,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 62
-        },
-        points: {
-            titanicEfforts: 210
         }
     },
     {
@@ -219,9 +155,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 64
-        },
-        points: {
-            titanicEfforts: 210
         }
     },
     {
@@ -229,9 +162,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 66
-        },
-        points: {
-            titanicEfforts: 210
         }
     },
     {
@@ -239,9 +169,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 68
-        },
-        points: {
-            titanicEfforts: 210
         }
     },
     {
@@ -249,9 +176,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 70
-        },
-        points: {
-            titanicEfforts: 210
         }
     },
     {
@@ -259,9 +183,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 72
-        },
-        points: {
-            titanicEfforts: 210
         }
     },
     {
@@ -269,9 +190,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 74
-        },
-        points: {
-            titanicEfforts: 210
         }
     },
     {
@@ -279,9 +197,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 76
-        },
-        points: {
-            titanicEfforts: 210
         }
     },
     {
@@ -289,9 +204,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 78
-        },
-        points: {
-            titanicEfforts: 210
         }
     },
     {
@@ -299,9 +211,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 80
-        },
-        points: {
-            titanicEfforts: 280
         }
     },
     {
@@ -309,9 +218,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 82
-        },
-        points: {
-            titanicEfforts: 280
         }
     },
     {
@@ -319,9 +225,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 84
-        },
-        points: {
-            titanicEfforts: 280
         }
     },
     {
@@ -329,9 +232,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 86
-        },
-        points: {
-            titanicEfforts: 280
         }
     },
     {
@@ -339,9 +239,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 88
-        },
-        points: {
-            titanicEfforts: 280
         }
     },
     {
@@ -349,9 +246,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 90
-        },
-        points: {
-            titanicEfforts: 280
         }
     },
     {
@@ -359,9 +253,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 92
-        },
-        points: {
-            titanicEfforts: 280
         }
     },
     {
@@ -369,9 +260,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 94
-        },
-        points: {
-            titanicEfforts: 280
         }
     },
     {
@@ -379,9 +267,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 96
-        },
-        points: {
-            titanicEfforts: 280
         }
     },
     {
@@ -389,9 +274,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 98
-        },
-        points: {
-            titanicEfforts: 280
         }
     },
     {
@@ -399,9 +281,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 100
-        },
-        points: {
-            titanicEfforts: 330
         }
     },
     {
@@ -409,9 +288,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 102
-        },
-        points: {
-            titanicEfforts: 330
         }
     },
     {
@@ -419,9 +295,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 104
-        },
-        points: {
-            titanicEfforts: 330
         }
     },
     {
@@ -429,9 +302,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 106
-        },
-        points: {
-            titanicEfforts: 330
         }
     },
     {
@@ -439,9 +309,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 108
-        },
-        points: {
-            titanicEfforts: 330
         }
     },
     {
@@ -449,9 +316,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 110
-        },
-        points: {
-            titanicEfforts: 330
         }
     },
     {
@@ -459,9 +323,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 112
-        },
-        points: {
-            titanicEfforts: 330
         }
     },
     {
@@ -469,9 +330,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 114
-        },
-        points: {
-            titanicEfforts: 330
         }
     },
     {
@@ -479,9 +337,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 116
-        },
-        points: {
-            titanicEfforts: 330
         }
     },
     {
@@ -489,9 +344,6 @@ const DS_T4_TITAN_SUBSYSTEM_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 118
-        },
-        points: {
-            titanicEfforts: 330
         }
     }
 ];

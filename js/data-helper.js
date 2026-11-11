@@ -261,12 +261,119 @@ function getFightToTheDeathPointByData(leaderboardData, data) {
     }
 }
 
-const getLeaderboardPoints = (leaderboardData, data) => {
-    if (leaderboardData.name == 'PilotRush') {
-        return getPilotRushPointByData(leaderboardData, data);
+function getTitanicEffortsPointByData(leaderboardData, data) {
+    // Titan Subsystem (Tier 4, Tier 3, Tier 2).
+    if (leaderboardData.type.includes('Subsystem') && data.level >= 2 && data.level <= 50) {
+        switch (data.level) {
+            case 2: case 3: case 4: case 5: case 6:
+            case 7: case 8: case 9: case 10:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    t4Subsystem: 90,
+                    t3Subsystem: 80,
+                    t2Subsystem: 55
+                });
+                break;
+            case 11: case 12: case 13: case 14: case 15:
+            case 16: case 17: case 18: case 19: case 20:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    t4Subsystem: 150,
+                    t3Subsystem: 135,
+                    t2Subsystem: 90
+                });
+                break;
+            case 21: case 22: case 23: case 24: case 25:
+            case 26: case 27: case 28: case 29: case 30:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    t4Subsystem: 210,
+                    t3Subsystem: 190,
+                    t2Subsystem: 125
+                });
+                break;
+            case 31: case 32: case 33: case 34: case 35:
+            case 36: case 37: case 38: case 39: case 40:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    t4Subsystem: 280,
+                    t3Subsystem: 245,
+                    t2Subsystem: 160
+                });
+                break;
+            case 41: case 42: case 43: case 44: case 45:
+            case 46: case 47: case 48: case 49: case 50:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    t4Subsystem: 330,
+                    t3Subsystem: 300,
+                    t2Subsystem: 200
+                });
+                break;
+            default:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    t4Subsystem: 0,
+                    t3Subsystem: 0,
+                    t2Subsystem: 0
+                });
+                break;
+        }
     }
-    else if (leaderboardData.name == 'FightToTheDeath') {
+    // Titan Weapon (Tier 4, Tier 3, Tier 2).
+    else if (leaderboardData.type.includes('Weapon') && data.level >= 2 && data.level <= 25) {
+        switch (data.level) {
+            case 2: case 3: case 4: case 5:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    t4Weapon: 100,
+                    t3Weapon: 75,
+                    t2Weapon: 60
+                });
+                break;
+            case 6: case 7: case 8: case 9: case 10:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    t4Weapon: 140,
+                    t3Weapon: 105,
+                    t2Weapon: 90
+                });
+                break;
+            case 11: case 12: case 13: case 14: case 15:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    t4Weapon: 180,
+                    t3Weapon: 135,
+                    t2Weapon: 110
+                });
+                break;
+            case 16: case 17: case 18: case 19: case 20:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    t4Weapon: 220,
+                    t3Weapon: 165,
+                    t2Weapon: 135
+                });
+                break;
+            case 21: case 22: case 23: case 24: case 25:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    t4Weapon: 260,
+                    t3Weapon: 195,
+                    t2Weapon: 160
+                });
+                break;
+            default:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    t4Weapon: 0,
+                    t3Weapon: 0,
+                    t2Weapon: 0
+                });
+                break;
+        }
+    }
+
+    return 0;
+}
+
+const getLeaderboardPoints = (leaderboardData, data) => {
+    if (leaderboardData.name == 'FightToTheDeath') {
         return getFightToTheDeathPointByData(leaderboardData, data);
+    }
+    else if (leaderboardData.name == 'TitanicEfforts') {
+        return getTitanicEffortsPointByData(leaderboardData, data);
+    }
+    else if (leaderboardData.name == 'PilotRush') {
+        return getPilotRushPointByData(leaderboardData, data);
     }
     else {
         return 0;

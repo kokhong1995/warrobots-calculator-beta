@@ -1,17 +1,13 @@
 const DS_T3_TITAN_WEAPON_UPGRADES = [
     {
         level: 1,
-        upgradeCost: false,
-        points: false
+        upgradeCost: false
     },
     {
         level: 2,
         upgradeCost: {
             currency: 'Platinum',
             value: 20
-        },
-        points: {
-            titanicEfforts: 75
         }
     },
     {
@@ -19,9 +15,6 @@ const DS_T3_TITAN_WEAPON_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 24
-        },
-        points: {
-            titanicEfforts: 75
         }
     },
     {
@@ -29,9 +22,6 @@ const DS_T3_TITAN_WEAPON_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 26
-        },
-        points: {
-            titanicEfforts: 75
         }
     },
     {
@@ -39,9 +29,6 @@ const DS_T3_TITAN_WEAPON_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 28
-        },
-        points: {
-            titanicEfforts: 75
         }
     },
     {
@@ -49,9 +36,6 @@ const DS_T3_TITAN_WEAPON_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 30
-        },
-        points: {
-            titanicEfforts: 105
         }
     },
     {
@@ -59,9 +43,6 @@ const DS_T3_TITAN_WEAPON_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 32
-        },
-        points: {
-            titanicEfforts: 105
         }
     },
     {
@@ -69,9 +50,6 @@ const DS_T3_TITAN_WEAPON_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 34
-        },
-        points: {
-            titanicEfforts: 105
         }
     },
     {
@@ -79,9 +57,6 @@ const DS_T3_TITAN_WEAPON_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 36
-        },
-        points: {
-            titanicEfforts: 105
         }
     },
     {
@@ -89,9 +64,6 @@ const DS_T3_TITAN_WEAPON_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 38
-        },
-        points: {
-            titanicEfforts: 105
         }
     },
     {
@@ -99,9 +71,6 @@ const DS_T3_TITAN_WEAPON_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 40
-        },
-        points: {
-            titanicEfforts: 135
         }
     },
     {
@@ -109,9 +78,6 @@ const DS_T3_TITAN_WEAPON_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 42
-        },
-        points: {
-            titanicEfforts: 135
         }
     },
     {
@@ -119,9 +85,6 @@ const DS_T3_TITAN_WEAPON_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 44
-        },
-        points: {
-            titanicEfforts: 135
         }
     },
     {
@@ -129,9 +92,6 @@ const DS_T3_TITAN_WEAPON_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 46
-        },
-        points: {
-            titanicEfforts: 135
         }
     },
     {
@@ -139,9 +99,6 @@ const DS_T3_TITAN_WEAPON_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 48
-        },
-        points: {
-            titanicEfforts: 135
         }
     },
     {
@@ -149,9 +106,6 @@ const DS_T3_TITAN_WEAPON_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 50
-        },
-        points: {
-            titanicEfforts: 165
         }
     },
     {
@@ -159,9 +113,6 @@ const DS_T3_TITAN_WEAPON_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 52
-        },
-        points: {
-            titanicEfforts: 165
         }
     },
     {
@@ -169,9 +120,6 @@ const DS_T3_TITAN_WEAPON_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 54
-        },
-        points: {
-            titanicEfforts: 165
         }
     },
     {
@@ -179,9 +127,6 @@ const DS_T3_TITAN_WEAPON_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 56
-        },
-        points: {
-            titanicEfforts: 165
         }
     },
     {
@@ -189,9 +134,6 @@ const DS_T3_TITAN_WEAPON_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 58
-        },
-        points: {
-            titanicEfforts: 165
         }
     },
     {
@@ -199,9 +141,6 @@ const DS_T3_TITAN_WEAPON_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 60
-        },
-        points: {
-            titanicEfforts: 195
         }
     },
     {
@@ -209,9 +148,6 @@ const DS_T3_TITAN_WEAPON_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 62
-        },
-        points: {
-            titanicEfforts: 195
         }
     },
     {
@@ -219,9 +155,6 @@ const DS_T3_TITAN_WEAPON_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 64
-        },
-        points: {
-            titanicEfforts: 195
         }
     },
     {
@@ -229,9 +162,6 @@ const DS_T3_TITAN_WEAPON_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 66
-        },
-        points: {
-            titanicEfforts: 195
         }
     },
     {
@@ -239,9 +169,6 @@ const DS_T3_TITAN_WEAPON_UPGRADES = [
         upgradeCost: {
             currency: 'Platinum',
             value: 68
-        },
-        points: {
-            titanicEfforts: 195
         }
     }
 ];

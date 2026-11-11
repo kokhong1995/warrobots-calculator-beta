@@ -7,15 +7,16 @@
     <title>War Robots Calculator: Titanic Efforts Leaderboard Calculator</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/warrobots-calculator-beta/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/warrobots-calculator-beta/apple-touch-icon.png">
-    <link rel="stylesheet" href="/warrobots-calculator-beta/bootstrap-5.3.8-dist/css/bootstrap.min.css?v=1.15.7-beta">
-    <link rel="stylesheet" href="/warrobots-calculator-beta/css/index.css?v=1.15.7-beta">
-    <link rel="stylesheet" href="./css/titanic-efforts.css?v=1.15.7-beta">
-    <script src="/warrobots-calculator-beta/data/ds-t4-titan-upgrades.js?v=1.15.7-beta"></script>
-    <script src="/warrobots-calculator-beta/data/ds-t4-titan-weapon-upgrades.js?v=1.15.7-beta"></script>
-    <script src="/warrobots-calculator-beta/data/ds-t3-titan-weapon-upgrades.js?v=1.15.7-beta"></script>
-    <script src="/warrobots-calculator-beta/data/ds-t2-titan-weapon-upgrades.js?v=1.15.7-beta"></script>
-    <script src="/warrobots-calculator-beta/data/ds-t1-titan-weapon-upgrades.js?v=1.15.7-beta"></script>
-    <script type="module" src="./js/titanic-efforts.js?v=1.15.7-beta"></script>
+    <link rel="stylesheet" href="/warrobots-calculator-beta/bootstrap-5.3.8-dist/css/bootstrap.min.css?v=1.15.8-beta">
+    <link rel="stylesheet" href="/warrobots-calculator-beta/css/index.css?v=1.15.8-beta">
+    <link rel="stylesheet" href="./css/titanic-efforts.css?v=1.15.8-beta">
+    <script src="/warrobots-calculator-beta/data/ds-t4-titan-upgrades.js?v=1.15.8-beta"></script>
+    <script src="/warrobots-calculator-beta/data/ds-t3-titan-upgrades.js?v=1.15.8-beta"></script>
+    <script src="/warrobots-calculator-beta/data/ds-t2-titan-upgrades.js?v=1.15.8-beta"></script>
+    <script src="/warrobots-calculator-beta/data/ds-t4-titan-weapon-upgrades.js?v=1.15.8-beta"></script>
+    <script src="/warrobots-calculator-beta/data/ds-t3-titan-weapon-upgrades.js?v=1.15.8-beta"></script>
+    <script src="/warrobots-calculator-beta/data/ds-t2-titan-weapon-upgrades.js?v=1.15.8-beta"></script>
+    <script type="module" src="./js/titanic-efforts.js?v=1.15.8-beta"></script>
 </head>
 
 <body>
@@ -105,17 +106,15 @@
                                         </li>
                                         <li class="mb-2">
                                             <strong>Select Upgrades:</strong>
-                                            Input your planned upgrades for
-                                            <a href="#containerT4SubsystemUpgrades"
-                                                class="text-decoration-underline">Tier 4 Subsystem Upgrades</a>
-                                            or
-                                            (<a href="#containerT4WeaponUpgrades" class="text-decoration-underline">Tier
-                                                4</a>,
-                                            <a href="#containerT3WeaponUpgrades" class="text-decoration-underline">Tier
-                                                3</a>,
-                                            <a href="#containerT2WeaponUpgrades" class="text-decoration-underline">Tier
-                                                2</a>)
-                                            Weapon Upgrades. Use quick actions for faster entry.
+                                            Input your planned upgrades for Subsystems
+                                            (<a href="#containerT4SubsystemUpgrades" class="text-decoration-underline">Tier 4</a> | 
+                                            <a href="#containerT3SubsystemUpgrades" class="text-decoration-underline">Tier 3</a> | 
+                                            <a href="#containerT2SubsystemUpgrades" class="text-decoration-underline">Tier 2</a>) 
+                                            or Weapons 
+                                            (<a href="#containerT4WeaponUpgrades" class="text-decoration-underline">Tier 4</a> | 
+                                            <a href="#containerT3WeaponUpgrades" class="text-decoration-underline">Tier 3</a> | 
+                                            <a href="#containerT2WeaponUpgrades" class="text-decoration-underline">Tier 2</a>). 
+                                            Use quick actions for faster entry.
                                         </li>
                                         <li>
                                             <strong>Review Results:</strong>
@@ -325,6 +324,58 @@
                         </div>
                     </div>
                 </div>
+                <!-- Tier 3 Subsystem Upgrades -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-auto">
+                                <div class="d-flex align-items-center">
+                                    <span class="fw-bold">Tier 3 Subsystem Upgrades</span>
+                                    &nbsp;
+                                    <button type="button"
+                                        class="btn btn-link text-secondary p-0 border-0 lh-1 small text-decoration-none"
+                                        data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="focus"
+                                        data-bs-html="true" data-bs-title="Tier 3 Subsystem Upgrades"
+                                        data-bs-content="<p class='mb-2'>Calculate upgrade costs from Level 2 to 50.</p><p class='fw-semibold mb-1'>Quick Actions:</p><ul class='ps-3 mb-0'><li><strong>Max [Subsystem]:</strong> Increase all upgrade quantities by 1 to the selected subsystem (Hull, Core or Engine).</li><li><strong>Reset:</strong> Reset all upgrade quantities to 0.</li></ul><small class='text-muted d-block mt-2'>As of Oct 24, 2026</small>"
+                                        aria-label="Tier 3 Subsystem Upgrades">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                            <path
+                                                d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="row gx-2">
+                                    <div class="col-auto mt-2 mt-md-0">
+                                        <button type="button" class="btn btn-sm btn-outline-t3"
+                                            id="buttonPresetT3SubsystemUpgrades_0">Max Hull</button>
+                                    </div>
+                                    <div class="col-auto mt-2 mt-md-0">
+                                        <button type="button" class="btn btn-sm btn-outline-t3"
+                                            id="buttonPresetT3SubsystemUpgrades_1">Max Core</button>
+                                    </div>
+                                    <div class="col-auto mt-2 mt-md-0">
+                                        <button type="button" class="btn btn-sm btn-outline-t3"
+                                            id="buttonPresetT3SubsystemUpgrades_2">Max Engine</button>
+                                    </div>
+                                    <div class="col-auto mt-2 mt-md-0">
+                                        <button type="button" class="btn btn-sm btn-outline-danger"
+                                            id="buttonResetT3SubsystemUpgrades">Reset</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="container-fluid px-0">
+                            <div id="containerT3SubsystemUpgrades" class="row g-2"></div>
+                        </div>
+                    </div>
+                </div>
                 <!-- Tier 3 Weapon Upgrades -->
                 <div class="card mb-4">
                     <div class="card-header">
@@ -367,6 +418,58 @@
                     <div class="card-body">
                         <div class="container-fluid px-0">
                             <div id="containerT3WeaponUpgrades" class="row g-2"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tier 2 Subsystem Upgrades -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-auto">
+                                <div class="d-flex align-items-center">
+                                    <span class="fw-bold">Tier 2 Subsystem Upgrades</span>
+                                    &nbsp;
+                                    <button type="button"
+                                        class="btn btn-link text-secondary p-0 border-0 lh-1 small text-decoration-none"
+                                        data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="focus"
+                                        data-bs-html="true" data-bs-title="Tier 2 Subsystem Upgrades"
+                                        data-bs-content="<p class='mb-2'>Calculate upgrade costs from Level 2 to 50.</p><p class='fw-semibold mb-1'>Quick Actions:</p><ul class='ps-3 mb-0'><li><strong>Max [Subsystem]:</strong> Increase all upgrade quantities by 1 to the selected subsystem (Hull, Core or Engine).</li><li><strong>Reset:</strong> Reset all upgrade quantities to 0.</li></ul><small class='text-muted d-block mt-2'>As of Oct 24, 2026</small>"
+                                        aria-label="Tier 2 Subsystem Upgrades">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                            <path
+                                                d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="row gx-2">
+                                    <div class="col-auto mt-2 mt-md-0">
+                                        <button type="button" class="btn btn-sm btn-outline-t2"
+                                            id="buttonPresetT2SubsystemUpgrades_0">Max Hull</button>
+                                    </div>
+                                    <div class="col-auto mt-2 mt-md-0">
+                                        <button type="button" class="btn btn-sm btn-outline-t2"
+                                            id="buttonPresetT2SubsystemUpgrades_1">Max Core</button>
+                                    </div>
+                                    <div class="col-auto mt-2 mt-md-0">
+                                        <button type="button" class="btn btn-sm btn-outline-t2"
+                                            id="buttonPresetT2SubsystemUpgrades_2">Max Engine</button>
+                                    </div>
+                                    <div class="col-auto mt-2 mt-md-0">
+                                        <button type="button" class="btn btn-sm btn-outline-danger"
+                                            id="buttonResetT2SubsystemUpgrades">Reset</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="container-fluid px-0">
+                            <div id="containerT2SubsystemUpgrades" class="row g-2"></div>
                         </div>
                     </div>
                 </div>
@@ -463,12 +566,12 @@
             </div>
             <div class="d-flex align-items-center gap-2">
                 <span
-                    class="badge text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-pill">v1.15.7-beta</span>
+                    class="badge text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-pill">v1.15.8-beta</span>
                 <small class="text-muted">Updated Nov 11, 2026</small>
             </div>
         </div>
     </footer>
-    <script src="/warrobots-calculator-beta/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js?v=1.15.7-beta"></script>
+    <script src="/warrobots-calculator-beta/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js?v=1.15.8-beta"></script>
 </body>
 
 </html>

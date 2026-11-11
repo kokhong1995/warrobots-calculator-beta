@@ -1,6 +1,6 @@
-import { toInt, thousandSeperator, getStrAmount } from '/warrobots-calculator-beta/js/data-helper.js?v=1.15.7-beta';
-import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.15.7-beta';
-import { applyUpgradeDiscountPercentage, calculateTotalTitanDeployPoints } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.15.7-beta';
+import { toInt, thousandSeperator, getStrAmount, getLeaderboardPoints } from '/warrobots-calculator-beta/js/data-helper.js?v=1.15.8-beta';
+import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.15.8-beta';
+import { applyUpgradeDiscountPercentage, calculateTotalTitanDeployPoints } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.15.8-beta';
 
 function updateInputValue(eventType, inputId) {
     updateNumberInput(eventType, inputId, syncData);
@@ -42,7 +42,13 @@ function syncData() {
             }
 
             spanPoints = document.getElementById(`spanPoints${TYPES[i]}_${j}`);
-            points = DS_TITANIC_EFFORTS[i][j].points.titanicEfforts * quantity;
+            // points = DS_TITANIC_EFFORTS[i][j].points.titanicEfforts * quantity;
+            points = getLeaderboardPoints({
+                name: 'TitanicEfforts',
+                type: TYPES[i].charAt(0).toLowerCase() + TYPES[i].slice(1)
+            }, {
+                level: DS_TITANIC_EFFORTS[i][j].level
+            }) * quantity;
             spanPoints.textContent = getStrAmount(points);
             spanPoints.parentElement.title = thousandSeperator(points, ' ') + ' Points';
             totalPoints += points;
@@ -142,11 +148,17 @@ function init() {
         if (e.target.matches('#buttonResetT4WeaponUpgrades')) {
             resetUpgrades(1);
         }
-        if (e.target.matches('#buttonResetT3WeaponUpgrades')) {
+        if (e.target.matches('#buttonResetT3SubsystemUpgrades')) {
             resetUpgrades(2);
         }
-        if (e.target.matches('#buttonResetT2WeaponUpgrades')) {
+        if (e.target.matches('#buttonResetT3WeaponUpgrades')) {
             resetUpgrades(3);
+        }
+        if (e.target.matches('#buttonResetT2SubsystemUpgrades')) {
+            resetUpgrades(4);
+        }
+        if (e.target.matches('#buttonResetT2WeaponUpgrades')) {
+            resetUpgrades(5);
         }
         if (e.target.matches('#buttonPresetT4SubsystemUpgrades_0') ||
             e.target.matches('#buttonPresetT4SubsystemUpgrades_1') ||
@@ -156,11 +168,21 @@ function init() {
         if (e.target.matches('#buttonPresetT4WeaponUpgrades')) {
             presetUpgrades(1);
         }
-        if (e.target.matches('#buttonPresetT3WeaponUpgrades')) {
+        if (e.target.matches('#buttonPresetT3SubsystemUpgrades_0') ||
+            e.target.matches('#buttonPresetT3SubsystemUpgrades_1') ||
+            e.target.matches('#buttonPresetT3SubsystemUpgrades_2')) {
             presetUpgrades(2);
         }
-        if (e.target.matches('#buttonPresetT2WeaponUpgrades')) {
+        if (e.target.matches('#buttonPresetT3WeaponUpgrades')) {
             presetUpgrades(3);
+        }
+        if (e.target.matches('#buttonPresetT2SubsystemUpgrades_0') ||
+            e.target.matches('#buttonPresetT2SubsystemUpgrades_1') ||
+            e.target.matches('#buttonPresetT2SubsystemUpgrades_2')) {
+            presetUpgrades(4);
+        }
+        if (e.target.matches('#buttonPresetT2WeaponUpgrades')) {
+            presetUpgrades(5);
         }
         if (e.target.matches('.btn-decrement')) {
             updateInputValue('-', e.target.dataset.wcTarget);
@@ -186,10 +208,11 @@ function init() {
     syncData();
 }
 
-const TYPES = ['T4Subsystem', 'T4Weapon', 'T3Weapon', 'T2Weapon'];
+const TYPES = ['T4Subsystem', 'T4Weapon', 'T3Subsystem', 'T3Weapon', 'T2Subsystem', 'T2Weapon'];
 const DS_TITANIC_EFFORTS = [
     DS_T4_TITAN_SUBSYSTEM_UPGRADES, DS_T4_TITAN_WEAPON_UPGRADES,
-    DS_T3_TITAN_WEAPON_UPGRADES, DS_T2_TITAN_WEAPON_UPGRADES
+    DS_T3_TITAN_SUBSYSTEM_UPGRADES, DS_T3_TITAN_WEAPON_UPGRADES,
+    DS_T2_TITAN_SUBSYSTEM_UPGRADES, DS_T2_TITAN_WEAPON_UPGRADES
 ];
 
 init();
