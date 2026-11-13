@@ -1,6 +1,6 @@
-import { toInt, thousandSeperator, getStrAmount, getPilotRankByLevel, getLeaderboardPoints } from '/warrobots-calculator-beta/js/data-helper.js?v=1.16.0-beta';
-import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.16.0-beta';
-import { applyUpgradeDiscountPercentage, calculateTotalTitanDeployPoints } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.16.0-beta';
+import { toInt, thousandSeperator, getStrAmount, getPilotRankByLevel, getLeaderboardPoints } from '/warrobots-calculator-beta/js/data-helper.js?v=1.16.1-beta';
+import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.16.1-beta';
+import { applyUpgradeDiscountPercentage, calculateTotalTitanDeployPoints } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.16.1-beta';
 
 function updateInputValue(eventType, inputId) {
     updateNumberInput(eventType, inputId, syncData);
@@ -28,74 +28,76 @@ function syncData() {
 
     for (i = 0; i < DS_ROBOT_PILOT_UPGRADE_COSTS.length; i++) {
         for (j = 0; j < DS_ROBOT_PILOT_UPGRADE_COSTS[i].length; j++) {
-            // To skip Tier 1 Pilot skill upgrade.
-            if (INDEX_TO_SKIP.includes(i) && j == 0) {
+            if (DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost === false) {
                 continue;
             }
 
-            spanMemoriumAmount = document.getElementById(`spanMemoriumAmount${TYPES[i]}_${j}`);
-            spanUpgradeTokens = document.getElementById(`spanUpgradeTokens${TYPES[i]}_${j}`);
-
             // For tracking the XP Boost costs.
-            if (i == 0) {
+            if (i === 0) {
                 for (k = DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].fromLevel; k <= DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].toLevel; k++) {
                     inputQuantity = document.getElementById(`inputQuantity${TYPES[i]}_${j}_${k}`);
-                    spanExperienceAmount = document.getElementById(`spanExperienceAmount${TYPES[i]}_${j}_${k}`);
-                    spanGoldAmount = document.getElementById(`spanGoldAmount${TYPES[i]}_${j}_${k}`);
-                    spanPoints = document.getElementById(`spanPoints${TYPES[i]}_${j}_${k}`);
-
-                    // Calculate and update relevant span elements.
                     quantity = toInt(inputQuantity.value);
-                    experienceAmount = DS_ROBOT_PILOT_UPGRADE_COSTS[i][j]['xp'] * quantity;
-                    points = getLeaderboardPoints({ name: 'PilotRush', type: 'upgradeLevel' }, { level: k }) * quantity;
-                    if (DS_ROBOT_PILOT_UPGRADE_COSTS[i][j]['cost']['currency'] == 'Gold') {
-                        goldAmount = applyUpgradeDiscountPercentage(experienceBoostPercentage, DS_ROBOT_PILOT_UPGRADE_COSTS[i][j]['cost']['value'], 1) * quantity;
+                    totalQuantity += quantity;
+
+                    spanExperienceAmount = document.getElementById(`spanExperienceAmount${TYPES[i]}_${j}_${k}`);
+                    experienceAmount = DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].xp * quantity;
+                    spanExperienceAmount.textContent = getStrAmount(experienceAmount);
+                    spanExperienceAmount.parentElement.title = thousandSeperator(experienceAmount, ' ') + ' XP';
+
+                    if (DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost.currency === 'Gold') {
+                        spanGoldAmount = document.getElementById(`spanGoldAmount${TYPES[i]}_${j}_${k}`);
+                        if (DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost.discountable === true) {
+                            goldAmount = applyUpgradeDiscountPercentage(experienceBoostPercentage, DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost.value, 1) * quantity;
+                        }
+                        else {
+                            goldAmount = DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost.value * quantity;
+                        }
                         spanGoldAmount.textContent = getStrAmount(goldAmount);
                         spanGoldAmount.parentElement.title = thousandSeperator(goldAmount, ' ') + ' Gold';
                         totalGoldAmount += goldAmount;
                     }
-                    spanExperienceAmount.textContent = getStrAmount(experienceAmount);
-                    spanExperienceAmount.parentElement.title = thousandSeperator(experienceAmount, ' ') + ' XP';
+
+                    spanPoints = document.getElementById(`spanPoints${TYPES[i]}_${j}_${k}`);
+                    points = getLeaderboardPoints({ name: 'PilotRush', type: 'upgradeLevel' }, { level: k }) * quantity;
                     spanPoints.textContent = getStrAmount(points);
                     spanPoints.parentElement.title = thousandSeperator(points, ' ') + ' Points';
-
-                    totalQuantity += quantity;
                     totalPoints += points;
                 }
             }
             else {
                 inputQuantity = document.getElementById(`inputQuantity${TYPES[i]}_${j}`);
-                spanGoldAmount = document.getElementById(`spanGoldAmount${TYPES[i]}_${j}`);
-                spanPoints = document.getElementById(`spanPoints${TYPES[i]}_${j}`);
-
                 quantity = toInt(inputQuantity.value);
-                points = getLeaderboardPoints({ name: 'PilotRush', type: 'promoteRank' }, { level: DS_ROBOT_PILOT_UPGRADE_COSTS[i][j]['level'] }) * quantity;
-                if (DS_ROBOT_PILOT_UPGRADE_COSTS[i][j]['cost']['currency'] == 'Memorium') {
-                    if (INDEX_TO_SKIP.includes(i)) {
-                        memoriumAmount = applyUpgradeDiscountPercentage(upgradeDiscountPercentage, DS_ROBOT_PILOT_UPGRADE_COSTS[i][j]['cost']['value'], 1) * quantity;
+                totalQuantity += quantity;
+
+                if (DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost.currency === 'Memorium') {
+                    spanMemoriumAmount = document.getElementById(`spanMemoriumAmount${TYPES[i]}_${j}`);
+                    if (DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost.discountable === true) {
+                        memoriumAmount = applyUpgradeDiscountPercentage(upgradeDiscountPercentage, DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost.value, 1) * quantity;
                     }
                     else {
-                        memoriumAmount = DS_ROBOT_PILOT_UPGRADE_COSTS[i][j]['cost']['value'] * quantity;
+                        memoriumAmount = DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost.value * quantity;
                     }
                     spanMemoriumAmount.textContent = getStrAmount(memoriumAmount);
                     spanMemoriumAmount.parentElement.title = thousandSeperator(memoriumAmount, ' ') + ' Memorium';
                     totalMemoriumAmount += memoriumAmount;
                 }
-                if (DS_ROBOT_PILOT_UPGRADE_COSTS[i][j]['cost']['currency'] == 'UpgradeToken') {
-                    if (i == 1) {
-                        upgradeTokens = applyUpgradeDiscountPercentage(upgradeDiscountPercentage, DS_ROBOT_PILOT_UPGRADE_COSTS[i][j]['cost']['value'], 1) * quantity;
+                if (DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost.currency === 'UpgradeToken') {
+                    spanUpgradeTokens = document.getElementById(`spanUpgradeTokens${TYPES[i]}_${j}`);
+                    if (DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost.discountable === true) {
+                        upgradeTokens = applyUpgradeDiscountPercentage(upgradeDiscountPercentage, DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost.value, 1) * quantity;
                     }
                     else {
-                        upgradeTokens = DS_ROBOT_PILOT_UPGRADE_COSTS[i][j]['cost']['value'] * quantity;
+                        upgradeTokens = DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost.value * quantity;
                     }
                     spanUpgradeTokens.textContent = getStrAmount(upgradeTokens);
                     spanUpgradeTokens.parentElement.title = thousandSeperator(upgradeTokens, ' ') + ' Upgrade Tokens';
                     totalUpgradeTokens += upgradeTokens;
                 }
+
+                spanPoints = document.getElementById(`spanPoints${TYPES[i]}_${j}`);
+                points = getLeaderboardPoints({ name: 'PilotRush', type: 'promoteRank' }, { level: DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].level }) * quantity;
                 spanPoints.textContent = getStrAmount(points);
                 spanPoints.parentElement.title = thousandSeperator(points, ' ') + ' Points';
-
-                totalQuantity += quantity;
                 totalPoints += points;
             }
         }
@@ -137,32 +139,31 @@ function presetUpgrades(index, type) {
 
     for (i = 0; i < DS_ROBOT_PILOT_UPGRADE_COSTS.length; i++) {
         for (j = 0; j < DS_ROBOT_PILOT_UPGRADE_COSTS[i].length; j++) {
-            // To skip Tier 1 Pilot skill upgrade.
-            if (INDEX_TO_SKIP.includes(i) && j == 0) {
+            if (DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost === false) {
                 continue;
             }
 
-            if (index == 0 && i == 0) {
+            if (index === 0 && i === 0) {
                 for (k = DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].fromLevel; k <= DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].toLevel; k++) {
-                    if (type == 0 && (!(k >= 1 && k <= 10))) {
+                    if (type === 0 && (!(k >= 1 && k <= 10))) {
                         continue;
                     }
-                    else if (type == 1 && (!(k >= 11 && k <= 20))) {
+                    else if (type === 1 && (!(k >= 11 && k <= 20))) {
                         continue;
                     }
-                    else if (type == 2 && (!(k >= 21 && k <= 30))) {
+                    else if (type === 2 && (!(k >= 21 && k <= 30))) {
                         continue;
                     }
-                    else if (type == 3 && (!(k >= 31 && k <= 40))) {
+                    else if (type === 3 && (!(k >= 31 && k <= 40))) {
                         continue;
                     }
-                    else if (type == 4 && (!(k >= 41 && k <= 50))) {
+                    else if (type === 4 && (!(k >= 41 && k <= 50))) {
                         continue;
                     }
-                    else if (type == 5 && (!(k >= 51 && k <= 60))) {
+                    else if (type === 5 && (!(k >= 51 && k <= 60))) {
                         continue;
                     }
-                    else if (type == 6 && (!(k >= 61 && k <= 70))) {
+                    else if (type === 6 && (!(k >= 61 && k <= 70))) {
                         continue;
                     }
 
@@ -173,7 +174,7 @@ function presetUpgrades(index, type) {
 
                 k = 0;
             }
-            else if (index == i) {
+            else if (index === i) {
                 inputQuantity = document.getElementById(`inputQuantity${TYPES[i]}_${j}`);
                 quantity = toInt(inputQuantity.value);
                 inputQuantity.value = ++quantity;
@@ -196,12 +197,11 @@ function init() {
 
     for (i = 0; i < DS_ROBOT_PILOT_UPGRADE_COSTS.length; i++) {
         for (j = 0; j < DS_ROBOT_PILOT_UPGRADE_COSTS[i].length; j++) {
-            // To skip Tier 1 Pilot skill upgrade.
-            if (INDEX_TO_SKIP.includes(i) && j == 0) {
+            if (DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost === false) {
                 continue;
             }
 
-            if (i == 0) {
+            if (i === 0) {
                 for (k = DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].fromLevel; k <= DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].toLevel; k++) {
                     containerInnerHTMLs[i] += '<div class="col-md-6">' +
                         '<div class="item">' + '<div class="row align-items-center">' +
@@ -322,6 +322,5 @@ function init() {
 
 const TYPES = ['PilotExperienceBoost', 'PilotRankPromotion'];
 const DS_ROBOT_PILOT_UPGRADE_COSTS = [DS_ROBOT_EXPERIENCE_BOOST_COSTS, DS_ROBOT_PILOT_RANK_PROMOTION_COSTS];
-const INDEX_TO_SKIP = [1];
 
 init();
