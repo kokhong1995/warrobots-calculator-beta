@@ -1,6 +1,6 @@
-import { toInt, thousandSeperator, getStrLevel, getStrAmount, getStrDuration } from '/warrobots-calculator-beta/js/data-helper.js?v=1.15.10-beta';
-import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.15.10-beta';
-import { applyUpgradeDiscountPercentage } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.15.10-beta';
+import { toInt, thousandSeperator, getStrLevel, getStrAmount, getStrDuration } from '/warrobots-calculator-beta/js/data-helper.js?v=1.15.11-beta';
+import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.15.11-beta';
+import { applyUpgradeDiscountPercentage } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.15.11-beta';
 
 function updateInputValue(eventType, inputId) {
     updateNumberInput(eventType, inputId, syncData);
@@ -21,26 +21,29 @@ function syncData() {
 
     for (i = 0; i < DS_ULTIMATE_ROBOT_WEAPON_UPGRADE_COSTS.length; i++) {
         for (j = 0; j < DS_ULTIMATE_ROBOT_WEAPON_UPGRADE_COSTS[i].length; j++) {
-            if (DS_ULTIMATE_ROBOT_WEAPON_UPGRADE_COSTS[i][j].level == 1) {
+            if (DS_ULTIMATE_ROBOT_WEAPON_UPGRADE_COSTS[i][j].upgradeCost == false) {
                 continue;
             }
 
             inputQuantity = document.getElementById(`inputQuantity${TYPES[i]}_${j}`);
-            spanSilverAmount = document.getElementById(`spanSilverAmount${TYPES[i]}_${j}`);
-            spanUpgradeTokens = document.getElementById(`spanUpgradeTokens${TYPES[i]}_${j}`);
-
             quantity = toInt(inputQuantity.value);
-            silverAmount = applyUpgradeDiscountPercentage(upgradeDiscountPercentage, DS_ULTIMATE_ROBOT_WEAPON_UPGRADE_COSTS[i][j].silverAmount) * quantity;
-            upgradeTokens = DS_ULTIMATE_ROBOT_WEAPON_UPGRADE_COSTS[i][j].upgradeTokens * quantity;
-
-            spanSilverAmount.textContent = getStrAmount(silverAmount);
-            spanSilverAmount.parentElement.title = thousandSeperator(silverAmount, ' ') + ' Silver';
-            spanUpgradeTokens.textContent = getStrAmount(upgradeTokens);
-            spanUpgradeTokens.parentElement.title = thousandSeperator(upgradeTokens, ' ') + ' Upgrade Tokens';
-
             totalQuantity += quantity;
-            totalSilverAmount += silverAmount;
-            totalUpgradeTokens += upgradeTokens;
+
+            // Upgrade Cost.
+            if (DS_ULTIMATE_ROBOT_WEAPON_UPGRADE_COSTS[i][j]['upgradeCost']['currency'] == 'Silver') {
+                spanSilverAmount = document.getElementById(`spanSilverAmount${TYPES[i]}_${j}`);
+                silverAmount = applyUpgradeDiscountPercentage(upgradeDiscountPercentage, DS_ULTIMATE_ROBOT_WEAPON_UPGRADE_COSTS[i][j]['upgradeCost']['value']) * quantity;
+                spanSilverAmount.textContent = getStrAmount(silverAmount);
+                spanSilverAmount.parentElement.title = thousandSeperator(silverAmount, ' ') + ' Silver';
+                totalSilverAmount += silverAmount;
+            }
+            else if (DS_ULTIMATE_ROBOT_WEAPON_UPGRADE_COSTS[i][j]['upgradeCost']['currency'] == 'UpgradeToken') {
+                spanUpgradeTokens = document.getElementById(`spanUpgradeTokens${TYPES[i]}_${j}`);
+                upgradeTokens = DS_ULTIMATE_ROBOT_WEAPON_UPGRADE_COSTS[i][j]['upgradeCost']['value'] * quantity;
+                spanUpgradeTokens.textContent = getStrAmount(upgradeTokens);
+                spanUpgradeTokens.parentElement.title = thousandSeperator(upgradeTokens, ' ') + ' Upgrade Tokens';
+                totalUpgradeTokens += upgradeTokens;
+            }
         }
     }
 
@@ -65,7 +68,7 @@ function presetUpgrades(index, type) {
     let i;
 
     for (i = 0; i < DS_ULTIMATE_ROBOT_WEAPON_UPGRADE_COSTS[index].length; i++) {
-        if (DS_ULTIMATE_ROBOT_WEAPON_UPGRADE_COSTS[index][i].level == 1) {
+        if (DS_ULTIMATE_ROBOT_WEAPON_UPGRADE_COSTS[index][i].upgradeCost == false) {
             continue;
         }
 
@@ -114,7 +117,7 @@ function init() {
 
     for (i = 0; i < DS_ULTIMATE_ROBOT_WEAPON_UPGRADE_COSTS.length; i++) {
         for (j = 0; j < DS_ULTIMATE_ROBOT_WEAPON_UPGRADE_COSTS[i].length; j++) {
-            if (DS_ULTIMATE_ROBOT_WEAPON_UPGRADE_COSTS[i][j].level == 1) {
+            if (DS_ULTIMATE_ROBOT_WEAPON_UPGRADE_COSTS[i][j].upgradeCost == false) {
                 continue;
             }
 
