@@ -1,8 +1,7 @@
 const DS_T3_TITAN_SUBSYSTEM_UPGRADES = [
     {
         level: 1,
-        upgradeCost: false,
-        points: false
+        upgradeCost: false
     },
     {
         level: 2,
