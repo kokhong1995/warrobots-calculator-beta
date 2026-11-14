@@ -115,54 +115,6 @@ function getLeaderboardPointByType(type, formattedData) {
     }
 }
 
-function getPilotRushPointByData(leaderboardData, data) {
-    if (data.level < 1 || data.level > 70) {
-        return 0;
-    }
-    else if (data.level < 11) {
-        return getLeaderboardPointByType(leaderboardData.type, {
-            upgradeLevel: 65,
-            promoteRank: 0
-        });
-    }
-    else if (data.level < 21) {
-        return getLeaderboardPointByType(leaderboardData.type, {
-            upgradeLevel: 110,
-            promoteRank: 1000
-        });
-    }
-    else if (data.level < 31) {
-        return getLeaderboardPointByType(leaderboardData.type, {
-            upgradeLevel: 180,
-            promoteRank: 2500
-        });
-    }
-    else if (data.level < 41) {
-        return getLeaderboardPointByType(leaderboardData.type, {
-            upgradeLevel: 300,
-            promoteRank: 3500
-        });
-    }
-    else if (data.level < 51) {
-        return getLeaderboardPointByType(leaderboardData.type, {
-            upgradeLevel: 470,
-            promoteRank: 5000
-        });
-    }
-    else if (data.level < 61) {
-        return getLeaderboardPointByType(leaderboardData.type, {
-            upgradeLevel: 700,
-            promoteRank: 5000
-        });
-    }
-    else {
-        return getLeaderboardPointByType(leaderboardData.type, {
-            upgradeLevel: 1000,
-            promoteRank: 5000
-        });
-    }
-}
-
 function getFightToTheDeathPointByData(leaderboardData, data) {
     if (data.mark < 1 || data.mark > 3 || data.level < 0 || data.level > 12) {
         return 0;
@@ -259,6 +211,147 @@ function getFightToTheDeathPointByData(leaderboardData, data) {
             t3Weapon: 1000
         });
     }
+}
+
+function getPilotRushPointByData(leaderboardData, data) {
+    if (data.level < 1 || data.level > 70) {
+        return 0;
+    }
+    else if (data.level < 11) {
+        return getLeaderboardPointByType(leaderboardData.type, {
+            upgradeLevel: 65,
+            promoteRank: 0
+        });
+    }
+    else if (data.level < 21) {
+        return getLeaderboardPointByType(leaderboardData.type, {
+            upgradeLevel: 110,
+            promoteRank: 1000
+        });
+    }
+    else if (data.level < 31) {
+        return getLeaderboardPointByType(leaderboardData.type, {
+            upgradeLevel: 180,
+            promoteRank: 2500
+        });
+    }
+    else if (data.level < 41) {
+        return getLeaderboardPointByType(leaderboardData.type, {
+            upgradeLevel: 300,
+            promoteRank: 3500
+        });
+    }
+    else if (data.level < 51) {
+        return getLeaderboardPointByType(leaderboardData.type, {
+            upgradeLevel: 470,
+            promoteRank: 5000
+        });
+    }
+    else if (data.level < 61) {
+        return getLeaderboardPointByType(leaderboardData.type, {
+            upgradeLevel: 700,
+            promoteRank: 5000
+        });
+    }
+    else {
+        return getLeaderboardPointByType(leaderboardData.type, {
+            upgradeLevel: 1000,
+            promoteRank: 5000
+        });
+    }
+}
+
+function getTitanicTrainingPointByData(leaderboardData, data) {
+    if (leaderboardData.type.includes('ExperienceBoost')) {
+        switch (getPilotRankByLevel(data.level)) {
+            case '1': case '2': case '3':
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    pilotExperienceBoost: 5
+                });
+                break;
+            case '4': case '5':
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    pilotExperienceBoost: 10
+                });
+                break;
+            case '6':
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    pilotExperienceBoost: 20
+                });
+                break;
+            case '7':
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    pilotExperienceBoost: 40
+                });
+                break;
+            case '8':
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    pilotExperienceBoost: 50
+                });
+                break;
+            case '9':
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    pilotExperienceBoost: 80
+                });
+                break;
+            case '10':
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    pilotExperienceBoost: 110
+                });
+                break;
+            default:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    pilotExperienceBoost: 0
+                });
+                break;
+        }
+    }
+    else if (leaderboardData.type.includes('RankPromotion')) {
+        switch (getPilotRankByLevel(data.level)) {
+            case '2': case '3': case '4': case '5':
+            case '6': case '7': case '8': case '9':
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    pilotRankPromotion: 200
+                });
+                break;
+            case '10':
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    pilotRankPromotion: 4000
+                });
+                break;
+            default:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    pilotRankPromotion: 0
+                });
+                break;
+        }
+    }
+    else if (leaderboardData.type.includes('SkillTierUpgrade')) {
+        switch (data.tier) {
+            case 2:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    pilotSkillTierUpgrade: 80
+                });
+                break;
+            case 3:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    pilotSkillTierUpgrade: 320
+                });
+                break;
+            case 4:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    pilotSkillTierUpgrade: 800
+                });
+                break;
+            default:
+                return getLeaderboardPointByType(leaderboardData.type, {
+                    pilotSkillTierUpgrade: 0
+                });
+                break;
+        }
+    }
+
+    return 0;
 }
 
 function getTitanicEffortsPointByData(leaderboardData, data) {
@@ -401,6 +494,9 @@ const getLeaderboardPoints = (leaderboardData, data) => {
     }
     else if (leaderboardData.name == 'PilotRush') {
         return getPilotRushPointByData(leaderboardData, data);
+    }
+    else if (leaderboardData.name == 'TitanicTraining') {
+        return getTitanicTrainingPointByData(leaderboardData, data);
     }
     else if (leaderboardData.name == 'TitanicEfforts') {
         return getTitanicEffortsPointByData(leaderboardData, data);
