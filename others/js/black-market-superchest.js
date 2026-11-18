@@ -1,6 +1,6 @@
-import { toInt, toFloat, thousandSeperator, getStrAmount, calculateTotalSuperchestUnlocked, calculateKeysForNextSuperchest, calculateNextSuperchestProgressPercent } from '/warrobots-calculator-beta/js/data-helper.js?v=1.17.1-beta';
-import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.17.1-beta';
-import { applyFillingRate } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.17.1-beta';
+import { toInt, toFloat, thousandSeperator, getStrAmount, calculateTotalSuperchestUnlocked, calculateKeysForNextSuperchest, calculateNextSuperchestProgressPercent } from '/warrobots-calculator-beta/js/data-helper.js?v=1.17.2-beta';
+import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.17.2-beta';
+import { applyFillingRate } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.17.2-beta';
 
 function updateInputValue(eventType, inputId) {
     updateNumberInput(eventType, inputId, syncData);
@@ -55,11 +55,13 @@ function syncData() {
 
     for (i = 0; i < DS_BLACK_MARKET.length; i++) {
         for (j = 0; j < DS_BLACK_MARKET[i].length; j++) {
-            if (DS_BLACK_MARKET[i][j].name == 'Superchest') {
+            if (DS_BLACK_MARKET[i][j].name === 'Superchest') {
                 superchestRequiredKeys = DS_BLACK_MARKET[i][j].keys;
                 continue;
             }
-            else if (commanderLevel < DS_BLACK_MARKET[i][j].fromLevel || commanderLevel > DS_BLACK_MARKET[i][j].toLevel) {
+            else if (DS_BLACK_MARKET[i][j].active === false ||
+                commanderLevel < DS_BLACK_MARKET[i][j].fromLevel ||
+                commanderLevel > DS_BLACK_MARKET[i][j].toLevel) {
                 continue;
             }
 
@@ -108,10 +110,10 @@ function initContainers() {
 
     for (i = 0; i < DS_BLACK_MARKET.length; i++) {
         for (j = 0; j < DS_BLACK_MARKET[i].length; j++) {
-            if (DS_BLACK_MARKET[i][j].name == 'Superchest') {
-                continue;
-            }
-            else if (commanderLevel < DS_BLACK_MARKET[i][j].fromLevel || commanderLevel > DS_BLACK_MARKET[i][j].toLevel) {
+            if (DS_BLACK_MARKET[i][j].active === false ||
+                DS_BLACK_MARKET[i][j].name === 'Superchest' ||
+                commanderLevel < DS_BLACK_MARKET[i][j].fromLevel ||
+                commanderLevel > DS_BLACK_MARKET[i][j].toLevel) {
                 continue;
             }
 
@@ -164,10 +166,12 @@ function presetChests(index, chestName) {
     let i;
 
     for (i = 0; i < DS_BLACK_MARKET[index].length; i++) {
-        if (DS_BLACK_MARKET[index][i].name != chestName) {
-            continue;
-        }
-        else if (commanderLevel < DS_BLACK_MARKET[index][i].fromLevel || commanderLevel > DS_BLACK_MARKET[index][i].toLevel) {
+        if (DS_BLACK_MARKET[index][i].active === false ||
+            DS_BLACK_MARKET[index][i].name === 'Superchest' ||
+            DS_BLACK_MARKET[index][i].name !== chestName ||
+            commanderLevel < DS_BLACK_MARKET[index][i].fromLevel ||
+            commanderLevel > DS_BLACK_MARKET[index][i].toLevel
+        ) {
             continue;
         }
 
@@ -193,7 +197,8 @@ function initQuickActions() {
 
     for (i = 0; i < DS_BLACK_MARKET.length; i++) {
         for (j = 0; j < DS_BLACK_MARKET[i].length; j++) {
-            if (DS_BLACK_MARKET[i][j].name == 'Superchest' ||
+            if (DS_BLACK_MARKET[i][j].active === false ||
+                DS_BLACK_MARKET[i][j].name === 'Superchest' ||
                 commanderLevel < DS_BLACK_MARKET[i][j].fromLevel ||
                 commanderLevel > DS_BLACK_MARKET[i][j].toLevel) {
                 continue;
