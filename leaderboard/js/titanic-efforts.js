@@ -1,6 +1,6 @@
-import { toInt, thousandSeperator, getStrAmount, getLeaderboardPoints } from '/warrobots-calculator-beta/js/data-helper.js?v=1.17.2-beta';
-import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.17.2-beta';
-import { applyUpgradeDiscountPercentage, calculateTotalTitanDeployPoints } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.17.2-beta';
+import { toInt, thousandSeperator, getStrAmount, getLeaderboardPoints } from '/warrobots-calculator-beta/js/data-helper.js?v=1.17.3-beta';
+import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.17.3-beta';
+import { applyUpgradeDiscountPercentage, calculateTotalTitanDeployPoints } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.17.3-beta';
 
 function updateInputValue(eventType, inputId) {
     updateNumberInput(eventType, inputId, syncData);
@@ -12,11 +12,12 @@ function syncData() {
     const inputTotalTitanDeployments = document.getElementById('inputTotalTitanDeployments');
     const spanTotalQuantity = document.getElementById('totalQuantity');
     const spanTotalPlatinumAmount = document.getElementById('totalPlatinumAmount');
+    const spanTotalPlatinumAmountSaved = document.getElementById('totalPlatinumAmountSaved');
     const spanTotalPoints = document.getElementById('totalPoints');
     let inputQuantity, spanPlatinumAmount, spanPoints;
     let upgradeDiscountPercentage = 0;
     let quantity = 0, platinumAmount = 0, points = 0;
-    let totalQuantity = 0, totalPlatinumAmount = 0;
+    let totalQuantity = 0, totalPlatinumAmount = 0, totalPlatinumAmountSaved = 0;
     let totalPoints = 0, currentPoints = 0, totalTitanDeploymentPoints = 0;
     let i, j;
 
@@ -39,10 +40,12 @@ function syncData() {
                 spanPlatinumAmount.textContent = getStrAmount(platinumAmount);
                 spanPlatinumAmount.parentElement.title = thousandSeperator(platinumAmount, ' ') + ' Platinum';
                 totalPlatinumAmount += platinumAmount;
+                if (upgradeDiscountPercentage > 0) {
+                    totalPlatinumAmountSaved += (DS_TITANIC_EFFORTS[i][j]['upgradeCost']['value'] * quantity) - platinumAmount;
+                }
             }
 
             spanPoints = document.getElementById(`spanPoints${TYPES[i]}_${j}`);
-            // points = DS_TITANIC_EFFORTS[i][j].points.titanicEfforts * quantity;
             points = getLeaderboardPoints({
                 name: 'TitanicEfforts',
                 type: TYPES[i].charAt(0).toLowerCase() + TYPES[i].slice(1)
@@ -61,6 +64,16 @@ function syncData() {
     spanTotalQuantity.textContent = totalQuantity;
     spanTotalPlatinumAmount.textContent = getStrAmount(totalPlatinumAmount);
     spanTotalPlatinumAmount.title = thousandSeperator(totalPlatinumAmount, ' ') + ' Platinum';
+    if (totalPlatinumAmountSaved > 0 && upgradeDiscountPercentage > 0) {
+        spanTotalPlatinumAmountSaved.textContent = `Saved ${getStrAmount(totalPlatinumAmountSaved)} (${upgradeDiscountPercentage}%)`;
+        spanTotalPlatinumAmountSaved.title = `Saved ${thousandSeperator(totalPlatinumAmountSaved, ' ')} (${upgradeDiscountPercentage}%)`;
+        spanTotalPlatinumAmountSaved.classList.remove('d-none');
+    }
+    else {
+        spanTotalPlatinumAmountSaved.textContent = '';
+        spanTotalPlatinumAmountSaved.title = '';
+        spanTotalPlatinumAmountSaved.classList.add('d-none');
+    }
     spanTotalPoints.textContent = getStrAmount(totalPoints);
     spanTotalPoints.title = thousandSeperator(totalPoints, ' ') + ' Points';
 }
