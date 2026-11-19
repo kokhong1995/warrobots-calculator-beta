@@ -1,6 +1,6 @@
-import { toInt, thousandSeperator, getStrAmount, getLeaderboardPoints } from '/warrobots-calculator-beta/js/data-helper.js?v=1.17.4-beta';
-import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.17.4-beta';
-import { applyUpgradeDiscountPercentage, calculateTotalTitanDeployPoints, calculateTotalWinningBattlePoints } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.17.4-beta';
+import { toInt, thousandSeperator, getStrAmount, getLeaderboardPoints } from '/warrobots-calculator-beta/js/data-helper.js?v=1.17.5-beta';
+import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.17.5-beta';
+import { applyUpgradeDiscountPercentage, calculateTotalTitanDeployPoints, calculateTotalWinningBattlePoints } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.17.5-beta';
 
 function updateInputValue(eventType, inputId) {
     updateNumberInput(eventType, inputId, syncData);
@@ -13,12 +13,14 @@ function syncData() {
     const inputTotalVictories = document.getElementById('inputTotalVictories');
     const spanTotalQuantity = document.getElementById('totalQuantity');
     const spanTotalMicrochips = document.getElementById('totalMicrochips');
+    const spanTotalMicrochipsSaved = document.getElementById('totalMicrochipsSaved');
     const spanTotalUpgradeTokens = document.getElementById('totalUpgradeTokens');
     const spanTotalPoints = document.getElementById('totalPoints');
     let inputQuantity, spanMicrochips, spanUpgradeTokens, spanPoints;
     let upgradeDiscountPercentage = 0;
     let quantity = 0, microchips = 0, upgradeTokens = 0, points = 0;
     let totalQuantity = 0, totalMicrochips = 0, totalUpgradeTokens = 0;
+    let totalMicrochipsSaved = 0;
     let totalPoints = 0, currentPoints = 0, totalTitanDeploymentPoints = 0, totalVictoryPoints = 0;
     let i, j;
 
@@ -41,6 +43,9 @@ function syncData() {
                 spanMicrochips.textContent = getStrAmount(microchips);
                 spanMicrochips.parentElement.title = thousandSeperator(microchips, ' ') + ' Microchips';
                 totalMicrochips += microchips;
+                if (upgradeDiscountPercentage > 0) {
+                    totalMicrochipsSaved += (DS_STUNNING_DRONES[i][j]['upgradeCost']['value'] * quantity) - microchips;
+                }
             }
             else if (DS_STUNNING_DRONES[i][j]['upgradeCost']['currency'] == 'UpgradeToken') {
                 spanUpgradeTokens = document.getElementById(`spanUpgradeTokens${TYPES[i]}_${j}`);
@@ -69,6 +74,16 @@ function syncData() {
     spanTotalQuantity.textContent = totalQuantity;
     spanTotalMicrochips.textContent = getStrAmount(totalMicrochips);
     spanTotalMicrochips.title = thousandSeperator(totalMicrochips, ' ') + ' Microchips';
+    if (totalMicrochipsSaved > 0 && upgradeDiscountPercentage > 0) {
+        spanTotalMicrochipsSaved.textContent = `Saved ${getStrAmount(totalMicrochipsSaved)} (${upgradeDiscountPercentage}%)`;
+        spanTotalMicrochipsSaved.title = `Saved ${thousandSeperator(totalMicrochipsSaved, ' ')} (${upgradeDiscountPercentage}%)`;
+        spanTotalMicrochipsSaved.classList.remove('d-none');
+    }
+    else {
+        spanTotalMicrochipsSaved.textContent = '';
+        spanTotalMicrochipsSaved.title = '';
+        spanTotalMicrochipsSaved.classList.add('d-none');
+    }
     spanTotalUpgradeTokens.textContent = getStrAmount(totalUpgradeTokens);
     spanTotalUpgradeTokens.title = thousandSeperator(totalUpgradeTokens, ' ') + ' Upgrade Tokens';
     spanTotalPoints.textContent = getStrAmount(totalPoints);

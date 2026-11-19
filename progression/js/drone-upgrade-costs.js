@@ -1,6 +1,6 @@
-import { toInt, thousandSeperator, getStrAmount } from '/warrobots-calculator-beta/js/data-helper.js?v=1.17.4-beta';
-import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.17.4-beta';
-import { applyUpgradeDiscountPercentage } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.17.4-beta';
+import { toInt, thousandSeperator, getStrAmount } from '/warrobots-calculator-beta/js/data-helper.js?v=1.17.5-beta';
+import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.17.5-beta';
+import { applyUpgradeDiscountPercentage } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.17.5-beta';
 
 function updateInputValue(eventType, inputId) {
     updateNumberInput(eventType, inputId, syncData);
@@ -10,11 +10,13 @@ function syncData() {
     const inputUpgradeDiscountPercentage = document.getElementById('inputUpgradeDiscountPercentage');
     const spanTotalQuantity = document.getElementById('totalQuantity');
     const spanTotalMicrochips = document.getElementById('totalMicrochips');
+    const spanTotalMicrochipsSaved = document.getElementById('totalMicrochipsSaved');
     const spanTotalUpgradeTokens = document.getElementById('totalUpgradeTokens');
     let inputQuantity, spanMicrochips, spanUpgradeTokens;
     let upgradeDiscountPercentage = 0;
     let quantity = 0, microchips = 0, upgradeTokens = 0;
     let totalQuantity = 0, totalMicrochips = 0, totalUpgradeTokens = 0;
+    let totalMicrochipsSaved = 0;
     let i, j;
 
     upgradeDiscountPercentage = Math.abs(toInt(inputUpgradeDiscountPercentage.value));
@@ -36,6 +38,9 @@ function syncData() {
                 spanMicrochips.textContent = getStrAmount(microchips);
                 spanMicrochips.parentElement.title = thousandSeperator(microchips, ' ') + ' Microchips';
                 totalMicrochips += microchips;
+                if (upgradeDiscountPercentage > 0) {
+                    totalMicrochipsSaved += (DS_DRONE_UPGRADE_COSTS[i][j]['upgradeCost']['value'] * quantity) - microchips;
+                }
             }
             else if (DS_DRONE_UPGRADE_COSTS[i][j]['upgradeCost']['currency'] == 'UpgradeToken') {
                 spanUpgradeTokens = document.getElementById(`spanUpgradeTokens${TYPES[i]}_${j}`);
@@ -50,6 +55,16 @@ function syncData() {
     spanTotalQuantity.textContent = totalQuantity;
     spanTotalMicrochips.textContent = getStrAmount(totalMicrochips);
     spanTotalMicrochips.title = thousandSeperator(totalMicrochips, ' ') + ' Microchips';
+    if (totalMicrochipsSaved > 0 && upgradeDiscountPercentage > 0) {
+        spanTotalMicrochipsSaved.textContent = `Saved ${getStrAmount(totalMicrochipsSaved)} (${upgradeDiscountPercentage}%)`;
+        spanTotalMicrochipsSaved.title = `Saved ${thousandSeperator(totalMicrochipsSaved, ' ')} (${upgradeDiscountPercentage}%)`;
+        spanTotalMicrochipsSaved.classList.remove('d-none');
+    }
+    else {
+        spanTotalMicrochipsSaved.textContent = '';
+        spanTotalMicrochipsSaved.title = '';
+        spanTotalMicrochipsSaved.classList.add('d-none');
+    }
     spanTotalUpgradeTokens.textContent = getStrAmount(totalUpgradeTokens);
     spanTotalUpgradeTokens.title = thousandSeperator(totalUpgradeTokens, ' ') + ' Upgrade Tokens';
 }
