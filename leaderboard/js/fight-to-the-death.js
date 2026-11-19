@@ -1,6 +1,6 @@
-import { toInt, thousandSeperator, getStrLevel, getStrAmount, getStrDuration, getLeaderboardPoints } from '/warrobots-calculator-beta/js/data-helper.js?v=1.17.3-beta';
-import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.17.3-beta';
-import { applyUpgradeDiscountPercentage, calculateTotalTitanDeployPoints } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.17.3-beta';
+import { toInt, thousandSeperator, getStrLevel, getStrAmount, getStrDuration, getLeaderboardPoints } from '/warrobots-calculator-beta/js/data-helper.js?v=1.17.4-beta';
+import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.17.4-beta';
+import { applyUpgradeDiscountPercentage, calculateTotalTitanDeployPoints } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.17.4-beta';
 
 function updateInputValue(eventType, inputId) {
     updateNumberInput(eventType, inputId, syncData);
@@ -12,7 +12,9 @@ function syncData() {
     const inputTotalTitanDeployments = document.getElementById('inputTotalTitanDeployments');
     const spanTotalQuantity = document.getElementById('totalQuantity');
     const spanTotalSilverAmount = document.getElementById('totalSilverAmount');
+    const spanTotalSilverAmountSaved = document.getElementById('totalSilverAmountSaved');
     const spanTotalGoldAmount = document.getElementById('totalGoldAmount');
+    const spanTotalGoldAmountSaved = document.getElementById('totalGoldAmountSaved');
     const spanTotalUpgradeDuration = document.getElementById("totalUpgradeDuration");
     const spanTotalUpgradeTokens = document.getElementById('totalUpgradeTokens');
     const spanTotalPoints = document.getElementById('totalPoints');
@@ -20,6 +22,7 @@ function syncData() {
     let upgradeDiscountPercentage = 0;
     let quantity = 0, silverAmount = 0, goldAmount = 0, upgradeDuration = 0, upgradeTokens = 0, points = 0;
     let totalQuantity = 0, totalSilverAmount = 0, totalGoldAmount = 0, totalUpgradeDuration = 0, totalUpgradeTokens = 0;
+    let totalSilverAmountSaved = 0, totalGoldAmountSaved = 0;
     let totalPoints = 0, currentPoints = 0, totalTitanDeploymentPoints = 0;
     let i, j, k;
 
@@ -42,6 +45,9 @@ function syncData() {
                 spanSilverAmount.textContent = getStrAmount(silverAmount);
                 spanSilverAmount.parentElement.title = thousandSeperator(silverAmount, ' ') + ' Silver';
                 totalSilverAmount += silverAmount;
+                if (upgradeDiscountPercentage > 0) {
+                    totalSilverAmountSaved += (DS_FIGHT_TO_THE_DEATH[i][j]['upgradeCost']['value'] * quantity) - silverAmount;
+                }
             }
             else if (DS_FIGHT_TO_THE_DEATH[i][j]['upgradeCost']['currency'] == 'Gold') {
                 spanGoldAmount = document.getElementById(`spanGoldAmount${TYPES[i]}_${j}`);
@@ -50,6 +56,9 @@ function syncData() {
                 spanGoldAmount.textContent = getStrAmount(goldAmount);
                 spanGoldAmount.parentElement.title = thousandSeperator(goldAmount, ' ') + ' Gold';
                 totalGoldAmount += goldAmount;
+                if (upgradeDiscountPercentage > 0) {
+                    totalGoldAmountSaved += (DS_FIGHT_TO_THE_DEATH[i][j]['upgradeCost']['value'] * quantity) - goldAmount;
+                }
             }
             else if (DS_FIGHT_TO_THE_DEATH[i][j]['upgradeCost']['currency'] == 'UpgradeToken') {
                 spanUpgradeTokens = document.getElementById(`spanUpgradeTokens${TYPES[i]}_${j}`);
@@ -98,8 +107,28 @@ function syncData() {
     spanTotalQuantity.textContent = totalQuantity;
     spanTotalSilverAmount.textContent = getStrAmount(totalSilverAmount);
     spanTotalSilverAmount.title = thousandSeperator(totalSilverAmount, ' ') + ' Silver';
+    if (totalSilverAmountSaved > 0 && upgradeDiscountPercentage > 0) {
+        spanTotalSilverAmountSaved.textContent = `Saved ${getStrAmount(totalSilverAmountSaved)} (${upgradeDiscountPercentage}%)`;
+        spanTotalSilverAmountSaved.title = `Saved ${thousandSeperator(totalSilverAmountSaved, ' ')} (${upgradeDiscountPercentage}%)`;
+        spanTotalSilverAmountSaved.classList.remove('d-none');
+    }
+    else {
+        spanTotalSilverAmountSaved.textContent = '';
+        spanTotalSilverAmountSaved.title = '';
+        spanTotalSilverAmountSaved.classList.add('d-none');
+    }
     spanTotalGoldAmount.textContent = getStrAmount(totalGoldAmount);
     spanTotalGoldAmount.title = thousandSeperator(totalGoldAmount, ' ') + ' Gold';
+    if (totalGoldAmountSaved > 0 && upgradeDiscountPercentage > 0) {
+        spanTotalGoldAmountSaved.textContent = `Saved ${getStrAmount(totalGoldAmountSaved)} (${upgradeDiscountPercentage}%)`;
+        spanTotalGoldAmountSaved.title = `Saved ${thousandSeperator(totalGoldAmountSaved, ' ')} (${upgradeDiscountPercentage}%)`;
+        spanTotalGoldAmountSaved.classList.remove('d-none');
+    }
+    else {
+        spanTotalGoldAmountSaved.textContent = '';
+        spanTotalGoldAmountSaved.title = '';
+        spanTotalGoldAmountSaved.classList.add('d-none');
+    }
     spanTotalUpgradeDuration.textContent = getStrDuration(totalUpgradeDuration);
     spanTotalUpgradeTokens.textContent = getStrAmount(totalUpgradeTokens);
     spanTotalUpgradeTokens.title = thousandSeperator(totalUpgradeTokens, ' ') + ' Upgrade Tokens';
