@@ -1,6 +1,6 @@
-import { toInt, thousandSeperator, getStrAmount, getPilotRankByLevel } from '/warrobots-calculator-beta/js/data-helper.js?v=1.17.5-beta';
-import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.17.5-beta';
-import { applyUpgradeDiscountPercentage } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.17.5-beta';
+import { toInt, thousandSeperator, getStrAmount, getPilotRankByLevel } from '/warrobots-calculator-beta/js/data-helper.js?v=1.17.6-beta';
+import { resetInputs, updateNumberInput, handleTotalSummaryElement } from '/warrobots-calculator-beta/js/input-helper.js?v=1.17.6-beta';
+import { applyUpgradeDiscountPercentage } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.17.6-beta';
 
 function updateInputValue(eventType, inputId) {
     updateNumberInput(eventType, inputId, syncData);
@@ -9,14 +9,11 @@ function updateInputValue(eventType, inputId) {
 function syncData() {
     const inputUpgradeDiscountPercentage = document.getElementById('inputUpgradeDiscountPercentage');
     const inputExperienceBoostPercentage = document.getElementById('inputExperienceBoostPercentage');
-    const spanTotalQuantity = document.getElementById('totalQuantity');
-    const spanTotalPlatinumAmount = document.getElementById('totalPlatinumAmount');
-    const spanTotalMemoriumAmount = document.getElementById('totalMemoriumAmount');
-    const spanTotalUpgradeTokens = document.getElementById('totalUpgradeTokens');
     let inputQuantity, spanExperienceAmount, spanPlatinumAmount, spanMemoriumAmount, spanUpgradeTokens;
     let upgradeDiscountPercentage = 0, experienceBoostPercentage = 0;
     let quantity = 0, experienceAmount = 0, platinumAmount = 0, memoriumAmount = 0, upgradeTokens = 0;
     let totalQuantity = 0, totalMemoriumAmount = 0, totalPlatinumAmount = 0, totalUpgradeTokens = 0;
+    let totalPlatinumAmountSaved = 0, totalMemoriumAmountSaved = 0, totalUpgradeTokensSaved = 0;
     let i, j, k;
 
     upgradeDiscountPercentage = Math.abs(toInt(inputUpgradeDiscountPercentage.value));
@@ -44,6 +41,10 @@ function syncData() {
                         spanPlatinumAmount = document.getElementById(`spanPlatinumAmount${TYPES[i]}_${j}_${k}`);
                         if (DS_TITAN_PILOT_UPGRADE_COSTS[i][j].upgradeCost.discountable === true) {
                             platinumAmount = applyUpgradeDiscountPercentage(experienceBoostPercentage, DS_TITAN_PILOT_UPGRADE_COSTS[i][j].upgradeCost.value, 1) * quantity;
+
+                            if (experienceBoostPercentage > 0) {
+                                totalPlatinumAmountSaved += (DS_TITAN_PILOT_UPGRADE_COSTS[i][j].upgradeCost.value * quantity) - platinumAmount;
+                            }
                         }
                         else {
                             platinumAmount = DS_TITAN_PILOT_UPGRADE_COSTS[i][j].upgradeCost.value * quantity;
@@ -63,6 +64,10 @@ function syncData() {
                     spanMemoriumAmount = document.getElementById(`spanMemoriumAmount${TYPES[i]}_${j}`);
                     if (DS_TITAN_PILOT_UPGRADE_COSTS[i][j].upgradeCost.discountable === true) {
                         memoriumAmount = applyUpgradeDiscountPercentage(upgradeDiscountPercentage, DS_TITAN_PILOT_UPGRADE_COSTS[i][j].upgradeCost.value, 1) * quantity;
+
+                        if (upgradeDiscountPercentage > 0) {
+                            totalMemoriumAmountSaved += (DS_TITAN_PILOT_UPGRADE_COSTS[i][j].upgradeCost.value * quantity) - memoriumAmount;
+                        }
                     }
                     else {
                         memoriumAmount = DS_TITAN_PILOT_UPGRADE_COSTS[i][j].upgradeCost.value * quantity;
@@ -75,6 +80,10 @@ function syncData() {
                     spanUpgradeTokens = document.getElementById(`spanUpgradeTokens${TYPES[i]}_${j}`);
                     if (DS_TITAN_PILOT_UPGRADE_COSTS[i][j].upgradeCost.discountable === true) {
                         upgradeTokens = applyUpgradeDiscountPercentage(upgradeDiscountPercentage, DS_TITAN_PILOT_UPGRADE_COSTS[i][j].upgradeCost.value, 1) * quantity;
+
+                        if (upgradeDiscountPercentage > 0) {
+                            totalUpgradeTokensSaved += (DS_TITAN_PILOT_UPGRADE_COSTS[i][j].upgradeCost.value * quantity) - upgradeTokens;
+                        }
                     }
                     else {
                         upgradeTokens = DS_TITAN_PILOT_UPGRADE_COSTS[i][j].upgradeCost.value * quantity;
@@ -87,13 +96,19 @@ function syncData() {
         }
     }
 
-    spanTotalQuantity.textContent = totalQuantity;
-    spanTotalPlatinumAmount.textContent = getStrAmount(totalPlatinumAmount);
-    spanTotalPlatinumAmount.title = thousandSeperator(totalPlatinumAmount, ' ') + ' Platinum';
-    spanTotalMemoriumAmount.textContent = getStrAmount(totalMemoriumAmount);
-    spanTotalMemoriumAmount.title = thousandSeperator(totalMemoriumAmount, ' ') + ' Memorium';
-    spanTotalUpgradeTokens.textContent = getStrAmount(totalUpgradeTokens);
-    spanTotalUpgradeTokens.title = thousandSeperator(totalUpgradeTokens, ' ') + ' Upgrade Tokens';
+    handleTotalSummaryElement('totalQuantity', totalQuantity);
+    handleTotalSummaryElement('totalPlatinumAmount', totalPlatinumAmount, ' Platinum', {
+        totalValueSaved: totalPlatinumAmountSaved, 
+        discountPercentage: experienceBoostPercentage
+    });
+    handleTotalSummaryElement('totalMemoriumAmount', totalMemoriumAmount, ' Memorium', {
+        totalValueSaved: totalMemoriumAmountSaved, 
+        discountPercentage: upgradeDiscountPercentage
+    });
+    handleTotalSummaryElement('totalUpgradeTokens', totalUpgradeTokens, ' Upgrade Tokens', {
+        totalValueSaved: totalUpgradeTokensSaved, 
+        discountPercentage: upgradeDiscountPercentage
+    });
 }
 
 function resetModifiers() {

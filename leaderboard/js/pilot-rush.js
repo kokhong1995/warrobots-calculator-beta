@@ -1,6 +1,6 @@
-import { toInt, thousandSeperator, getStrAmount, getPilotRankByLevel, getLeaderboardPoints } from '/warrobots-calculator-beta/js/data-helper.js?v=1.17.5-beta';
-import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.17.5-beta';
-import { applyUpgradeDiscountPercentage, calculateTotalTitanDeployPoints } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.17.5-beta';
+import { toInt, thousandSeperator, getStrAmount, getPilotRankByLevel, getLeaderboardPoints } from '/warrobots-calculator-beta/js/data-helper.js?v=1.17.6-beta';
+import { resetInputs, updateNumberInput, handleTotalSummaryElement } from '/warrobots-calculator-beta/js/input-helper.js?v=1.17.6-beta';
+import { applyUpgradeDiscountPercentage, calculateTotalTitanDeployPoints } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.17.6-beta';
 
 function updateInputValue(eventType, inputId) {
     updateNumberInput(eventType, inputId, syncData);
@@ -11,46 +11,46 @@ function syncData() {
     const inputExperienceBoostPercentage = document.getElementById('inputExperienceBoostPercentage');
     const inputCurrentPoints = document.getElementById('inputCurrentPoints');
     const inputTotalTitanDeployments = document.getElementById('inputTotalTitanDeployments');
-    const spanTotalQuantity = document.getElementById('totalQuantity');
-    const spanTotalGoldAmount = document.getElementById('totalGoldAmount');
-    const spanTotalMemoriumAmount = document.getElementById('totalMemoriumAmount');
-    const spanTotalUpgradeTokens = document.getElementById('totalUpgradeTokens');
-    const spanTotalPoints = document.getElementById('totalPoints');
     let inputQuantity, spanExperienceAmount, spanGoldAmount, spanMemoriumAmount, spanUpgradeTokens, spanPoints;
     let upgradeDiscountPercentage = 0, experienceBoostPercentage = 0;
     let quantity = 0, experienceAmount = 0, goldAmount = 0, memoriumAmount = 0, upgradeTokens = 0, points = 0;
     let totalQuantity = 0, totalMemoriumAmount = 0, totalGoldAmount = 0, totalUpgradeTokens = 0;
+    let totalGoldAmountSaved = 0, totalMemoriumAmountSaved = 0, totalUpgradeTokensSaved = 0;
     let totalPoints = 0, currentPoints = 0, totalTitanDeploymentPoints = 0;
     let i, j, k;
 
     upgradeDiscountPercentage = Math.abs(toInt(inputUpgradeDiscountPercentage.value));
     experienceBoostPercentage = Math.abs(toInt(inputExperienceBoostPercentage.value));
 
-    for (i = 0; i < DS_ROBOT_PILOT_UPGRADE_COSTS.length; i++) {
-        for (j = 0; j < DS_ROBOT_PILOT_UPGRADE_COSTS[i].length; j++) {
-            if (DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost === false) {
+    for (i = 0; i < DS_PILOT_RUSH.length; i++) {
+        for (j = 0; j < DS_PILOT_RUSH[i].length; j++) {
+            if (DS_PILOT_RUSH[i][j].upgradeCost === false) {
                 continue;
             }
 
             // For tracking the XP Boost costs.
             if (i === 0) {
-                for (k = DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].fromLevel; k <= DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].toLevel; k++) {
+                for (k = DS_PILOT_RUSH[i][j].fromLevel; k <= DS_PILOT_RUSH[i][j].toLevel; k++) {
                     inputQuantity = document.getElementById(`inputQuantity${TYPES[i]}_${j}_${k}`);
                     quantity = toInt(inputQuantity.value);
                     totalQuantity += quantity;
 
                     spanExperienceAmount = document.getElementById(`spanExperienceAmount${TYPES[i]}_${j}_${k}`);
-                    experienceAmount = DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].xp * quantity;
+                    experienceAmount = DS_PILOT_RUSH[i][j].xp * quantity;
                     spanExperienceAmount.textContent = getStrAmount(experienceAmount);
                     spanExperienceAmount.parentElement.title = thousandSeperator(experienceAmount, ' ') + ' XP';
 
-                    if (DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost.currency === 'Gold') {
+                    if (DS_PILOT_RUSH[i][j].upgradeCost.currency === 'Gold') {
                         spanGoldAmount = document.getElementById(`spanGoldAmount${TYPES[i]}_${j}_${k}`);
-                        if (DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost.discountable === true) {
-                            goldAmount = applyUpgradeDiscountPercentage(experienceBoostPercentage, DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost.value, 1) * quantity;
+                        if (DS_PILOT_RUSH[i][j].upgradeCost.discountable === true) {
+                            goldAmount = applyUpgradeDiscountPercentage(experienceBoostPercentage, DS_PILOT_RUSH[i][j].upgradeCost.value, 1) * quantity;
+
+                            if (experienceBoostPercentage > 0) {
+                                totalGoldAmountSaved += (DS_PILOT_RUSH[i][j].upgradeCost.value * quantity) - goldAmount;
+                            }
                         }
                         else {
-                            goldAmount = DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost.value * quantity;
+                            goldAmount = DS_PILOT_RUSH[i][j].upgradeCost.value * quantity;
                         }
                         spanGoldAmount.textContent = getStrAmount(goldAmount);
                         spanGoldAmount.parentElement.title = thousandSeperator(goldAmount, ' ') + ' Gold';
@@ -69,25 +69,33 @@ function syncData() {
                 quantity = toInt(inputQuantity.value);
                 totalQuantity += quantity;
 
-                if (DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost.currency === 'Memorium') {
+                if (DS_PILOT_RUSH[i][j].upgradeCost.currency === 'Memorium') {
                     spanMemoriumAmount = document.getElementById(`spanMemoriumAmount${TYPES[i]}_${j}`);
-                    if (DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost.discountable === true) {
-                        memoriumAmount = applyUpgradeDiscountPercentage(upgradeDiscountPercentage, DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost.value, 1) * quantity;
+                    if (DS_PILOT_RUSH[i][j].upgradeCost.discountable === true) {
+                        memoriumAmount = applyUpgradeDiscountPercentage(upgradeDiscountPercentage, DS_PILOT_RUSH[i][j].upgradeCost.value, 1) * quantity;
+
+                        if (upgradeDiscountPercentage > 0) {
+                            totalMemoriumAmountSaved += (DS_PILOT_RUSH[i][j].upgradeCost.value * quantity) - memoriumAmount;
+                        }
                     }
                     else {
-                        memoriumAmount = DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost.value * quantity;
+                        memoriumAmount = DS_PILOT_RUSH[i][j].upgradeCost.value * quantity;
                     }
                     spanMemoriumAmount.textContent = getStrAmount(memoriumAmount);
                     spanMemoriumAmount.parentElement.title = thousandSeperator(memoriumAmount, ' ') + ' Memorium';
                     totalMemoriumAmount += memoriumAmount;
                 }
-                if (DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost.currency === 'UpgradeToken') {
+                if (DS_PILOT_RUSH[i][j].upgradeCost.currency === 'UpgradeToken') {
                     spanUpgradeTokens = document.getElementById(`spanUpgradeTokens${TYPES[i]}_${j}`);
-                    if (DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost.discountable === true) {
-                        upgradeTokens = applyUpgradeDiscountPercentage(upgradeDiscountPercentage, DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost.value, 1) * quantity;
+                    if (DS_PILOT_RUSH[i][j].upgradeCost.discountable === true) {
+                        upgradeTokens = applyUpgradeDiscountPercentage(upgradeDiscountPercentage, DS_PILOT_RUSH[i][j].upgradeCost.value, 1) * quantity;
+
+                        if (upgradeDiscountPercentage > 0) {
+                            totalUpgradeTokensSaved += (DS_PILOT_RUSH[i][j].upgradeCost.value * quantity) - upgradeTokens;
+                        }
                     }
                     else {
-                        upgradeTokens = DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost.value * quantity;
+                        upgradeTokens = DS_PILOT_RUSH[i][j].upgradeCost.value * quantity;
                     }
                     spanUpgradeTokens.textContent = getStrAmount(upgradeTokens);
                     spanUpgradeTokens.parentElement.title = thousandSeperator(upgradeTokens, ' ') + ' Upgrade Tokens';
@@ -95,7 +103,7 @@ function syncData() {
                 }
 
                 spanPoints = document.getElementById(`spanPoints${TYPES[i]}_${j}`);
-                points = getLeaderboardPoints({ name: 'PilotRush', type: 'promoteRank' }, { level: DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].level }) * quantity;
+                points = getLeaderboardPoints({ name: 'PilotRush', type: 'promoteRank' }, { level: DS_PILOT_RUSH[i][j].level }) * quantity;
                 spanPoints.textContent = getStrAmount(points);
                 spanPoints.parentElement.title = thousandSeperator(points, ' ') + ' Points';
                 totalPoints += points;
@@ -106,15 +114,20 @@ function syncData() {
     totalTitanDeploymentPoints = calculateTotalTitanDeployPoints(toInt(inputTotalTitanDeployments.value));
     totalPoints += currentPoints + totalTitanDeploymentPoints;
 
-    spanTotalQuantity.textContent = totalQuantity;
-    spanTotalGoldAmount.textContent = getStrAmount(totalGoldAmount);
-    spanTotalGoldAmount.title = thousandSeperator(totalGoldAmount, ' ') + ' Gold';
-    spanTotalMemoriumAmount.textContent = getStrAmount(totalMemoriumAmount);
-    spanTotalMemoriumAmount.title = thousandSeperator(totalMemoriumAmount, ' ') + ' Memorium';
-    spanTotalUpgradeTokens.textContent = getStrAmount(totalUpgradeTokens);
-    spanTotalUpgradeTokens.title = thousandSeperator(totalUpgradeTokens, ' ') + ' Upgrade Tokens';
-    spanTotalPoints.textContent = getStrAmount(totalPoints);
-    spanTotalPoints.title = thousandSeperator(totalPoints, ' ') + ' Points';
+    handleTotalSummaryElement('totalQuantity', totalQuantity);
+    handleTotalSummaryElement('totalGoldAmount', totalGoldAmount, ' Gold', {
+        totalValueSaved: totalGoldAmountSaved,
+        discountPercentage: experienceBoostPercentage
+    });
+    handleTotalSummaryElement('totalMemoriumAmount', totalMemoriumAmount, ' Memorium', {
+        totalValueSaved: totalMemoriumAmountSaved,
+        discountPercentage: upgradeDiscountPercentage
+    });
+    handleTotalSummaryElement('totalUpgradeTokens', totalUpgradeTokens, ' Upgrade Tokens', {
+        totalValueSaved: totalUpgradeTokensSaved,
+        discountPercentage: upgradeDiscountPercentage
+    });
+    handleTotalSummaryElement('totalPoints', totalPoints, ' Points');
 }
 
 function resetModifiers() {
@@ -137,14 +150,14 @@ function presetUpgrades(index, type) {
     let quantity = 0;
     let i, j, k;
 
-    for (i = 0; i < DS_ROBOT_PILOT_UPGRADE_COSTS.length; i++) {
-        for (j = 0; j < DS_ROBOT_PILOT_UPGRADE_COSTS[i].length; j++) {
-            if (DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost === false) {
+    for (i = 0; i < DS_PILOT_RUSH.length; i++) {
+        for (j = 0; j < DS_PILOT_RUSH[i].length; j++) {
+            if (DS_PILOT_RUSH[i][j].upgradeCost === false) {
                 continue;
             }
 
             if (index === 0 && i === 0) {
-                for (k = DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].fromLevel; k <= DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].toLevel; k++) {
+                for (k = DS_PILOT_RUSH[i][j].fromLevel; k <= DS_PILOT_RUSH[i][j].toLevel; k++) {
                     if (type === 0 && (!(k >= 1 && k <= 10))) {
                         continue;
                     }
@@ -195,14 +208,14 @@ function init() {
         containerInnerHTMLs.push('');
     }
 
-    for (i = 0; i < DS_ROBOT_PILOT_UPGRADE_COSTS.length; i++) {
-        for (j = 0; j < DS_ROBOT_PILOT_UPGRADE_COSTS[i].length; j++) {
-            if (DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].upgradeCost === false) {
+    for (i = 0; i < DS_PILOT_RUSH.length; i++) {
+        for (j = 0; j < DS_PILOT_RUSH[i].length; j++) {
+            if (DS_PILOT_RUSH[i][j].upgradeCost === false) {
                 continue;
             }
 
             if (i === 0) {
-                for (k = DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].fromLevel; k <= DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].toLevel; k++) {
+                for (k = DS_PILOT_RUSH[i][j].fromLevel; k <= DS_PILOT_RUSH[i][j].toLevel; k++) {
                     containerInnerHTMLs[i] += '<div class="col-md-6">' +
                         '<div class="item">' + '<div class="row align-items-center">' +
                         `<div class="col"><div class="item-title">Rank ${getPilotRankByLevel(k)}: Level ${k}</div>` +
@@ -231,7 +244,7 @@ function init() {
             else {
                 containerInnerHTMLs[i] += '<div class="col-md-6">' +
                     '<div class="item">' + '<div class="row align-items-center">' +
-                    `<div class="col"><div class="item-title">Rank ${getPilotRankByLevel(DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].level)}: Level ${DS_ROBOT_PILOT_UPGRADE_COSTS[i][j].level}</div>` +
+                    `<div class="col"><div class="item-title">Rank ${getPilotRankByLevel(DS_PILOT_RUSH[i][j].level)}: Level ${DS_PILOT_RUSH[i][j].level}</div>` +
                     '</div>' +
                     '<div class="col">' +
                     '<div class="input-group">' +
@@ -321,6 +334,6 @@ function init() {
 }
 
 const TYPES = ['PilotExperienceBoost', 'PilotRankPromotion'];
-const DS_ROBOT_PILOT_UPGRADE_COSTS = [DS_ROBOT_EXPERIENCE_BOOST_COSTS, DS_ROBOT_PILOT_RANK_PROMOTION_COSTS];
+const DS_PILOT_RUSH = [DS_ROBOT_EXPERIENCE_BOOST_COSTS, DS_ROBOT_PILOT_RANK_PROMOTION_COSTS];
 
 init();
