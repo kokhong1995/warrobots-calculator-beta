@@ -1,6 +1,6 @@
-import { toInt, thousandSeperator, getStrAmount } from '/warrobots-calculator-beta/js/data-helper.js?v=1.17.6-beta';
-import { resetInputs, updateNumberInput } from '/warrobots-calculator-beta/js/input-helper.js?v=1.17.6-beta';
-import { applyUpgradeDiscountPercentage } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.17.6-beta';
+import { toInt, thousandSeperator, getStrAmount } from '/warrobots-calculator-beta/js/data-helper.js?v=1.17.7-beta';
+import { resetInputs, updateNumberInput, handleTotalSummaryElement } from '/warrobots-calculator-beta/js/input-helper.js?v=1.17.7-beta';
+import { applyUpgradeDiscountPercentage } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.17.7-beta';
 
 function updateInputValue(eventType, inputId) {
     updateNumberInput(eventType, inputId, syncData);
@@ -8,9 +8,6 @@ function updateInputValue(eventType, inputId) {
 
 function syncData() {
     const inputUpgradeDiscountPercentage = document.getElementById('inputUpgradeDiscountPercentage');
-    const spanTotalQuantity = document.getElementById('totalQuantity');
-    const spanTotalPlatinumAmount = document.getElementById('totalPlatinumAmount');
-    const spanTotalPlatinumAmountSaved = document.getElementById('totalPlatinumAmountSaved');
     let inputQuantity, spanPlatinumAmount;
     let upgradeDiscountPercentage = 0;
     let quantity = 0, platinumAmount = 0;
@@ -43,19 +40,11 @@ function syncData() {
         }
     }
 
-    spanTotalQuantity.textContent = totalQuantity;
-    spanTotalPlatinumAmount.textContent = getStrAmount(totalPlatinumAmount);
-    spanTotalPlatinumAmount.title = thousandSeperator(totalPlatinumAmount, ' ') + ' Platinum';
-    if (totalPlatinumAmountSaved > 0 && upgradeDiscountPercentage > 0) {
-        spanTotalPlatinumAmountSaved.textContent = `Saved ${getStrAmount(totalPlatinumAmountSaved)} (${upgradeDiscountPercentage}%)`;
-        spanTotalPlatinumAmountSaved.title = `Saved ${thousandSeperator(totalPlatinumAmountSaved, ' ')} (${upgradeDiscountPercentage}%)`;
-        spanTotalPlatinumAmountSaved.classList.remove('d-none');
-    }
-    else {
-        spanTotalPlatinumAmountSaved.textContent = '';
-        spanTotalPlatinumAmountSaved.title = '';
-        spanTotalPlatinumAmountSaved.classList.add('d-none');
-    }
+    handleTotalSummaryElement('totalQuantity', totalQuantity, 1);
+    handleTotalSummaryElement('totalPlatinumAmount', totalPlatinumAmount, 1, ' Platinum', {
+        totalValueSaved: totalPlatinumAmountSaved,
+        discountPercentage: upgradeDiscountPercentage
+    });
 }
 
 function resetModifiers() {

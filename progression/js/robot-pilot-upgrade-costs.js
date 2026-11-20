@@ -1,6 +1,6 @@
-import { toInt, thousandSeperator, getStrAmount, getPilotRankByLevel } from '/warrobots-calculator-beta/js/data-helper.js?v=1.17.6-beta';
-import { resetInputs, updateNumberInput, handleTotalSummaryElement } from '/warrobots-calculator-beta/js/input-helper.js?v=1.17.6-beta';
-import { applyUpgradeDiscountPercentage } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.17.6-beta';
+import { toInt, thousandSeperator, getStrAmount, getPilotRankByLevel } from '/warrobots-calculator-beta/js/data-helper.js?v=1.17.7-beta';
+import { resetInputs, updateNumberInput, handleTotalSummaryElement } from '/warrobots-calculator-beta/js/input-helper.js?v=1.17.7-beta';
+import { applyUpgradeDiscountPercentage } from '/warrobots-calculator-beta/js/modifier-helper.js?v=1.17.7-beta';
 
 function updateInputValue(eventType, inputId) {
     updateNumberInput(eventType, inputId, syncData);
@@ -96,16 +96,16 @@ function syncData() {
         }
     }
 
-    handleTotalSummaryElement('totalQuantity', totalQuantity);
-    handleTotalSummaryElement('totalGoldAmount', totalGoldAmount, ' Gold', {
+    handleTotalSummaryElement('totalQuantity', totalQuantity, 1);
+    handleTotalSummaryElement('totalGoldAmount', totalGoldAmount, 1, ' Gold', {
         totalValueSaved: totalGoldAmountSaved, 
         discountPercentage: experienceBoostPercentage
     });
-    handleTotalSummaryElement('totalMemoriumAmount', totalMemoriumAmount, ' Memorium', {
+    handleTotalSummaryElement('totalMemoriumAmount', totalMemoriumAmount, 1, ' Memorium', {
         totalValueSaved: totalMemoriumAmountSaved, 
         discountPercentage: upgradeDiscountPercentage
     });
-    handleTotalSummaryElement('totalUpgradeTokens', totalUpgradeTokens, ' Upgrade Tokens', {
+    handleTotalSummaryElement('totalUpgradeTokens', totalUpgradeTokens, 1, ' Upgrade Tokens', {
         totalValueSaved: totalUpgradeTokensSaved, 
         discountPercentage: upgradeDiscountPercentage
     });

@@ -1,4 +1,4 @@
-import { toInt, getStrAmount, thousandSeperator } from './data-helper.js?v=1.17.6-beta';
+import { toInt, getStrAmount, getStrDuration, thousandSeperator } from './data-helper.js?v=1.17.7-beta';
 
 const resetInputs = (selectors, value = '', callback) => {
     let i, j;
@@ -39,10 +39,19 @@ const updateNumberInput = (eventType, inputId, callback) => {
     }
 };
 
-const handleTotalSummaryElement = (id, value, postfix, discountDetails) => {
+const handleTotalSummaryElement = (id, value, formatMethod, postfix, discountDetails) => {
     const element = document.getElementById(id);
 
-    element.textContent = getStrAmount(value);
+    if (formatMethod === 1) {
+        element.textContent = getStrAmount(value);
+    }
+    else if (formatMethod === 2) {
+        element.textContent = getStrDuration(value);
+    }
+    else {
+        element.textContent = value;
+    }
+
     if (typeof postfix === 'string' && postfix.trim().length > 0) {
         element.title = thousandSeperator(value, ' ') + postfix;
     }
