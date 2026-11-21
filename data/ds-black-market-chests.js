@@ -125,6 +125,6 @@ const DS_BLACK_MARKET_CHESTS = [
         toLevel: 30,
         keys: 500,
         eventSpecific: true,
-        active: true
+        active: false
     }
 ];
